@@ -58,7 +58,7 @@ var BoxContent = React.createClass({
     return (
       <div className="boxContent">
         <p>{this.props.data.description}</p>
-        <a href={this.props.data.link}>Go</a>
+        <a className="boxGotoLink" href={this.props.data.link}>Go</a>
       </div>)
   }
   

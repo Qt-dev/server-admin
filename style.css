@@ -1,5 +1,5 @@
 body {
-  background-color: #EFEFEF;
+  background-color: whitesmoke;
   font-family: 'Open Sans', sans-serif;
   border-radius:2px;
 }
@@ -31,6 +31,21 @@ body {
   height:180px;
   padding:10px;
   margin:0;
+  position:relative;
   background-color: white;
 }
 
+.boxGotoLink {
+  display:block;
+  color:black;
+  text-decoration: none;
+  background-color: whitesmoke;
+
+  border: 1px solid lightgray;
+  border-radius: 2px;
+
+  position:absolute;
+  bottom:5%;
+  right:5%;
+  padding:2% 5%;
+}
