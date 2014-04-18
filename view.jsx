@@ -2,6 +2,29 @@
 * @jsx React.DOM
 */
 var Content = React.createClass({
+  /* TOOLS */
+  buildBoxes: function(data){
+    var categories = data.categories
+    if(data.sites){
+      var boxes = data.sites.map(function(box){
+        var style = {
+          backgroundColor: categories[box.category].style,
+          color: 'white'
+        }
+
+        var data = {
+          name: box.name,
+          content: {
+            description: box.description,
+            link: box.link
+          }
+        }
+        return <Box data={data} key={box.id} style={style}></Box>;
+      });
+    }
+    return boxes
+  },
+  /* REACT METHODS */
   getInitialState: function() {
     return {data: []};
   },
@@ -9,17 +32,7 @@ var Content = React.createClass({
     AJAX.getData(this.setState.bind(this), function(status, error){ console.log(status, error) });
   },
   render: function() {
-    if(this.state.data.sites){
-      var self = this;
-      var boxes = this.state.data.sites.map(function(box){
-        var style = {
-          backgroundColor: self.state.data.categories[box.category].style,
-          color: 'white'
-        }
-
-        return <Box name={box.name} description={box.description} key={box.id} style={style}></Box>;
-      });
-    }
+    var boxes = this.buildBoxes(this.state.data)
 
     return (
       <div className="content">
@@ -33,11 +46,22 @@ var Box = React.createClass({
   render: function() {
     return (
       <div className="box">
-        <h3 style={this.props.style}>{this.props.name}</h3>
-        <p>{this.props.description}</p>
+        <h3 style={this.props.style}>{this.props.data.name}</h3>
+        <BoxContent data={this.props.data.content} />
       </div>
       );
   }
+})
+
+var BoxContent = React.createClass({
+  render: function(){
+    return (
+      <div className="boxContent">
+        <p>{this.props.data.description}</p>
+        <a href={this.props.data.link}>Go</a>
+      </div>)
+  }
+  
 })
 
 
