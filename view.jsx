@@ -17,7 +17,7 @@ var Content = React.createClass({
           color: 'white'
         }
 
-        return <Box name={box.name} description={box.description} style={style}></Box>;
+        return <Box name={box.name} description={box.description} key={box.id} style={style}></Box>;
       });
     }
 
