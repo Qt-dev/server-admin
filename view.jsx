@@ -1,44 +1,39 @@
 /**
 * @jsx React.DOM
 */
-var Category = React.createClass({
+var Content = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
   componentWillMount: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    AJAX.getData(this.setState.bind(this), function(status, error){ console.log(status, error) });
   },
   render: function() {
-    console.log(this.state.data)
     if(this.state.data.sites){
+      var self = this;
       var boxes = this.state.data.sites.map(function(box){
-        return <Box name={box.name} description={box.description}></Box>;
-      })
+        var style = {
+          backgroundColor: self.state.data.categories[box.category].style,
+          color: 'white'
+        }
+
+        return <Box name={box.name} description={box.description} style={style}></Box>;
+      });
     }
-    
+
     return (
-      <div className="category">
-      <h2>{this.props.title}</h2> 
+      <div className="content">
         {boxes}
       </div>
-    );
+      );
   }
-});
+})
 
 var Box = React.createClass({
   render: function() {
     return (
       <div className="box">
-        <h3>{this.props.name}</h3>
+        <h3 style={this.props.style}>{this.props.name}</h3>
         <p>{this.props.description}</p>
       </div>
       );
@@ -46,7 +41,8 @@ var Box = React.createClass({
 })
 
 
+
 React.renderComponent(
-  <Category url="data.json" />,
+  <Content url="data.json" />,
   document.querySelector('body')
 );

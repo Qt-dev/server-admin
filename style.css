@@ -1,9 +1,12 @@
 body {
-  background-color: lightgray;
+  background-color: #EFEFEF;
   font-family: 'Open Sans', sans-serif;
-  border-radius:2px;  
+  border-radius:2px;
 }
 
+.category {
+  display:inline-block;
+}
 
 
 .box {
@@ -15,9 +18,11 @@ body {
   text-align: center;
   width: 200px;
   line-height:2em;
-  margin:10px 0;
+  margin:5px 0;
   background-color: cornflowerblue;
+  color:white;
   display:block;
+  border-radius:2px;
 }
 
 .box p {
