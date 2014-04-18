@@ -1,0 +1,68 @@
+{
+   "title":"Gretz HomeServer",
+   "sites":[
+      {
+         "type":"1",
+         "name":"SABNZBD",
+         "link":"nzb",
+         "description":"Téléchargeur de NZB (Newsgroups)"
+      },
+      {
+         "type":"1",
+         "name":"Transmission",
+         "link":"torrent/web",
+         "description":"Téléchargeur de Torrents"
+      },
+      {
+         "type":"2",
+         "name":"Sickbeard",
+         "link":"sickbeard",
+         "description":"Gestionnaire de téléchargements de Séries et sous-titres"
+      },
+      {
+         "type":"2",
+         "name":"Couchpotato",
+         "link":"couchpotato",
+         "description":"Gestionnaire de téléchargements de Films et sous-titres"
+      },
+      {
+         "type":"2",
+         "name":"Headphones",
+         "link":"headphones",
+         "description":"Gestionnaire de téléchargements de musiques"
+      },
+      {
+         "type":"0",
+         "name":"Plex",
+         "link":"plex/web/index.html",
+         "description":"Gestionnaire de contenus et Streamer"
+      },
+      {
+         "type":"0",
+         "name":"Webmin",
+         "link":"webmin",
+         "description":"Console d'administration du serveur"
+      }
+   ],
+   "categories":[
+      {
+         "id":"0",
+         "idName":"other",
+         "title":"Other",
+         "style":"success"
+      },
+      {
+         "id":"1",
+         "idName":"downloaders",
+         "title":"Téléchargeurs",
+         "style":"primary"
+      },
+      {
+         "id":"2",
+         "idName":"download-managers",
+         "title":"Gestionnaires de Téléchargements",
+         "style":"info"
+      }
+   ]
+}
+
