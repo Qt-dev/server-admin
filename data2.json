@@ -1,0 +1,26 @@
+{
+  "title": "Gretz HomeServer",
+  "sites": [
+    {
+      "id": "0",
+      "category": "1",
+      "name": "SABNZBD",
+      "type": "sabnzbd",
+      "link": "http://gretz.q-dev.fr/nzb",
+      "description": "Téléchargeur de NZB (Newsgroups)",
+      "API":"63f498f611d49d9f32d688e2c6dd247d"
+    }
+  ],
+  "categories": {
+    "1": {
+      "idName": "downloaders",
+      "title": "Téléchargeurs",
+      "style": "lightgreen"
+    },
+    "2": {
+      "idName": "download-managers",
+      "title": "Gestionnaires de Téléchargements",
+      "style": "lightblue"
+    }
+  }
+}
