@@ -17,14 +17,50 @@ var AJAX = (function(){
       _request({url: "data2.json", datatype: 'json'}, happyCallback, unhappyCallback);
     },
     getSABStatus: function(sab, happyCallback, unhappyCallback){
-      var url = sab.link + "/api?mode=qstatus&output=json&apikey=63f498f611d49d9f32d688e2c6dd247d&callback=?"
-      //_request({url:url, datatype: 'jsonp'}, happyCallback, unhappyCallback);
-      $.getJSON(url)
-        .complete(function(data, test){
-          console.log(data.responseJSON)
-          happyCallback({apidata: data.responseJSON})
-        })
-        .fail(unhappyCallback);
+      var url = sab.link + '/api?mode=qstatus&output=json&apikey=63f498f611d49d9f32d688e2c6dd247d'
+      _request({url:url, datatype: 'jsonp'}, happyCallback, unhappyCallback);
+     },
+    request: function(config, happyCallback, unhappyCallback){
+      _request(config, happyCallback, unhappyCallback);
     }
   }
 }())
+
+
+var SABNZBD = function(opts){
+  this.link = opts.link;
+  this.api = opts.api;
+  this.paused = false;
+  this.mode = {
+    status: 'qstatus',
+    pause: 'pause'
+  }
+}
+
+SABNZBD.prototype = {
+  // Tools
+  buildURL: function(mode){
+    return this.link + '/api?mode='+ this.mode[mode] +'&output=json&apikey='+ this.api
+  },
+  getAPICall: function(url, callback){
+    AJAX.request({url:url, datatype: 'json'}, callback, this.unhappyCallback);
+  },
+  unhappyCallback: function(status, error){
+    console.log(status, error);
+  },
+  addReadToCallback: function(callback){
+    var newCallback = function(data){
+      this.paused = data.data.paused;
+      callback(data);
+      console.log(this);
+    }
+    return newCallback;
+  },
+  // Interface
+  getStatus: function(happyCallback){
+    var url = this.buildURL('status');
+    var callback = this.addReadToCallback(happyCallback);
+    this.getAPICall(url, callback.bind(this));
+  }
+
+}

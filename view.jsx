@@ -16,7 +16,8 @@ var Content = React.createClass({
           name: box.name,
           content: {
             description: box.description,
-            link: box.link
+            link: box.link,
+            api: box.API
           }
         }
         return <Box data={data} key={box.id} style={style}></Box>;
@@ -44,18 +45,18 @@ var Content = React.createClass({
 
 var Box = React.createClass({
   getInitialState: function() {
-    return {apidata: []};
+    return {data: []};
   },
   componentWillMount: function() {
-    AJAX.getSABStatus(this.props.data.content, this.setState.bind(this), function(status, error){ console.log(status, error) });
+    //AJAX.getSABStatus(this.props.data.content, this.setState.bind(this), function(status, error){ console.log(status, error) });
   },
   render: function() {
-    if(this.state.apidata.length !== 0){
+    if(this.state.data.length !== 0){
       var state = {
-        status: this.state.apidata.state,
-        paused: this.state.apidata.paused,
-        speed: this.state.apidata.speed,
-        timeleft: this.state.apidata.timeleft
+        status: this.state.data.state,
+        paused: this.state.data.paused,
+        speed: this.state.data.speed,
+        timeleft: this.state.data.timeleft
       }
     }
 
@@ -69,13 +70,29 @@ var Box = React.createClass({
 })
 
 var BoxContent = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentWillMount: function(){
+    console.log("props", this.props)
+    var data = {
+      link: this.props.data.link,
+      api: this.props.data.api
+    }
+    this.sabnzbd = new SABNZBD(data)
+    this.sabnzbd.getStatus(this.setState.bind(this));
+  },
   render: function(){
-    if(this.props.state){
+    if(this.state.data.length !== 0){
+      var apidata = {
+        status: this.state.data.state,
+        paused: this.state.data.paused,
+        speed: this.state.data.speed,
+        timeleft: this.state.data.timeleft
+      }
       var state = []
-      $.each(this.props.state, function(key,value){
-          var text = key.toString() +' - '+ value.toString()
-          console.log(text)
-          state.push(<li><span className="statusTitle">{key}</span>:<span className="statusValue">{value.toString()}</span></li>)
+      $.each(apidata, function(key,value){
+          state.push(<li key={key}><span className="statusTitle">{key}</span>:<span className="statusValue">{value.toString()}</span></li>)
         })
     }
     
