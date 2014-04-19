@@ -75,14 +75,14 @@ var BoxContent = React.createClass({
       $.each(this.props.state, function(key,value){
           var text = key.toString() +' - '+ value.toString()
           console.log(text)
-          state.push(<li>{text}</li>)
+          state.push(<li><span className="statusTitle">{key}</span>:<span className="statusValue">{value.toString()}</span></li>)
         })
     }
     
     return (
       <div className="boxContent">
         <p>{this.props.data.description}
-          <ul>{state}</ul>
+          <ul className="status">{state}</ul>
         </p>
         <a className="boxGotoLink" href={this.props.data.link}>Go</a>
       </div>)

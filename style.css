@@ -35,6 +35,10 @@ body {
   background-color: white;
 }
 
+.boxContent p {
+  margin-top: 0;
+}
+
 .boxGotoLink {
   display:block;
   color:black;
@@ -48,4 +52,19 @@ body {
   bottom:5%;
   right:5%;
   padding:2% 5%;
+}
+
+.status {
+  font-size: 0.6em;
+  list-style: none;
+  padding-left: 0;
+}
+
+.statusTitle {
+  float:left;
+  font-weight: bolder;
+}
+
+.statusValue {
+  float:right;
 }
