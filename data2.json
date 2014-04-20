@@ -9,6 +9,13 @@
       "link": "http://gretz.q-dev.fr/nzb",
       "description": "Téléchargeur de NZB (Newsgroups)",
       "API":"63f498f611d49d9f32d688e2c6dd247d"
+    },
+     {
+      "id":"1",
+      "category": "1",
+      "name": "Transmission",
+      "link": "torrent/web",
+      "description": "Téléchargeur de Torrents"
     }
   ],
   "categories": {
