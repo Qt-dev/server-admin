@@ -39,19 +39,26 @@ body {
   margin-top: 0;
 }
 
-.boxGotoLink {
-  display:block;
+.bottomButtonRow {
+  position:absolute;
+  display:inline-block;
+  width:90%;
+  bottom:5%;
+}
+
+.bottomButton {
+  line-height: 1.7em;
   color:black;
+  float:right;
   text-decoration: none;
   background-color: whitesmoke;
 
+  padding:2% 5%;
+  margin:0 2%;
   border: 1px solid lightgray;
   border-radius: 2px;
 
-  position:absolute;
-  bottom:5%;
-  right:5%;
-  padding:2% 5%;
+  
 }
 
 .status {

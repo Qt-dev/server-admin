@@ -96,12 +96,20 @@ var BoxContent = React.createClass({
         })
     }
     
+    if(this.paused){
+      var pauseToggle = <a className="bottomButton" >Resume <i className="fa fa-play"></i></a>
+    } else {
+      var pauseToggle = <a className="bottomButton" >Pause <i className="fa fa-pause"></i></a>
+    }
     return (
       <div className="boxContent">
         <p>{this.props.data.description}
           <ul className="status">{state}</ul>
         </p>
-        <a className="boxGotoLink" href={this.props.data.link}>Go</a>
+        <div className="bottomButtonRow">
+          <a className="bottomButton boxGotoLink" href={this.props.data.link}>Go</a>
+          {pauseToggle}
+        </div>
       </div>)
   }
   
