@@ -27,13 +27,16 @@ var AJAX = (function(){
 }())
 
 
+
+
 var SABNZBD = function(opts){
   this.link = opts.link;
   this.api = opts.api;
   this.paused = false;
   this.mode = {
     status: 'qstatus',
-    pause: 'pause'
+    pause: 'pause',
+    resume: 'resume'
   }
 }
 
@@ -52,7 +55,7 @@ SABNZBD.prototype = {
     var newCallback = function(data){
       this.paused = data.data.paused;
       callback(data);
-      console.log(this);
+      console.log("API Response",data);
     }
     return newCallback;
   },
@@ -61,6 +64,19 @@ SABNZBD.prototype = {
     var url = this.buildURL('status');
     var callback = this.addReadToCallback(happyCallback);
     this.getAPICall(url, callback.bind(this));
+  },
+  pause: function(happyCallback){
+    var url = this.buildURL('pause');
+    var callback = this.addReadToCallback(happyCallback);
+    this.getAPICall(url, callback.bind(this));
+  },
+  resume: function(happyCallback){
+    var url = this.buildURL('resume');
+    var callback = this.addReadToCallback(happyCallback);
+    this.getAPICall(url, callback.bind(this));
   }
+}
 
+var AJAXCaller = {
+  "sabnzbd": SABNZBD
 }

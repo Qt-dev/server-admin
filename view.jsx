@@ -14,13 +14,14 @@ var Content = React.createClass({
 
         var data = {
           name: box.name,
+          type: box.type,
           content: {
             description: box.description,
             link: box.link,
             api: box.API
           }
         }
-        return <Box data={data} key={box.id} style={style}></Box>;
+        return <Downloader data={data} key={box.id} style={style}></Downloader>
       });
     }
     return boxes
@@ -43,77 +44,117 @@ var Content = React.createClass({
   }
 })
 
-var Box = React.createClass({
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentWillMount: function() {
-    //AJAX.getSABStatus(this.props.data.content, this.setState.bind(this), function(status, error){ console.log(status, error) });
-  },
-  render: function() {
-    if(this.state.data.length !== 0){
-      var state = {
-        status: this.state.data.state,
-        paused: this.state.data.paused,
-        speed: this.state.data.speed,
-        timeleft: this.state.data.timeleft
-      }
-    }
 
-    return (
-      <div className="box">
-        <h3 style={this.props.style}>{this.props.data.name}</h3>
-        <BoxContent data={this.props.data.content} state={state}/>
-      </div>
-      );
-  }
-})
-
-var BoxContent = React.createClass({
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentWillMount: function(){
-    console.log("props", this.props)
-    var data = {
-      link: this.props.data.link,
-      api: this.props.data.api
-    }
-    this.sabnzbd = new SABNZBD(data)
-    this.sabnzbd.getStatus(this.setState.bind(this));
-  },
-  render: function(){
-    if(this.state.data.length !== 0){
-      var apidata = {
-        status: this.state.data.state,
-        paused: this.state.data.paused,
-        speed: this.state.data.speed,
-        timeleft: this.state.data.timeleft
+var Downloader = (function(){
+  var _boxContent = React.createClass({
+    /* TOOLS */
+    refresh: function(){
+      this.apiCaller.getStatus(this.setState.bind(this));
+    },
+    togglePause: function(){
+      var data = this.state.data;
+      data.paused = !data.paused;
+      this.setState(data);
+    },
+    /* REACT */
+    getInitialState: function() {
+      return {data: []};
+    },
+    componentWillMount: function(){
+      var data = {
+        link: this.props.data.link,
+        api: this.props.data.api
       }
-      var state = []
-      $.each(apidata, function(key,value){
-          state.push(<li key={key}><span className="statusTitle">{key}</span>:<span className="statusValue">{value.toString()}</span></li>)
-        })
+      this.type = this.props.type;
+      this.apiCaller = new AJAXCaller[this.type](data);
+
+
+      this.apiCaller.getStatus(this.setState.bind(this));
+    },
+    render: function(){
+      return (
+        <div className="boxContent">
+          <p>{this.props.data.description}
+            <_statusBox data={this.state.data} />
+          </p>
+          <_boxButtonRow link={this.props.data.link} refreshCallback={this.refresh} paused={this.state.data.paused} apiCaller={this.apiCaller}/>
+        </div>)
     }
     
-    if(this.paused){
-      var pauseToggle = <a className="bottomButton" >Resume <i className="fa fa-play"></i></a>
-    } else {
-      var pauseToggle = <a className="bottomButton" >Pause <i className="fa fa-pause"></i></a>
+  })
+
+  var _statusBox = React.createClass({
+    getInitialState: function(){
+      return {data: this.props.data};
+    },
+    render: function(){
+      if(this.props.data.length !==0){
+        var apidata = {
+          status: this.props.data.state,
+          paused: this.props.data.paused,
+          speed: this.props.data.speed,
+          timeleft: this.props.data.timeleft
+        }
+        var state = []
+        $.each(apidata, function(key,value){
+            state.push(<_statusLine key={key} value={value} />)
+          })
+      }
+      return(
+        <ul className="statusBox">
+        {state}
+        </ul>
+        )
     }
-    return (
-      <div className="boxContent">
-        <p>{this.props.data.description}
-          <ul className="status">{state}</ul>
-        </p>
-        <div className="bottomButtonRow">
-          <a className="bottomButton boxGotoLink" href={this.props.data.link}>Go</a>
-          {pauseToggle}
+  })
+
+  var _statusLine = React.createClass({
+    render: function(){
+      return <li key={this.props.key}><span className="statusTitle">{this.props.key}</span>:<span className="statusValue">{this.props.value.toString()}</span></li>
+    }
+  })
+
+  var _boxButtonRow = React.createClass({
+    getInitialState: function(){
+      return {
+        paused: this.props.paused
+      }
+    },
+    handlePause: function(e){
+      if(this.props.paused){
+        this.props.apiCaller.resume(this.props.refreshCallback)
+      } else {
+        this.props.apiCaller.pause(this.props.refreshCallback)
+      }
+    },
+    render: function(){
+      if(this.props.paused){
+        var pauseToggleButton = <a className="bottomButton" href="#" onClick={this.handlePause} >Resume <i className="fa fa-play"></i></a>
+      } else {
+        var pauseToggleButton = <a className="bottomButton" href="#" onClick={this.handlePause} >Pause <i className="fa fa-pause"></i></a>
+      }
+
+      return (
+      <div className="bottomButtonRow">
+        <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
+        {pauseToggleButton}
+      </div>
+      )
+    }
+  })
+
+
+  return React.createClass({
+    render: function() {
+      return (
+        <div className="box">
+          <h3 style={this.props.style}>{this.props.data.name}</h3>
+          <_boxContent type={this.props.data.type} data={this.props.data.content} />
         </div>
-      </div>)
-  }
-  
-})
+        );
+    }
+  })
+}())
 
 
 
