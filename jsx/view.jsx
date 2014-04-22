@@ -49,27 +49,6 @@ var Content = React.createClass({
 })
 
 
-var Box = React.createClass({
-  render: function() {
-    return (
-      <div className="box">
-        <h3 style={this.props.style}>{this.props.data.name}</h3>
-        <BoxContent data={this.props.data.content} />
-      </div>
-      );
-  }
-})
-
-var BoxContent = React.createClass({
-  render: function(){
-    return (
-      <div className="boxContent">
-        <p>{this.props.data.description}</p>
-        <a className="boxGotoLink" href={this.props.data.link}>Go</a>
-      </div>)
-  }
-  
-})
 
 
 

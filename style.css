@@ -23,6 +23,7 @@ body {
   color:white;
   display:block;
   border-radius:2px;
+  border: 1px solid lightgray;
 }
 
 .boxContent {
@@ -33,6 +34,7 @@ body {
   margin:0;
   position:relative;
   background-color: white;
+  border: 1px solid lightgray;
 }
 
 .boxContent p {

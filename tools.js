@@ -14,7 +14,7 @@ var AJAX = (function(){
 
   return {
     getData: function(happyCallback, unhappyCallback){
-      _request({url: "data2.json", datatype: 'json'}, happyCallback, unhappyCallback);
+      _request({url: "data.json", datatype: 'json'}, happyCallback, unhappyCallback);
     },
     getSABStatus: function(sab, happyCallback, unhappyCallback){
       var url = sab.link + '/api?mode=qstatus&output=json&apikey=63f498f611d49d9f32d688e2c6dd247d'

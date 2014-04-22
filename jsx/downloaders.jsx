@@ -24,16 +24,17 @@ var Downloader = (function(){
       this.type = this.props.type;
       this.apiCaller = new AJAXCaller[this.type](data);
 
-
       this.apiCaller.getStatus(this.setState.bind(this));
     },
     render: function(){
+      var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh}  apiCaller={this.apiCaller}/>
+
       return (
         <div className="boxContent">
           <p>{this.props.data.description}
             <_statusBox data={this.state.data} />
           </p>
-          <_boxButtonRow link={this.props.data.link} refreshCallback={this.refresh} paused={this.state.data.paused} apiCaller={this.apiCaller}/>
+          <BoxButtonRow buttons={pausedButton} link={this.props.data.link} />
         </div>)
     }
     
@@ -53,7 +54,7 @@ var Downloader = (function(){
         }
         var state = []
         $.each(apidata, function(key,value){
-            state.push(<_statusLine key={key} value={value} />)
+            state.push(<StatusLine key={key} value={value} />)
           })
       }
       return(
@@ -64,13 +65,8 @@ var Downloader = (function(){
     }
   })
 
-  var _statusLine = React.createClass({
-    render: function(){
-      return <li key={this.props.key}><span className="statusTitle">{this.props.key}</span>:<span className="statusValue">{this.props.value.toString()}</span></li>
-    }
-  })
 
-  var _boxButtonRow = React.createClass({
+  var _pauseToggleButton = React.createClass({
     getInitialState: function(){
       return {
         paused: this.props.paused
@@ -85,17 +81,10 @@ var Downloader = (function(){
     },
     render: function(){
       if(this.props.paused){
-        var pauseToggleButton = <a className="bottomButton" href="#" onClick={this.handlePause} >Resume <i className="fa fa-play"></i></a>
+        return <a className="bottomButton" href="#" onClick={this.handlePause} >Resume <i className="fa fa-play"></i></a>
       } else {
-        var pauseToggleButton = <a className="bottomButton" href="#" onClick={this.handlePause} >Pause <i className="fa fa-pause"></i></a>
+        return <a className="bottomButton" href="#" onClick={this.handlePause} >Pause <i className="fa fa-pause"></i></a>
       }
-
-      return (
-      <div className="bottomButtonRow">
-        <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
-        {pauseToggleButton}
-      </div>
-      )
     }
   })
 
