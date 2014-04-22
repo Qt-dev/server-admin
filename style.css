@@ -23,6 +23,7 @@ body {
   color:white;
   display:block;
   border-radius:2px;
+  border: 1px solid lightgray;
 }
 
 .boxContent {
@@ -33,19 +34,46 @@ body {
   margin:0;
   position:relative;
   background-color: white;
+  border: 1px solid lightgray;
 }
 
-.boxGotoLink {
-  display:block;
+.boxContent p {
+  margin-top: 0;
+}
+
+.bottomButtonRow {
+  position:absolute;
+  display:inline-block;
+  width:90%;
+  bottom:5%;
+}
+
+.bottomButton {
+  line-height: 1.7em;
   color:black;
+  float:right;
   text-decoration: none;
   background-color: whitesmoke;
 
+  padding:2% 5%;
+  margin:0 2%;
   border: 1px solid lightgray;
   border-radius: 2px;
 
-  position:absolute;
-  bottom:5%;
-  right:5%;
-  padding:2% 5%;
+  
+}
+
+.statusBox {
+  font-size: 0.8em;
+  list-style: none;
+  padding-left: 0;
+}
+
+.statusTitle {
+  float:left;
+  font-weight: bolder;
+}
+
+.statusValue {
+  float:right;
 }
