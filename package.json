@@ -8,6 +8,7 @@
     "url": "https://github.com/cookie-monster-inc/server-admin.git"
   },
   "scripts": {
+    "start": "node lib/app.js",
     "test": "grunt mocha"
   },
   "keywords": [
