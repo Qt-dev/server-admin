@@ -38,6 +38,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat','uglify', 'jshint:afterconcat',]);
+  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'mocha','uglify', 'jshint:afterconcat',]);
 
 };
