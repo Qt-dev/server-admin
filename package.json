@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/cookie-monster-inc/server-admin.git"
   },
+  "scripts": {
+    "test": "grunt mocha"
+    },
   "keywords": [
     "sickbeard",
     "sabnzbd",
