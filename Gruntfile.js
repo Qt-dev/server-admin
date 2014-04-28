@@ -4,9 +4,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      node: ['core/**/*.js', 'core/*.js'],
+      node: ['lib/**/*.js', 'lib/*.js'],
       beforeconcat: ['src/**/*.js', 'src/*.js'],
-      afterconcat: ['public/js/output.min.js']
+      afterconcat: ['lib/public/js/output.min.js']
     },
     uglify: {
       options: {
@@ -15,9 +15,16 @@ module.exports = function(grunt) {
       },
       app: {
         files: {
-          'public/js/output.min.js': ['src/**/*.js', 'src/*.js']
+          'lib/public/js/output.min.js': ['src/**/*.js', 'src/*.js']
         }
       }
+    },
+    mocha: {
+      options: {
+        run: true,
+        reporter: 'Nyan'
+      },
+      all: ['test/index.html']
     }
   });
 
@@ -26,6 +33,9 @@ module.exports = function(grunt) {
 
   // JS Uglify task
   grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  // Mocha task
+  grunt.loadNpmTasks('grunt-mocha');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat','uglify', 'jshint:afterconcat',]);
