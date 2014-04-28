@@ -1,0 +1,20 @@
+{
+  "name": "server-admin",
+  "version": "0.0.1",
+  "author": "Quentin Devauchelle <quentin@devauchelle.eu>",
+  "description": "a home-server management interface",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cookie-monster-inc/server-admin.git"
+  },
+  "keywords": [
+    "sickbeard",
+    "sabnzbd",
+    "couchpotato",
+    "transmission"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
