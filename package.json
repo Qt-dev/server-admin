@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node lib/app.js",
-    "test": "grunt mocha"
+    "test": "make test"
   },
   "keywords": [
     "sickbeard",

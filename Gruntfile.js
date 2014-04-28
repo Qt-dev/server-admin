@@ -18,13 +18,6 @@ module.exports = function(grunt) {
           'lib/public/js/output.min.js': ['src/**/*.js', 'src/*.js']
         }
       }
-    },
-    mocha: {
-      options: {
-        run: true,
-        reporter: 'Nyan'
-      },
-      all: ['test/index.html']
     }
   });
 
@@ -34,10 +27,7 @@ module.exports = function(grunt) {
   // JS Uglify task
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Mocha task
-  grunt.loadNpmTasks('grunt-mocha');
-
   // Default task(s).
-  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'mocha','uglify', 'jshint:afterconcat',]);
+  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'uglify', 'jshint:afterconcat',]);
 
 };
