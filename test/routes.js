@@ -5,10 +5,12 @@ var request = require('supertest')
 var app = require('../lib/app');
 
 describe('routes', function(){
-  it('should have an index route', function(done){
-    request(app)
-      .get('/')
-      .expect(200, done);
+  describe('the index route', function(){
+    it('should have an index route', function(done){
+      request(app)
+        .get('/')
+        .expect(200, done);
+    })
   })
   describe('data.json route', function(){
     it('should exist', function(done){
