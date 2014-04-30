@@ -1,1 +1,3 @@
 node_modules
+src/js/compiled-react.js
+lib/public/js/output.min.js
