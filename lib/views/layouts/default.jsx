@@ -9,31 +9,33 @@ var JS = [
     ];
 
 var DefaultLayout = React.createClass({
+  buildStyles: function(styles){
+    var cssTags = styles.map(function (css, index) {
+      return <link key={'css-'+index} rel="stylesheet" href={css} />;
+    });
+    return cssTags;
+
+  },
+  buildJavascripts: function(javascripts){
+    var jsTags = javascripts.map(function(js, index){
+      return <script key={'js-'+index} src={js} />;
+    });
+    return jsTags;
+  },
   render: function() {
+    var styles = this.buildStyles(CSS);
+    var javascripts = this.buildJavascripts(JS);
+
     return (
       <html>
-        <Head css={CSS} js={JS} />
+        <head>
+          <title>{this.props.title}</title>
+          {styles}
+          {javascripts}
+        </head>
         <body>{this.props.children}</body>
       </html>
     );
-  }
-})
-
-var Head = React.createClass({
-  render: function(){
-    var styles = this.props.css.map(function (css) {
-      return <link rel="stylesheet" href={css} />;
-    });
-    var javascripts = this.props.js.map(function (js) {
-      return <script src={js} />;
-    });
-    return (
-      <head>
-        <title>{this.props.title}</title>
-        {styles}
-        {javascripts}
-      </head>
-    )
   }
 })
 
