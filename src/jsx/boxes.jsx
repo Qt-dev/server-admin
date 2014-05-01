@@ -30,13 +30,11 @@ var StatusLine = React.createClass({
 
 var BoxButtonRow = React.createClass({
   render: function(){
-    if(this.props.buttons){
-      var buttons = this.props.buttons
-    }
     return (
     <div className="bottomButtonRow">
       <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
-      {buttons}
+      {this.props.buttons}
+      {this.props.statusBox}
     </div>
     )
   }

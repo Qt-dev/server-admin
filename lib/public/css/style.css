@@ -5,7 +5,8 @@ body {
 }
 
 .content {
-  width: 900px;
+  width:95%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -71,28 +72,30 @@ body {
 /* Box content */
 .boxContent {
   border-radius:2px;  
-  width: 98%;
-  height:100%;
-  padding:1%;
-  margin:5px 0;
-  border: 1px solid black;
+  width: 100%;
 }
 
 .boxContent p {
-  margin-top: 0;
+  margin: 0;
+}
+
+.boxContent hr {
+  width:95%;
 }
 
 .statusBox {
-  width:100%;
-  font-size: 0.8em;
   list-style: none;
-  padding-left: 0;
+  line-height: 2em;
+  padding:0;
+  margin:0;
 }
 
 .statusBox li {
-  display:block;
-  width:100%;
-  border:1px solid black;
+  display:inline;
+  float:left;
+  padding:0 1%;
+  /*color:white;*/
+  border-right:1px solid dimgrey;
 }
 
 .statusTitle {
@@ -101,5 +104,5 @@ body {
 }
 
 .statusValue {
-  float:right;
+  /*float:right;*/
 }

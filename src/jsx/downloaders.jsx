@@ -5,11 +5,10 @@ var Downloader = (function(){
   var _boxContent = React.createClass({
     /* REACT */
     render: function(){
+      console.log(this.props)
       return (
         <div className="boxContent">
-          <p>{this.props.data.description}
-            <_statusBox data={this.props.data} />
-          </p>
+          <p>{this.props.description}< /p>
         </div>)
     }
     
@@ -23,7 +22,6 @@ var Downloader = (function(){
       if(this.props.data.length !==0){
         var apidata = {
           status: this.props.data.state,
-          paused: this.props.data.paused,
           speed: this.props.data.speed,
           timeleft: this.props.data.timeleft
         }
@@ -79,6 +77,8 @@ var Downloader = (function(){
 
       refresh: function() {
         this.apiCaller.getStatus(this.setState.bind(this));
+
+        console.log('state',this.state)
       },
       togglePause: function() {
         var data = this.state.data;
@@ -89,12 +89,16 @@ var Downloader = (function(){
         if(typeof this.state.data.paused !== 'undefined'){
           var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh} />
         }
+        // debugger
+        if(!(this.state.data.length)){
+          var statusBox = <_statusBox data={this.state.data} />
+        }
 
         return (
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
-            <_boxContent type={this.props.data.type} data={this.state.data} />
-            <BoxButtonRow buttons={pausedButton} link={this.props.data.content.link} />
+            <_boxContent type={this.props.data.type} description={this.props.data.content.description} />
+            <BoxButtonRow buttons={pausedButton} link={this.props.data.content.link} statusBox={statusBox} />
           </div>
           );
       }
