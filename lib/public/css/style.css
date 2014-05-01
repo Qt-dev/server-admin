@@ -4,37 +4,45 @@ body {
   border-radius:2px;
 }
 
+.content {
+  width: 900px;
+  margin: 0 auto;
+}
+
 .category {
   display:inline-block;
 }
 
 
 .box {
+  width:100%;
+  margin:0.5%;
   float:left;
-  margin:10px;
+
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius:2px;
+  position:relative;
 }
 
 .box h3 {
   text-align: center;
-  width: 200px;
+  width: 100%;
   line-height:2em;
-  margin:5px 0;
+  margin:0;
+  padding:0;
   background-color: cornflowerblue;
   color:white;
   display:block;
-  border-radius:2px;
-  border: 1px solid lightgray;
+  border: 1% solid lightgray;
 }
 
 .boxContent {
   border-radius:2px;  
-  width: 180px;
-  height:180px;
-  padding:10px;
-  margin:0;
-  position:relative;
-  background-color: white;
-  border: 1px solid lightgray;
+  width: 98%;
+  height:200px;
+  padding:1%;
+  margin:5px 0;
 }
 
 .boxContent p {
@@ -43,24 +51,24 @@ body {
 
 .bottomButtonRow {
   position:absolute;
+  background-color: darkgray;
   display:inline-block;
-  width:90%;
-  bottom:5%;
+  line-height:2em;
+  width:100%;
+
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  bottom:0;
 }
 
 .bottomButton {
-  line-height: 1.7em;
-  color:black;
+  color:white;
   float:right;
   text-decoration: none;
-  background-color: whitesmoke;
+  background-color: dimgrey;
 
-  padding:2% 5%;
-  margin:0 2%;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-
-  
+  height:100%;
+  padding: 0 2%;
 }
 
 .statusBox {
