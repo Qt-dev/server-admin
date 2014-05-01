@@ -46,15 +46,9 @@ var Downloader = (function(){
       }
     },
     handlePause: function(e){
-      console.log(this.props)
-      if(this.props.paused){
-        this.props.apiCaller.resume(this.props.refreshCallback)
-      } else {
-        this.props.apiCaller.pause(this.props.refreshCallback)
-      }
+      this.props.toggleCallback(this.props.paused);
     },
     render: function(){
-      console.log(this.props)
       if(this.props.paused){
         return <a className="bottomButton" href="#" onClick={this.handlePause} >Resume <i className="fa fa-play"></i></a>
       } else {
@@ -76,20 +70,19 @@ var Downloader = (function(){
         this.apiCaller = new AJAXCaller[this.props.data.type](data);
         this.apiCaller.getStatus(this.setState.bind(this));
       },
-
+      togglePause: function(paused){
+        if(paused){
+          this.apiCaller.resume(this.refresh);
+        } else {
+          this.apiCaller.pause(this.refresh);
+        }
+      },
       refresh: function() {
         this.apiCaller.getStatus(this.setState.bind(this));
-
-        console.log('state',this.state)
-      },
-      togglePause: function() {
-        var data = this.state.data;
-        data.paused = !data.paused;
-        this.setState({data: data});
       },
       render: function() {
         if(typeof this.state.data.paused !== 'undefined'){
-          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh} apiCaller={this.apiCaller} />
+          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} toggleCallback={this.togglePause} />
         }
 
         if(!(this.state.data.length)){
