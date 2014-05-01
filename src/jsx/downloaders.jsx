@@ -46,6 +46,7 @@ var Downloader = (function(){
       }
     },
     handlePause: function(e){
+      console.log(this.props)
       if(this.props.paused){
         this.props.apiCaller.resume(this.props.refreshCallback)
       } else {
@@ -53,6 +54,7 @@ var Downloader = (function(){
       }
     },
     render: function(){
+      console.log(this.props)
       if(this.props.paused){
         return <a className="bottomButton" href="#" onClick={this.handlePause} >Resume <i className="fa fa-play"></i></a>
       } else {
@@ -87,9 +89,9 @@ var Downloader = (function(){
       },
       render: function() {
         if(typeof this.state.data.paused !== 'undefined'){
-          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh} />
+          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh} apiCaller={this.apiCaller} />
         }
-        // debugger
+
         if(!(this.state.data.length)){
           var statusBox = <_statusBox data={this.state.data} />
         }
