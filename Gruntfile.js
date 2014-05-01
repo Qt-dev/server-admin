@@ -4,6 +4,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
+      options: {
+        ignores: ['src/js/compiled-react.js', 'lib/public/**/*.min.js']
+      },
       node: ['lib/**/*.js', 'lib/*.js'],
       beforeconcat: ['src/**/*.js', 'src/*.js'],
       afterconcat: ['lib/public/js/output.min.js']
@@ -19,12 +22,14 @@ module.exports = function(grunt) {
         }
       }
     },
-    mocha: {
-      options: {
-        run: true,
-        reporter: 'Nyan'
-      },
-      all: ['test/index.html']
+    react: {
+      combined_file_output: {
+        files: {
+          'src/js/compiled-react.js': [
+            'src/jsx/**/*.jsx'
+          ]
+        }
+      }
     }
   });
 
@@ -34,10 +39,10 @@ module.exports = function(grunt) {
   // JS Uglify task
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Mocha task
-  grunt.loadNpmTasks('grunt-mocha');
+  // React task
+  grunt.loadNpmTasks('grunt-react');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'mocha','uglify', 'jshint:afterconcat',]);
+  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'react', 'uglify']);
 
 };

@@ -8,8 +8,9 @@
     "url": "https://github.com/cookie-monster-inc/server-admin.git"
   },
   "scripts": {
-    "test": "grunt mocha"
-    },
+    "start": "node lib/app.js",
+    "test": "grunt; make test"
+  },
   "keywords": [
     "sickbeard",
     "sabnzbd",
@@ -26,6 +27,12 @@
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-mocha": "^0.4.10",
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "express": "^4.1.1",
+    "supertest": "^0.11.0",
+    "express-react-views": "^0.2.0",
+    "envify": "^1.2.1",
+    "react": "^0.10.0",
+    "grunt-react": "^0.8.2"
   }
 }

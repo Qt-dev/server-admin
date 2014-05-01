@@ -1,0 +1,79 @@
+body {
+  background-color: whitesmoke;
+  font-family: 'Open Sans', sans-serif;
+  border-radius:2px;
+}
+
+.category {
+  display:inline-block;
+}
+
+
+.box {
+  float:left;
+  margin:10px;
+}
+
+.box h3 {
+  text-align: center;
+  width: 200px;
+  line-height:2em;
+  margin:5px 0;
+  background-color: cornflowerblue;
+  color:white;
+  display:block;
+  border-radius:2px;
+  border: 1px solid lightgray;
+}
+
+.boxContent {
+  border-radius:2px;  
+  width: 180px;
+  height:180px;
+  padding:10px;
+  margin:0;
+  position:relative;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.boxContent p {
+  margin-top: 0;
+}
+
+.bottomButtonRow {
+  position:absolute;
+  display:inline-block;
+  width:90%;
+  bottom:5%;
+}
+
+.bottomButton {
+  line-height: 1.7em;
+  color:black;
+  float:right;
+  text-decoration: none;
+  background-color: whitesmoke;
+
+  padding:2% 5%;
+  margin:0 2%;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+
+  
+}
+
+.statusBox {
+  font-size: 0.8em;
+  list-style: none;
+  padding-left: 0;
+}
+
+.statusTitle {
+  float:left;
+  font-weight: bolder;
+}
+
+.statusValue {
+  float:right;
+}
