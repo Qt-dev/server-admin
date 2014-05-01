@@ -13,7 +13,9 @@ body {
   display:inline-block;
 }
 
-
+/*************/
+/* BOX STYLE */
+/*************/
 .box {
   width:100%;
   margin:0.5%;
@@ -25,6 +27,7 @@ body {
   position:relative;
 }
 
+/* Box Content */
 .box h3 {
   text-align: center;
   width: 100%;
@@ -37,18 +40,8 @@ body {
   border: 1% solid lightgray;
 }
 
-.boxContent {
-  border-radius:2px;  
-  width: 98%;
-  height:200px;
-  padding:1%;
-  margin:5px 0;
-}
 
-.boxContent p {
-  margin-top: 0;
-}
-
+/* Box Footer */
 .bottomButtonRow {
   position:absolute;
   background-color: darkgray;
@@ -76,10 +69,31 @@ body {
   margin:0;
 }
 
+/* Box content */
+.boxContent {
+  border-radius:2px;  
+  width: 98%;
+  height:100%;
+  padding:1%;
+  margin:5px 0;
+  border: 1px solid black;
+}
+
+.boxContent p {
+  margin-top: 0;
+}
+
 .statusBox {
+  width:100%;
   font-size: 0.8em;
   list-style: none;
   padding-left: 0;
+}
+
+.statusBox li {
+  display:block;
+  width:100%;
+  border:1px solid black;
 }
 
 .statusTitle {
