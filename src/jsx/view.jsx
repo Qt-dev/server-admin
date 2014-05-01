@@ -52,9 +52,9 @@ var Content = React.createClass({
 
 
 
-
-
-React.renderComponent(
-  <Content url="data.json" />,
-  document.querySelector('body')
+window.onload = function(){
+  React.renderComponent(
+    <Content url="data.json" />,
+    document.querySelector('body')
 );
+}
