@@ -54,6 +54,28 @@ body {
   border-bottom-right-radius: 2px;
 }
 
+.statusBox {
+  list-style: none;
+  line-height: 2em;
+  padding:0;
+  margin:0;
+}
+
+.statusBox li {
+  display:inline;
+  float:left;
+  padding:0 1%;
+  border-right:1px solid dimgrey;
+}
+
+.statusTitle {
+  float:left;
+  font-weight: bolder;
+}
+
+.statusValue {
+}
+
 .bottomButton {
   color:white;
   float:right;
@@ -71,38 +93,11 @@ body {
 
 /* Box content */
 .boxContent {
-  border-radius:2px;  
+  border-radius:2px;
+  height:100px;
   width: 100%;
 }
 
 .boxContent p {
-  margin: 0;
-}
-
-.boxContent hr {
-  width:95%;
-}
-
-.statusBox {
-  list-style: none;
-  line-height: 2em;
-  padding:0;
-  margin:0;
-}
-
-.statusBox li {
-  display:inline;
-  float:left;
-  padding:0 1%;
-  /*color:white;*/
-  border-right:1px solid dimgrey;
-}
-
-.statusTitle {
-  float:left;
-  font-weight: bolder;
-}
-
-.statusValue {
-  /*float:right;*/
+  text-align: center;
 }
