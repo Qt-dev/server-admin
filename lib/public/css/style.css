@@ -68,7 +68,12 @@ body {
   background-color: dimgrey;
 
   height:100%;
+  margin: 0 1px;
   padding: 0 2%;
+}
+
+.bottomButton:first-child {
+  margin:0;
 }
 
 .statusBox {

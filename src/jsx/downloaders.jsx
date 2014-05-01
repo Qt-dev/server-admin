@@ -73,7 +73,6 @@ var Downloader = (function(){
           link: this.props.data.content.link,
           api: this.props.data.content.api
         }
-        console.log(this.props);
         this.apiCaller = new AJAXCaller[this.props.data.type](data);
         this.apiCaller.getStatus(this.setState.bind(this));
       },
@@ -87,7 +86,7 @@ var Downloader = (function(){
         this.setState({data: data});
       },
       render: function() {
-        if(this.state.data.length > 1){
+        if(typeof this.state.data.paused !== 'undefined'){
           var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh} />
         }
 
@@ -95,7 +94,7 @@ var Downloader = (function(){
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
             <_boxContent type={this.props.data.type} data={this.state.data} />
-            <BoxButtonRow buttons={pausedButton} link={this.props.data.link} />
+            <BoxButtonRow buttons={pausedButton} link={this.props.data.content.link} />
           </div>
           );
       }

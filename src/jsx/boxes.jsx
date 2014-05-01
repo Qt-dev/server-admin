@@ -7,7 +7,7 @@ var Box = React.createClass({
       <div className="box">
         <h3 style={this.props.style}>{this.props.data.name}</h3>
         <BoxContent data={this.props.data.content} />
-        <BoxButtonRow link={this.props.data.link} />
+        <BoxButtonRow link={this.props.data.content.link} />
       </div>
       );
   }
