@@ -3,8 +3,10 @@
 var React = require('react');
 var CSS = ['css/style.css'];
 var JS = [
-    'http://fb.me/react-0.10.0.js',
-    'http://code.jquery.com/jquery-1.10.0.min.js',
+    // 'http://fb.me/react-0.10.0.js',
+    // 'http://code.jquery.com/jquery-1.10.0.min.js',
+    'vendor/react.min.js',
+    'vendor/jquery-1.11.0.min.js',
     'js/output.min.js'
     ];
 
