@@ -5,7 +5,6 @@ var Downloader = (function(){
   var _boxContent = React.createClass({
     /* REACT */
     render: function(){
-      console.log(this.props)
       return (
         <div className="boxContent">
           <p>{this.props.description}< /p>
