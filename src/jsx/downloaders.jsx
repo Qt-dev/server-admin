@@ -3,38 +3,12 @@
 */
 var Downloader = (function(){
   var _boxContent = React.createClass({
-    /* TOOLS */
-    refresh: function(){
-      this.apiCaller.getStatus(this.setState.bind(this));
-    },
-    togglePause: function(){
-      var data = this.state.data;
-      data.paused = !data.paused;
-      this.setState(data);
-    },
     /* REACT */
-    getInitialState: function() {
-      return {data: []};
-    },
-    componentWillMount: function(){
-      var data = {
-        link: this.props.data.link,
-        api: this.props.data.api
-      }
-      this.type = this.props.type;
-      this.apiCaller = new AJAXCaller[this.type](data);
-
-      this.apiCaller.getStatus(this.setState.bind(this));
-    },
     render: function(){
-      var pausedButton = <_pauseToggleButton paused={this.state.data.paused} refreshCallback={this.refresh}  apiCaller={this.apiCaller}/>
-
+      console.log(this.props)
       return (
         <div className="boxContent">
-          <p>{this.props.data.description}
-            <_statusBox data={this.state.data} />
-          </p>
-          <BoxButtonRow buttons={pausedButton} link={this.props.data.link} />
+          <p>{this.props.description}< /p>
         </div>)
     }
     
@@ -48,7 +22,6 @@ var Downloader = (function(){
       if(this.props.data.length !==0){
         var apidata = {
           status: this.props.data.state,
-          paused: this.props.data.paused,
           speed: this.props.data.speed,
           timeleft: this.props.data.timeleft
         }
@@ -73,11 +46,7 @@ var Downloader = (function(){
       }
     },
     handlePause: function(e){
-      if(this.props.paused){
-        this.props.apiCaller.resume(this.props.refreshCallback)
-      } else {
-        this.props.apiCaller.pause(this.props.refreshCallback)
-      }
+      this.props.toggleCallback(this.props.paused);
     },
     render: function(){
       if(this.props.paused){
@@ -88,15 +57,47 @@ var Downloader = (function(){
     }
   })
 
+  var _box = React.createClass({
 
-  return React.createClass({
-    render: function() {
-      return (
-        <div className="box">
-          <h3 style={this.props.style}>{this.props.data.name}</h3>
-          <_boxContent type={this.props.data.type} data={this.props.data.content} />
-        </div>
-        );
-    }
-  })
+      getInitialState: function() {
+        return {data: []};
+      },
+      componentWillMount: function(){
+        var data = {
+          link: this.props.data.content.link,
+          api: this.props.data.content.api
+        }
+        this.apiCaller = new AJAXCaller[this.props.data.type](data);
+        this.apiCaller.getStatus(this.setState.bind(this));
+      },
+      togglePause: function(paused){
+        if(paused){
+          this.apiCaller.resume(this.refresh);
+        } else {
+          this.apiCaller.pause(this.refresh);
+        }
+      },
+      refresh: function() {
+        this.apiCaller.getStatus(this.setState.bind(this));
+      },
+      render: function() {
+        if(typeof this.state.data.paused !== 'undefined'){
+          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} toggleCallback={this.togglePause} />
+        }
+
+        if(!(this.state.data.length)){
+          var statusBox = <_statusBox data={this.state.data} />
+        }
+
+        return (
+          <div className="box">
+            <h3 style={this.props.style}>{this.props.data.name}</h3>
+            <_boxContent type={this.props.data.type} description={this.props.data.content.description} />
+            <BoxFooter buttons={pausedButton} link={this.props.data.content.link} statusBox={statusBox} />
+          </div>
+          );
+      }
+    });
+
+    return _box;
 }())

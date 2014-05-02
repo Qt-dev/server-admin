@@ -4,69 +4,68 @@ body {
   border-radius:2px;
 }
 
+.content {
+  width:95%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .category {
   display:inline-block;
 }
 
-
+/*************/
+/* BOX STYLE */
+/*************/
 .box {
+  width:100%;
+  margin:0.5%;
   float:left;
-  margin:10px;
+
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius:2px;
+  position:relative;
 }
 
+/* Box Content */
 .box h3 {
   text-align: center;
-  width: 200px;
+  width: 100%;
   line-height:2em;
-  margin:5px 0;
+  margin:0;
+  padding:0;
   background-color: cornflowerblue;
   color:white;
   display:block;
-  border-radius:2px;
-  border: 1px solid lightgray;
+  border: 1% solid lightgray;
 }
 
-.boxContent {
-  border-radius:2px;  
-  width: 180px;
-  height:180px;
-  padding:10px;
-  margin:0;
-  position:relative;
-  background-color: white;
-  border: 1px solid lightgray;
-}
 
-.boxContent p {
-  margin-top: 0;
-}
-
-.bottomButtonRow {
-  position:absolute;
-  display:inline-block;
-  width:90%;
-  bottom:5%;
-}
-
-.bottomButton {
-  line-height: 1.7em;
-  color:black;
+/* Box Footer */
+.boxFooter {
   float:right;
-  text-decoration: none;
-  background-color: whitesmoke;
+  background-color: darkgray;
+  display:inline-block;
+  line-height:2em;
+  width:100%;
 
-  padding:2% 5%;
-  margin:0 2%;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-
-  
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .statusBox {
-  font-size: 0.8em;
   list-style: none;
-  padding-left: 0;
+  line-height: 2em;
+  padding:0;
+  margin:0;
+}
+
+.statusBox li {
+  display:inline;
+  float:left;
+  padding:0 1%;
+  border-right:1px solid dimgrey;
 }
 
 .statusTitle {
@@ -75,5 +74,30 @@ body {
 }
 
 .statusValue {
+}
+
+.bottomButton {
+  color:white;
   float:right;
+  text-decoration: none;
+  background-color: dimgrey;
+
+  height:100%;
+  margin: 0 1px;
+  padding: 0 2%;
+}
+
+.bottomButton:first-child {
+  margin:0;
+}
+
+/* Box content */
+.boxContent {
+  border-radius:2px;
+  height:100px;
+  width: 100%;
+}
+
+.boxContent p {
+  text-align: center;
 }

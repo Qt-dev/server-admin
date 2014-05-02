@@ -7,6 +7,7 @@ var Box = React.createClass({
       <div className="box">
         <h3 style={this.props.style}>{this.props.data.name}</h3>
         <BoxContent data={this.props.data.content} />
+        <BoxFooter link={this.props.data.content.link} />
       </div>
       );
   }
@@ -17,7 +18,6 @@ var BoxContent = React.createClass({
     return (
       <div className="boxContent">
         <p>{this.props.data.description}</p>
-        <BoxButtonRow link={this.props.data.link} />
       </div>)
   }
 })
@@ -28,15 +28,13 @@ var StatusLine = React.createClass({
   }
 })
 
-var BoxButtonRow = React.createClass({
+var BoxFooter = React.createClass({
   render: function(){
-    if(this.props.buttons){
-      var buttons = this.props.buttons
-    }
     return (
-    <div className="bottomButtonRow">
+    <div className="boxFooter">
       <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
-      {buttons}
+      {this.props.buttons}
+      {this.props.statusBox}
     </div>
     )
   }
