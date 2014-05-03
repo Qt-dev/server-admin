@@ -52,7 +52,7 @@ SABNZBD.prototype = {
     AJAX.request({
         url:url,
         datatype: 'json',
-        data: {api: this.api, url: this.link}
+        data: {key: this.api, url: this.link}
       }, callback, this.unhappyCallback);
   },
   // Main method - 'The switch'
