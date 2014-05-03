@@ -20,9 +20,9 @@ var Downloader = (function(){
     render: function(){
       if(this.props.data.length !==0){
         var apidata = {
-          status: this.props.data.status,
-          speed: this.props.data.speed,
-          timeleft: this.props.data.timeleft
+          status: this.props.data.status.status,
+          speed: this.props.data.status.speed,
+          timeleft: this.props.data.status.timeleft
         }
         var state = []
         $.each(apidata, function(key,value){
