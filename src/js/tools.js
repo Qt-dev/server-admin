@@ -67,12 +67,12 @@ SABNZBD.prototype = {
     this.getAPICall(url, callback.bind(this));
   },
   pause: function(happyCallback){
-    var url = this.buildURL('pause');
+    var url = '/sabnzbd/pause';
     var callback = this.addReadToCallback(happyCallback);
     this.getAPICall(url, callback.bind(this));
   },
   resume: function(happyCallback){
-    var url = this.buildURL('resume');
+    var url = '/sabnzbd/resume';
     var callback = this.addReadToCallback(happyCallback);
     this.getAPICall(url, callback.bind(this));
   }
