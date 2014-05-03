@@ -14,9 +14,6 @@ var Downloader = (function(){
   })
 
   var _statusBox = React.createClass({
-    getInitialState: function(){
-      return {data: this.props.data};
-    },
     render: function(){
       if(this.props.data.length !==0){
         var apidata = {
@@ -24,14 +21,14 @@ var Downloader = (function(){
           speed: this.props.data.status.speed,
           timeleft: this.props.data.status.timeleft
         }
-        var state = []
+        var status = []
         $.each(apidata, function(key,value){
-            state.push(<StatusLine key={key} value={value} />)
+            status.push(<StatusLine key={key} value={value} />)
           })
       }
       return(
         <ul className="statusBox">
-        {state}
+        {status}
         </ul>
         )
     }
