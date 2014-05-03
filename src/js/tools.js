@@ -27,8 +27,8 @@ var AJAX = (function(){
 
 
 var SABNZBD = function(opts){
-  this.link = opts.link;
-  this.api = opts.api;
+  this.url    = opts.url;
+  this.apiKey = opts.apiKey;
   this.paused = false;
 };
 
@@ -52,7 +52,7 @@ SABNZBD.prototype = {
     AJAX.request({
         url:url,
         datatype: 'json',
-        data: {key: this.api, url: this.link}
+        data: {key: this.apiKey, url: this.url}
       }, callback, this.unhappyCallback);
   },
   // Main method - 'The switch'

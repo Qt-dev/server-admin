@@ -63,8 +63,8 @@ var Downloader = (function(){
       },
       componentWillMount: function(){
         var data = {
-          link: this.props.data.content.link,
-          api: this.props.data.content.api
+          url: this.props.data.content.url,
+          apiKey: this.props.data.content.apiKey
         }
         this.apiCaller = new AJAXCaller[this.props.data.type](data);
         this.apiCaller.getStatus(this.setState.bind(this));

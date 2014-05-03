@@ -6,50 +6,50 @@
       "category": "1",
       "name": "SABNZBD",
       "type": "sabnzbd",
-      "link": "http://192.168.0.11/nzb",
+      "url": "http://192.168.0.11/nzb",
       "description": "Téléchargeur de NZB (Newsgroups)",
-      "API":"63f498f611d49d9f32d688e2c6dd247d"
+      "apiKey":"63f498f611d49d9f32d688e2c6dd247d"
     },
     {
       "id":"1",
       "category": "1",
       "name": "Transmission",
-      "link": "torrent/web",
+      "url": "torrent/web",
       "description": "Téléchargeur de Torrents"
     },
     {
       "id":"2",
       "category": "2",
       "name": "Sickbeard",
-      "link": "sickbeard",
+      "url": "sickbeard",
       "description": "Gestionnaire de téléchargements de Séries et sous-titres"
     },
     {
       "id":"3",
       "category": "2",
       "name": "Couchpotato",
-      "link": "couchpotato",
+      "url": "couchpotato",
       "description": "Gestionnaire de téléchargements de Films et sous-titres"
     },
     {
       "id":"4",
       "category": "2",
       "name": "Headphones",
-      "link": "headphones",
+      "url": "headphones",
       "description": "Gestionnaire de téléchargements de musiques"
     },
     {
       "id":"5",
       "category": "0",
       "name": "Plex",
-      "link": "plex/web/index.html",
+      "url": "plex/web/index.html",
       "description": "Gestionnaire de contenus et Streamer"
     },
     {
       "id":"6",
       "category": "0",
       "name": "Webmin",
-      "link": "webmin",
+      "url": "webmin",
       "description": "Console d'administration du serveur"
     }
   ],
