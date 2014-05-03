@@ -17,14 +17,6 @@ var AJAX = (function(){
     getData: function(happyCallback, unhappyCallback){
       _request({url: "data.json", datatype: 'json'}, happyCallback, unhappyCallback);
     },
-    getSABStatus: function(sab, happyCallback, unhappyCallback){
-      var url = '/sabnzbd/status';
-      var inputData = {
-        api: sab.api,
-        url: sab.link
-      };
-      _request({url:url, datatype: 'jsonp', data: inputData}, happyCallback, unhappyCallback);
-     },
     request: function(config, happyCallback, unhappyCallback){
       _request(config, happyCallback, unhappyCallback);
     }
@@ -51,7 +43,11 @@ SABNZBD.prototype = {
     return this.link + '/api?mode='+ this.mode[mode] +'&output=json&apikey='+ this.api;
   },
   getAPICall: function(url, callback){
-    AJAX.request({url:url, datatype: 'json'}, callback, this.unhappyCallback);
+    var inputData = {
+        api: this.api,
+        url: this.link
+      };
+    AJAX.request({url:url, datatype: 'json', data: inputData}, callback, this.unhappyCallback);
   },
   unhappyCallback: function(status, error){
     console.log(status, error);
@@ -66,7 +62,7 @@ SABNZBD.prototype = {
   },
   // Interface
   getStatus: function(happyCallback){
-    var url = this.buildURL('status');
+    var url = '/sabnzbd/status';
     var callback = this.addReadToCallback(happyCallback);
     this.getAPICall(url, callback.bind(this));
   },
