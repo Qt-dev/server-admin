@@ -3,6 +3,7 @@ var AJAX = (function(){
     $.ajax({
       url: data.url,
       datatype: data.datatype,
+      data: data.data || null,
       success: function(data) {
         complete({data: data});
       }.bind(this),
@@ -17,8 +18,12 @@ var AJAX = (function(){
       _request({url: "data.json", datatype: 'json'}, happyCallback, unhappyCallback);
     },
     getSABStatus: function(sab, happyCallback, unhappyCallback){
-      var url = sab.link + '/api?mode=qstatus&output=json&apikey=63f498f611d49d9f32d688e2c6dd247d';
-      _request({url:url, datatype: 'jsonp'}, happyCallback, unhappyCallback);
+      var url = '/sabnzbd/status';
+      var inputData = {
+        api: sab.api,
+        url: sab.link
+      };
+      _request({url:url, datatype: 'jsonp', data: inputData}, happyCallback, unhappyCallback);
      },
     request: function(config, happyCallback, unhappyCallback){
       _request(config, happyCallback, unhappyCallback);
