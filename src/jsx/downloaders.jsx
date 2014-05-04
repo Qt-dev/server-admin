@@ -9,6 +9,9 @@ var Downloader = (function(){
         <div className="boxContent">
           <h4>Queue</h4>
           <ul className="queue">{this.props.queue}< /ul>
+
+          <h4>History</h4>
+          <ul className="history">{this.props.history}< /ul>
         </div>)
     }
     
@@ -91,13 +94,19 @@ var Downloader = (function(){
                       <span className="eta">ETA:{item.eta}</span>
                     </li>);
           });
-          
+          var history = this.state.data.history.map(function(item){
+            return (<li>
+                      <span className="title">{item.name}</span>
+                      <span className="status">{item.status}</span>
+                      <span className="failMessage">{item.fail_message}</span>
+                    </li>);
+          })
         }
 
         return (
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
-            <_boxContent queue={queue} type={this.props.data.type} description={this.props.data.content.description} />
+            <_boxContent queue={queue} history={history} type={this.props.data.type} description={this.props.data.content.description} />
             <BoxFooter buttons={pausedButton} link={this.props.data.content.link} statusBox={statusBox} />
           </div>
           );
