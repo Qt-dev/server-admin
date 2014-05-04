@@ -71,6 +71,7 @@ body {
 .statusTitle {
   float:left;
   font-weight: bolder;
+  margin-right:5px;
 }
 
 .statusValue {
@@ -93,11 +94,36 @@ body {
 
 /* Box content */
 .boxContent {
+  margin-top:10px;
   border-radius:2px;
-  height:100px;
+  min-height:100px;
   width: 100%;
+  font-size: 0.8em;
 }
 
 .boxContent p {
+  margin-top:0;
   text-align: center;
+}
+
+.boxContent h4 {
+  margin:0;
+  text-align: center;
+}
+
+.queue, .history  {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.queue li, .history li {
+}
+
+.queue li .title, .history li .title {
+  font-weight: bold;
+}
+
+.queue li > span, .history li > span {
+  padding: 0 10px;
 }

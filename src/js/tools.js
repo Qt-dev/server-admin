@@ -3,6 +3,7 @@ var AJAX = (function(){
     $.ajax({
       url: data.url,
       datatype: data.datatype,
+      data: data.data || null,
       success: function(data) {
         complete({data: data});
       }.bind(this),
@@ -16,10 +17,6 @@ var AJAX = (function(){
     getData: function(happyCallback, unhappyCallback){
       _request({url: "data.json", datatype: 'json'}, happyCallback, unhappyCallback);
     },
-    getSABStatus: function(sab, happyCallback, unhappyCallback){
-      var url = sab.link + '/api?mode=qstatus&output=json&apikey=63f498f611d49d9f32d688e2c6dd247d';
-      _request({url:url, datatype: 'jsonp'}, happyCallback, unhappyCallback);
-     },
     request: function(config, happyCallback, unhappyCallback){
       _request(config, happyCallback, unhappyCallback);
     }
@@ -30,28 +27,20 @@ var AJAX = (function(){
 
 
 var SABNZBD = function(opts){
-  this.link = opts.link;
-  this.api = opts.api;
+  this.url    = opts.url;
+  this.apiKey = opts.apiKey;
   this.paused = false;
-  this.mode = {
-    status: 'qstatus',
-    pause: 'pause',
-    resume: 'resume'
-  };
 };
 
 SABNZBD.prototype = {
   // Tools
-  buildURL: function(mode){
-    return this.link + '/api?mode='+ this.mode[mode] +'&output=json&apikey='+ this.api;
-  },
-  getAPICall: function(url, callback){
-    AJAX.request({url:url, datatype: 'json'}, callback, this.unhappyCallback);
-  },
   unhappyCallback: function(status, error){
     console.log(status, error);
   },
-  addReadToCallback: function(callback){
+  buildURL: function(){
+    return 'sabnzbd/query';
+  },
+  addReaderToCallback: function(callback){
     var newCallback = function(data){
       this.paused = data.data.paused;
       callback(data);
@@ -59,21 +48,31 @@ SABNZBD.prototype = {
     };
     return newCallback;
   },
+  getAPICall: function(url, mode, callback){
+    AJAX.request({
+        url:url,
+        datatype: 'json',
+        data: {key: this.apiKey, url: this.url, action: mode}
+      }, callback, this.unhappyCallback);
+  },
+  // Main method - 'The switch'
+  sendRequest: function(mode, happyCallback){
+    var url = this.buildURL();
+    var callback = this.addReaderToCallback(happyCallback);
+    this.getAPICall(url, mode, callback.bind(this));
+  },
   // Interface
   getStatus: function(happyCallback){
-    var url = this.buildURL('status');
-    var callback = this.addReadToCallback(happyCallback);
-    this.getAPICall(url, callback.bind(this));
+    this.sendRequest('status', happyCallback);
   },
   pause: function(happyCallback){
-    var url = this.buildURL('pause');
-    var callback = this.addReadToCallback(happyCallback);
-    this.getAPICall(url, callback.bind(this));
+    this.sendRequest('pause', happyCallback);
   },
   resume: function(happyCallback){
-    var url = this.buildURL('resume');
-    var callback = this.addReadToCallback(happyCallback);
-    this.getAPICall(url, callback.bind(this));
+    this.sendRequest('resume', happyCallback);
+  },
+  cleanHistory: function(happyCallback){
+    this.sendRequest('clean', happyCallback);
   }
 };
 

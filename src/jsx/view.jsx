@@ -11,16 +11,16 @@ var Content = React.createClass({
           backgroundColor: categories[box.category].style,
           color: 'white'
         }
-
         var data = {
           name: box.name,
           type: box.type,
           content: {
             description: box.description,
-            link: box.link,
-            api: box.API
+            url: box.url,
+            apiKey: box.apiKey
           }
         }
+        
         if(box.type == 'sabnzbd'){
           return <Downloader data={data} key={box.id} style={style}></Downloader>
         } else {

@@ -24,7 +24,7 @@ var BoxContent = React.createClass({
 
 var StatusLine = React.createClass({
   render: function(){
-    return <li key={this.props.key}><span className="statusTitle">{this.props.key}</span>:<span className="statusValue">{this.props.value.toString()}</span></li>
+    return <li key={this.props.key}><span className="statusTitle">{this.props.key}:</span><span className="statusValue">{this.props.value.toString()}</span></li>
   }
 })
 
