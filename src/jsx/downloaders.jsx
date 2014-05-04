@@ -57,6 +57,15 @@ var Downloader = (function(){
     }
   })
 
+  var _cleanButton = React.createClass({
+    handleClick: function(){
+      this.props.callback();
+    },
+    render: function(){
+      return <a className="bottomButton" href="#" onClick={this.handleClick} >Clean History</a>
+    }
+  })
+
   var _box = React.createClass({
 
       getInitialState: function() {
@@ -70,6 +79,8 @@ var Downloader = (function(){
         this.apiCaller = new AJAXCaller[this.props.data.type](data);
         this.apiCaller.getStatus(this.setState.bind(this));
       },
+
+      /* Callbacks */
       togglePause: function(paused){
         if(paused){
           this.apiCaller.resume(this.refresh);
@@ -77,10 +88,15 @@ var Downloader = (function(){
           this.apiCaller.pause(this.refresh);
         }
       },
+      cleanHistory: function(){
+        this.apiCaller.cleanHistory(this.refresh);
+      },
       refresh: function() {
         this.apiCaller.getStatus(this.setState.bind(this));
       },
       render: function() {
+        var cleanButton = <_cleanButton callback={this.cleanHistory} />;
+
         if(typeof this.state.data.status !== 'undefined'){
           var pausedButton = <_pauseToggleButton paused={this.state.data.status.paused} toggleCallback={this.togglePause} />
         }
@@ -107,7 +123,7 @@ var Downloader = (function(){
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
             <_boxContent queue={queue} history={history} type={this.props.data.type} description={this.props.data.content.description} />
-            <BoxFooter buttons={pausedButton} link={this.props.data.content.link} statusBox={statusBox} />
+            <BoxFooter buttons={[cleanButton, pausedButton]} link={this.props.data.content.link} statusBox={statusBox} />
           </div>
           );
       }

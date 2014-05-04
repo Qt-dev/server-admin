@@ -70,6 +70,9 @@ SABNZBD.prototype = {
   },
   resume: function(happyCallback){
     this.sendRequest('resume', happyCallback);
+  },
+  cleanHistory: function(happyCallback){
+    this.sendRequest('clean', happyCallback);
   }
 };
 
