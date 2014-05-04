@@ -131,7 +131,7 @@ var Downloader = (function(){
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
             <_boxContent queue={queue} history={history} type={this.props.data.type} description={this.props.data.content.description} />
-            <BoxFooter buttons={[pausedButton, cleanButton]} link={this.props.data.content.link} statusBox={statusBox} />
+            <BoxFooter buttons={[pausedButton, cleanButton]} link={this.props.data.content.url} statusBox={statusBox} />
           </div>
           );
       }
