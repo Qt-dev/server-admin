@@ -113,6 +113,7 @@ var Downloader = (function(){
         }
         this.apiCaller = new AJAXCaller[this.props.data.type](data);
         this.apiCaller.getStatus(this.setState.bind(this));
+        window.setInterval(this.refresh, 5000);
       },
       render: function() {
         var cleanButton = <_cleanButton callback={this.cleanHistory} />;
