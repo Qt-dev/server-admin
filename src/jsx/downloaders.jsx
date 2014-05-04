@@ -7,7 +7,8 @@ var Downloader = (function(){
     render: function(){
       return (
         <div className="boxContent">
-          <p>{this.props.description}< /p>
+          <h4>Queue</h4>
+          <ul className="queue">{this.props.queue}< /ul>
         </div>)
     }
     
@@ -17,9 +18,9 @@ var Downloader = (function(){
     render: function(){
       if(this.props.data.length !==0){
         var apidata = {
-          status: this.props.data.status.status,
-          speed: this.props.data.status.speed,
-          timeleft: this.props.data.status.timeleft
+          status: this.props.data.status,
+          speed: this.props.data.speed,
+          timeleft: this.props.data.timeleft
         }
         var status = []
         $.each(apidata, function(key,value){
@@ -77,18 +78,26 @@ var Downloader = (function(){
         this.apiCaller.getStatus(this.setState.bind(this));
       },
       render: function() {
-        if(typeof this.state.data.paused !== 'undefined'){
-          var pausedButton = <_pauseToggleButton paused={this.state.data.paused} toggleCallback={this.togglePause} />
+        if(typeof this.state.data.status !== 'undefined'){
+          var pausedButton = <_pauseToggleButton paused={this.state.data.status.paused} toggleCallback={this.togglePause} />
         }
 
-        if(!(this.state.data.length)){
-          var statusBox = <_statusBox data={this.state.data} />
+        if(this.state.data.length !== 0){
+          var statusBox = <_statusBox data={this.state.data.status} />
+          var queue = this.state.data.queue.map(function(item){
+            return (<li>
+                      <span className="title">{item.name}</span> 
+                      <span className="percentage">{item.percentage}%</span>
+                      <span className="eta">ETA:{item.eta}</span>
+                    </li>);
+          });
+          
         }
 
         return (
           <div className="box">
             <h3 style={this.props.style}>{this.props.data.name}</h3>
-            <_boxContent type={this.props.data.type} description={this.props.data.content.description} />
+            <_boxContent queue={queue} type={this.props.data.type} description={this.props.data.content.description} />
             <BoxFooter buttons={pausedButton} link={this.props.data.content.link} statusBox={statusBox} />
           </div>
           );

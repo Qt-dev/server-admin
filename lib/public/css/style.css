@@ -94,10 +94,34 @@ body {
 /* Box content */
 .boxContent {
   border-radius:2px;
-  height:100px;
+  min-height:100px;
   width: 100%;
 }
 
 .boxContent p {
+  margin-top:0;
   text-align: center;
+}
+
+.boxContent h4 {
+  margin:0;
+  text-align: center;
+}
+
+.queue {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.queue li {
+  border: 1px solid lightgray;
+}
+
+.queue li .title {
+  font-weight: bold;
+}
+
+.queue li > span {
+  padding: 0 10px;
+  border-right:1px solid black;
 }
