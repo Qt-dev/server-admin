@@ -62,6 +62,9 @@ SickBeard.prototype = {
   // Interface
   getStatus: function(happyCallback){
     this.sendRequest('future', happyCallback);
+  },
+  relaunchDownloads: function(happyCallback){
+    this.sendRequest('relaunch', happyCallback);
   }
 };
 

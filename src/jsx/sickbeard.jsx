@@ -22,9 +22,23 @@ var Sickbeard = (function(){
     }
   })
 
+  var _relaunchButton = React.createClass({
+    handleClick: function(){
+      this.props.callback();
+    },
+    render: function() {
+      return (
+        <a href="#" className="bottomButton" onClick={this.handleClick}>Relaunch Downloads</a>
+      );
+    }
+  })
+
 
 
   return React.createClass({
+    relaunchDownloads: function(){
+      this.apiCaller.relaunchDownloads(this.refresh);
+    },
     refresh: function() {
       this.apiCaller.getStatus(this.setState.bind(this));
     },
@@ -41,11 +55,12 @@ var Sickbeard = (function(){
       // window.setInterval(this.refresh, 5000);
     },
     render: function(){
+      var relaunchButton = <_relaunchButton callback={this.relaunchDownloads} />
       return (
         <div className="box">
           <h3 style={this.props.style}>{this.props.data.name}</h3>
           <_boxContent data={this.state.data.data} /> 
-          <BoxFooter link={this.props.data.content.url} />
+          <BoxFooter buttons={relaunchButton} link={this.props.data.content.url} />
         </div>
         );
     }
