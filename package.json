@@ -34,6 +34,7 @@
     "envify": "^1.2.1",
     "react": "^0.10.0",
     "grunt-react": "^0.8.2",
-    "sabnzbd": "^0.2.1"
+    "sabnzbd": "^0.2.1",
+    "sickbeard": "0.0.2"
   }
 }
