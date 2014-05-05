@@ -23,6 +23,8 @@ var Content = React.createClass({
         
         if(box.type == 'sabnzbd'){
           return <Downloader data={data} key={box.id} style={style}></Downloader>
+        } else if(box.type === 'sickbeard') {
+          return <Sickbeard data={data} key={box.id} style={style} />
         } else {
           return <Box data={data} key={box.id} style={style}></Box>
         }

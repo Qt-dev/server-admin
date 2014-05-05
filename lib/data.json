@@ -21,7 +21,9 @@
       "id":"2",
       "category": "2",
       "name": "Sickbeard",
-      "url": "sickbeard",
+      "type": "sickbeard",
+      "url": "http://192.168.0.11/sickbeard",
+      "apiKey": "0d3b021a355e7fc9567e8f5e18a566a3",
       "description": "Gestionnaire de téléchargements de Séries et sous-titres"
     },
     {
