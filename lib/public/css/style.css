@@ -111,19 +111,19 @@ body {
   text-align: center;
 }
 
-.queue, .history  {
+.queue, .history, .item-list  {
   list-style: none;
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
 }
-.queue li, .history li {
+.queue li, .history li, .item-list li {
 }
 
-.queue li .title, .history li .title {
+.queue li .title, .history li .title, .item-list li .title {
   font-weight: bold;
 }
 
-.queue li > span, .history li > span {
-  padding: 0 10px;
+.queue li > span, .history li > span, .item-list li > span {
+  
 }
