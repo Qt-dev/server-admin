@@ -18,7 +18,10 @@ module.exports = function(grunt) {
       },
       app: {
         files: {
-          'lib/public/js/output.min.js': ['src/**/*.js', 'src/*.js']
+          'lib/public/js/output.min.js': [
+            'src/js/models/*.js',
+            'src/js/collections/*.js',
+            'src/*.js']
         }
       }
     },
