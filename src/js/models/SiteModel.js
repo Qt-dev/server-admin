@@ -1,3 +1,3 @@
-var Site = Backbone.model.extend({
+var Site = Backbone.Model.extend({
   url: '/sites'
 });
