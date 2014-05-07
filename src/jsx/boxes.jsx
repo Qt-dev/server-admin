@@ -5,9 +5,9 @@ var Box = React.createClass({
   render: function() {
     return (
       <div className="box">
-        <h3 style={this.props.style}>{this.props.data.name}</h3>
-        <BoxContent data={this.props.data.content} />
-        <BoxFooter link={this.props.data.content.link} />
+        <h3>{this.props.site.get('name')}</h3>
+        <BoxContent description={this.props.site.get('description')} />
+        <BoxFooter link={this.props.site.config.url} />
       </div>
       );
   }
@@ -17,14 +17,8 @@ var BoxContent = React.createClass({
   render: function(){
     return (
       <div className="boxContent">
-        <p>{this.props.data.description}</p>
+        <p>{this.props.description}</p>
       </div>)
-  }
-})
-
-var StatusLine = React.createClass({
-  render: function(){
-    return <li key={this.props.key}><span className="statusTitle">{this.props.key}:</span><span className="statusValue">{this.props.value.toString()}</span></li>
   }
 })
 

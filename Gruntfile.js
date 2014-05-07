@@ -21,7 +21,8 @@ module.exports = function(grunt) {
           'lib/public/js/output.min.js': [
             'src/js/models/*.js',
             'src/js/collections/*.js',
-            'src/*.js']
+            'src/js/views/*.js',
+            'src/js/*.js']
         }
       }
     },
