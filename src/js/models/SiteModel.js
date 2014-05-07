@@ -5,15 +5,17 @@ var Site = Backbone.Model.extend({
     this.config = this.get('config');
   },
   query: function(action, callback){
-    var config = this.config;
-    config.action = action;
+    if(this.get('type')){
+      var config = this.config;
+      config.action = action;
 
-    var data = {
-      url: this.queryUrl,
-      datatype: 'json',
-      data: config
-    };
+      var data = {
+        url: this.queryUrl,
+        datatype: 'json',
+        data: config
+      };
 
-    AJAX.request(data, callback, function(error){console.log(error);});
+      AJAX.request(data, callback, function(error){console.log(error);});
+    }
   }
 });
