@@ -7,6 +7,8 @@ var JS = [
     // 'http://code.jquery.com/jquery-1.10.0.min.js',
     'vendor/react.min.js',
     'vendor/jquery-1.11.0.min.js',
+    'vendor/underscore.min.js',
+    'vendor/backbone.min.js',
     'js/output.min.js'
     ];
 
