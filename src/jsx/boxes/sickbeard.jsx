@@ -4,7 +4,6 @@
 
 var SicbkeardContentBox = React.createClass({
   render: function() {
-    console.log("sb data: ", this.props);
     if(this.props.data){
         var today = this.props.data.data.today.map(function(item){
           return <li className="today item" key={item.show_name + item.season + item.episode }><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
