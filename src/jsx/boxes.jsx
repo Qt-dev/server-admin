@@ -9,7 +9,7 @@ var Box = React.createClass({
     this.props.site.query('status',this.setState.bind(this));
   },
   render: function() {
-    var contentBox = <SABContentBox data={this.state.data} />
+    var contentBox = new contentSwitch[this.props.site.get('type')]({data: this.state.data});
     return (
       <div className="box">
         <h3>{this.props.site.get('name')}</h3>
@@ -79,3 +79,31 @@ var SABContentBox = React.createClass({
       </div>)
   }
 })
+
+var SicbkeardContentBox = React.createClass({
+  render: function() {
+    if(this.props.data){
+        var today = this.props.data.today.map(function(item){
+          return <li className="today item"><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
+        })
+        var soon = this.props.data.soon.map(function(item){
+          return <li className="soon item"><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
+        })
+      }
+    return (
+      <div className="boxContent">
+        <h4>Today</h4>
+        <ul className="item-list">{today}</ul>
+
+        <h4>Soon</h4>
+        <ul className="item-list">{soon}</ul>
+      </div>
+    );
+  }
+})
+
+
+var contentSwitch = {
+  'sabnzbd': SABContentBox,
+  'sickbeard': SicbkeardContentBox
+};

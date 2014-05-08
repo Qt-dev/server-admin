@@ -15,7 +15,7 @@ var AJAX = (function(){
 
   return {
     getData: function(happyCallback, unhappyCallback){
-      _request({url: "data.json", datatype: 'json'}, happyCallback, unhappyCallback);
+      _request({url: "/sites", datatype: 'json'}, happyCallback, unhappyCallback);
     },
     request: function(config, happyCallback, unhappyCallback){
       _request(config, happyCallback, unhappyCallback);
