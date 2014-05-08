@@ -3,6 +3,9 @@ window.onload = function(){
   App.sites = new Sites();
   App.categories = new Categories();
 
-  App.sites.fetch();
-  App.categories.fetch();
+  App.controller = new Controller({
+    sites: App.sites,
+    categories: App.categories
+  });
+  App.controller.initialize();
 };
