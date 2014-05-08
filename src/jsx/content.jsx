@@ -23,7 +23,7 @@ var Content = React.createClass({
     this.props.sites.on('change', this.updateCallback);
   },
   render: function() {
-    var boxes = this.buildBoxes()
+    var boxes = this.buildBoxes();
 
     return (
       <div className="content">
