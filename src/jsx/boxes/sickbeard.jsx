@@ -4,11 +4,12 @@
 
 var SicbkeardContentBox = React.createClass({
   render: function() {
+    console.log("sb data: ", this.props);
     if(this.props.data){
-        var today = this.props.data.today.map(function(item){
+        var today = this.props.data.data.today.map(function(item){
           return <li className="today item"><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
         })
-        var soon = this.props.data.soon.map(function(item){
+        var soon = this.props.data.data.soon.map(function(item){
           return <li className="soon item"><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
         })
       }
