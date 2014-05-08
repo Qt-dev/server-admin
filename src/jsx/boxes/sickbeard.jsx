@@ -6,19 +6,35 @@ var SicbkeardContentBox = React.createClass({
   render: function() {
     if(this.props.data){
         var today = this.props.data.data.today.map(function(item){
-          return <li className="today item" key={item.show_name + item.season + item.episode }><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
+          return  <li className="today item" key={item.show_name + item.season + item.episode }>
+                    <span className="title">{item.show_name}</span>
+                    <span className="status">
+                      <span className="season">S{item.season}E{item.episode}</span>
+                      {item.airs}
+                    </span>
+                  </li>
         })
         var soon = this.props.data.data.soon.map(function(item){
-          return <li className="soon item" key={item.show_name + item.season + item.episode }><span className="title">{item.show_name}</span> - <span className="season">S{item.season}E{item.episode}</span> - {item.airs}</li>
+          return  <li className="soon item" key={item.show_name + item.season + item.episode }>
+                    <span className="title">{item.show_name} </span>
+                    <span className="status">
+                      <span className="season">S{item.season}E{item.episode} </span>
+                      {item.airs}
+                    </span>
+                  </li>
         })
       }
     return (
       <div className="boxContent">
-        <h4>Today</h4>
-        <ul className="item-list">{today}</ul>
+        <div className="item-list">
+          <h4>Today</h4>
+          <ul>{today}</ul>
+        </div>
 
-        <h4>Soon</h4>
-        <ul className="item-list">{soon}</ul>
+        <div className="item-list">
+          <h4>Soon</h4>
+          <ul>{soon}</ul>
+        </div>
       </div>
     );
   }

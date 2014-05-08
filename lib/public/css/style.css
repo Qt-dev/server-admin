@@ -111,19 +111,35 @@ body {
   text-align: center;
 }
 
-.item-list  {
+.item-list {
+  float:left;
+}
+
+.item-list ul {
   list-style: none;
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
-}
-.item-list li {
 }
 
 .item-list li .title {
   font-weight: bold;
 }
 
-.item-list li > span {
-  
+.item-list li .status {
+  float:right;
+}
+
+@media all and (max-width: 899px) {
+  .item-list {
+    width:98%;
+    margin:1%;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .item-list {
+    width: 48%;
+    margin:1%;
+  }
 }
