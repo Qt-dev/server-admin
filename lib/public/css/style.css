@@ -143,3 +143,18 @@ body {
     margin:1%;
   }
 }
+
+@media all and (max-width: 600px) {
+  .statusBox li:last-child {
+    display:none;
+  }
+}
+
+@media all and (max-width: 420px) {
+  .statusBox li {
+    display:none;
+  }
+  .statusBox li:first-child {
+    display:block;
+  }
+}
