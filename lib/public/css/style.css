@@ -84,11 +84,11 @@ body {
   background-color: dimgrey;
 
   height:100%;
-  margin: 0 1px;
+  margin-right:1px;
   padding: 0 2%;
 }
 
-.bottomButton:first-child {
+.boxFooter > .bottomButton:first-child {
   margin:0;
 }
 
@@ -111,19 +111,19 @@ body {
   text-align: center;
 }
 
-.queue, .history, .item-list  {
+.item-list  {
   list-style: none;
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
 }
-.queue li, .history li, .item-list li {
+.item-list li {
 }
 
-.queue li .title, .history li .title, .item-list li .title {
+.item-list li .title {
   font-weight: bold;
 }
 
-.queue li > span, .history li > span, .item-list li > span {
+.item-list li > span {
   
 }
