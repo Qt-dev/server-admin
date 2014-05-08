@@ -19,8 +19,8 @@ var Content = React.createClass({
     return {sites: this.props.sites.models};
   },
   componentDidMount: function(){
-    this.props.sites.on('add', this.updateCallback.bind(this));
-    this.props.sites.on('change', this.updateCallback.bind(this));
+    this.props.sites.on('add', this.updateCallback);
+    this.props.sites.on('change', this.updateCallback);
   },
   render: function() {
     var boxes = this.buildBoxes()
