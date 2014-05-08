@@ -69,21 +69,24 @@
       "description": "Console d'administration du serveur"
     }
   ],
-  "categories": {
-    "0": {
+  "categories": [
+    {
+      "id":"0",
       "idName": "other",
       "title": "Other",
       "color": "lightcoral"
     },
-    "1": {
+    {
+      "id":"1",
       "idName": "downloaders",
       "title": "Téléchargeurs",
-      "style": "lightgreen"
+      "color": "lightgreen"
     },
-    "2": {
+    {
+      "id":"2",
       "idName": "download-managers",
       "title": "Gestionnaires de Téléchargements",
-      "style": "lightblue"
+      "color": "lightblue"
     }
-  }
+  ]
 }
