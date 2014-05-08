@@ -51,14 +51,26 @@ var SABButtons = (function(){
     }
   })
 
+  var _cleanButton = React.createClass({
+    render: function(){
+      return <a className="bottomButton" href="#" onClick={this.props.callback} >Clean History</a>
+    }
+  })
+
   return React.createClass({
-    handleClick: function(e){
-      this.props.model.query['pauseToggle'](this.props.data.paused);
+    handlePauseToggle: function(e){
+      this.props.model.query('pauseToggle',this.forceUpdate,{paused: this.props.data.paused});
+    },
+    handleClean: function(e){
+      this.props.model.query('clean',this.forceUpdate);
     },
     render: function() {
-      return (
-        <_pauseToggleButton paused={this.props.paused} callback={this.handleClick} />
-      );
+      return  (
+        <div className="customButtons">
+          <_pauseToggleButton paused={this.props.paused} callback={this.handlePauseToggle} />
+          <_cleanButton callback={this.handleClean} />
+        </div>
+        );
     }
   })
 }());

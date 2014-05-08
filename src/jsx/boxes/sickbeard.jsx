@@ -34,11 +34,13 @@ var SickbeardButtons = (function(){
   })
   return React.createClass({
     handleRelaunch: function(){
-      this.props.model.query('relaunch')
+      this.props.model.query('relaunch',this.props.model.render);
     },
     render: function() {
       return (
-        <_relaunchButton callback={this.handleRelaunch} />
+        <div className="customButtons">
+          <_relaunchButton callback={this.handleRelaunch} />
+        </div>
       );
     }
   })
