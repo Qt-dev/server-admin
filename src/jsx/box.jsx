@@ -11,14 +11,24 @@ var Box = React.createClass({
   refresh: function(){
     this.props.site.query('status',this.setState.bind(this));
   },
+  getColor: function(){
+    var categoryId = this.props.site.get('category');
+    var category = this.props.controller.getCategory(categoryId);
+    return category.get('color');
+  },
   render: function() {
     if(this.props.site.get('type')){
       var contentBox = new contentSwitch[this.props.site.get('type')]({data: this.state.data});
       var buttons = new buttonsCreator[this.props.site.get('type')]({data: this.state.data, model: this.props.site, refresh: this.refresh});
     }
+
+    var style = {
+      backgroundColor: this.getColor()
+    }
+
     return (
       <div className="box">
-        <h3>{this.props.site.get('name')}</h3>
+        <h3 style={style}>{this.props.site.get('name')}</h3>
         <BoxContent contentBox={contentBox} description={this.props.site.get('description')} />
         <BoxFooter buttons={buttons} link={this.props.site.config.url} />
       </div>

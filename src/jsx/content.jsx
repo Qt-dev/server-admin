@@ -5,8 +5,9 @@ var Content = React.createClass({
   /* TOOLS */
   buildBoxes: function(){
     if(this.state.sites){
+      var controller = this.props.controller
       return this.state.sites.map(function(site){
-        return <Box site={site} key={site.get('id')} />
+        return <Box site={site} key={site.get('id')} controller={controller} />
       })
     }
     return [];

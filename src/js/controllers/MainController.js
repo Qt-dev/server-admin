@@ -9,9 +9,13 @@ var Controller = function(opts){
 Controller.prototype = {
   initialize: function(){
     this.sites.fetch();
-    this.sites.render();
     this.categories.fetch();
-  },  
+    this.bind();
+  },
+  bind: function(){
+    this.categories.on('change', this.sites.render.bind(this.sites));
+    this.categories.on('add', this.sites.render.bind(this.sites));
+  },
   getCategory: function(id){
     return this.categories.get(id);
   }
