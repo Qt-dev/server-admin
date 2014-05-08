@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
       options: {
-        ignores: ['src/js/compiled-react.js', 'lib/public/**/*.min.js']
+        ignores: ['src/js/views/compiled-react.js', 'lib/public/**/*.min.js']
       },
       node: ['lib/**/*.js', 'lib/*.js'],
       beforeconcat: ['src/**/*.js', 'src/*.js'],
@@ -18,15 +18,21 @@ module.exports = function(grunt) {
       },
       app: {
         files: {
-          'lib/public/js/output.min.js': ['src/**/*.js', 'src/*.js']
+          'lib/public/js/output.min.js': [
+            'src/js/models/*.js',
+            'src/js/collections/*.js',
+            'src/js/views/*.js',
+            'src/js/controllers/*.js',
+            'src/js/*.js']
         }
       }
     },
     react: {
       combined_file_output: {
         files: {
-          'src/js/compiled-react.js': [
-            'src/jsx/**/*.jsx'
+          'src/js/views/compiled-react.js': [
+            'src/jsx/boxes/*.jsx',
+            'src/jsx/*.jsx'
           ]
         }
       }

@@ -6,70 +6,87 @@
       "category": "1",
       "name": "SABNZBD",
       "type": "sabnzbd",
-      "url": "http://192.168.0.11/nzb",
-      "description": "Téléchargeur de NZB (Newsgroups)",
-      "apiKey":"63f498f611d49d9f32d688e2c6dd247d"
+      "config": {
+        "url": "http://192.168.0.11/nzb",
+        "apiKey":"63f498f611d49d9f32d688e2c6dd247d"
+        },
+      "description": "Téléchargeur de NZB (Newsgroups)"
     },
     {
       "id":"1",
       "category": "1",
       "name": "Transmission",
-      "url": "torrent/web",
+      "config": {
+        "url": "torrent/web"
+        },
       "description": "Téléchargeur de Torrents"
-    },
+      },
     {
       "id":"2",
       "category": "2",
       "name": "Sickbeard",
       "type": "sickbeard",
-      "url": "http://192.168.0.11/sickbeard",
-      "apiKey": "0d3b021a355e7fc9567e8f5e18a566a3",
+      "config": {
+        "url": "http://192.168.0.11/sickbeard",
+        "apiKey": "0d3b021a355e7fc9567e8f5e18a566a3"
+        },
       "description": "Gestionnaire de téléchargements de Séries et sous-titres"
     },
     {
       "id":"3",
       "category": "2",
       "name": "Couchpotato",
-      "url": "couchpotato",
+      "config": {
+        "url": "couchpotato"
+        },
       "description": "Gestionnaire de téléchargements de Films et sous-titres"
-    },
+      },
     {
       "id":"4",
       "category": "2",
       "name": "Headphones",
-      "url": "headphones",
+      "config": {
+        "url": "headphones"
+        },
       "description": "Gestionnaire de téléchargements de musiques"
-    },
+      },
     {
       "id":"5",
       "category": "0",
       "name": "Plex",
-      "url": "plex/web/index.html",
+      "config": {
+        "url": "plex/web/index.html"
+        },
       "description": "Gestionnaire de contenus et Streamer"
-    },
+      },
     {
       "id":"6",
       "category": "0",
       "name": "Webmin",
-      "url": "webmin",
+      "config": {
+        "url": "webmin"
+        },
       "description": "Console d'administration du serveur"
     }
   ],
-  "categories": {
-    "0": {
+  "categories": [
+    {
+      "id":"0",
       "idName": "other",
       "title": "Other",
       "color": "lightcoral"
     },
-    "1": {
+    {
+      "id":"1",
       "idName": "downloaders",
       "title": "Téléchargeurs",
-      "style": "lightgreen"
+      "color": "lightgreen"
     },
-    "2": {
+    {
+      "id":"2",
       "idName": "download-managers",
       "title": "Gestionnaires de Téléchargements",
-      "style": "lightblue"
+      "color": "lightblue"
     }
-  }
+  ]
 }
