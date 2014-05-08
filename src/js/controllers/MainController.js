@@ -9,6 +9,7 @@ var Controller = function(opts){
 Controller.prototype = {
   initialize: function(){
     this.sites.fetch();
+    this.sites.render();
     this.categories.fetch();
   },  
   getCategory: function(id){
