@@ -4,7 +4,7 @@
 var SABContentBox = React.createClass({
   buildQueue: function() {
     return this.props.data.queue.map(function(item){
-        return (<li>
+        return (<li key={item.id}>
                   <span className="title">{item.name} </span> 
                   <span className="percentage">{item.percentage}% </span>
                   <span className="eta">ETA:{item.eta}</span>
@@ -13,7 +13,7 @@ var SABContentBox = React.createClass({
   },
   buildHistory: function() {
     return this.props.data.history.map(function(item){
-        return (<li>
+        return (<li key={item.id}>
                   <span className="title">{item.name} </span>
                   <span className="status">{item.status} </span>
                   <span className="failMessage">{item.fail_message}</span>
