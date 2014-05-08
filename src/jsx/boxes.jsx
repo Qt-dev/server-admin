@@ -6,11 +6,14 @@ var Box = React.createClass({
     return {}
   },
   componentDidMount: function(){
+    this.refresh();
+  },
+  refresh: function(){
     this.props.site.query('status',this.setState.bind(this));
   },
   render: function() {
     var contentBox = new contentSwitch[this.props.site.get('type')]({data: this.state.data});
-    var buttons = new buttonsCreator[this.props.site.get('type')]({data: this.state.data, model: this.props.site})
+    var buttons = new buttonsCreator[this.props.site.get('type')]({data: this.state.data, model: this.props.site, refresh: this.refresh});
     return (
       <div className="box">
         <h3>{this.props.site.get('name')}</h3>

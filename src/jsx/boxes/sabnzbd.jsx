@@ -21,7 +21,6 @@ var SABContentBox = React.createClass({
       });
   },
   render: function(){
-    console.log('status',this.props);
     if(this.props.data){
       var queue = <div>
                     <h4>Queue</h4>
@@ -59,15 +58,18 @@ var SABButtons = (function(){
 
   return React.createClass({
     handlePauseToggle: function(e){
-      this.props.model.query('pauseToggle',this.forceUpdate,{paused: this.props.data.paused});
+      this.props.model.query('pauseToggle',this.props.refresh,{paused: this.props.data.status.paused});
     },
     handleClean: function(e){
-      this.props.model.query('clean',this.forceUpdate);
+      this.props.model.query('clean',this.props.refresh);
     },
     render: function() {
+      if(this.props.data){
+        var paused = this.props.data.status.paused;
+      }
       return  (
         <div className="customButtons">
-          <_pauseToggleButton paused={this.props.paused} callback={this.handlePauseToggle} />
+          <_pauseToggleButton paused={paused} callback={this.handlePauseToggle} />
           <_cleanButton callback={this.handleClean} />
         </div>
         );
