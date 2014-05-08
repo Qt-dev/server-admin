@@ -76,3 +76,28 @@ var SABButtons = (function(){
     }
   })
 }());
+
+var SABStatusBar = React.createClass({
+  buildLine: function(key, value){
+    return <li key={key}><span className="statusTitle">{key}:</span><span className="statusValue">{value.toString()}</span></li>
+ 
+  },
+  render: function(){
+    if(this.props.data){
+      var apidata = {
+        status: this.props.data.status.status,
+        speed: this.props.data.status.speed,
+        timeleft: this.props.data.status.timeleft
+      }
+      var status = []
+      for(var key in apidata){
+        status.push(this.buildLine(key,apidata[key]));
+      }
+    }
+    return(
+      <ul className="statusBox">
+      {status}
+      </ul>
+      )
+  }
+})

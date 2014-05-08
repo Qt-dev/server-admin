@@ -18,8 +18,10 @@ var Box = React.createClass({
   },
   render: function() {
     if(this.props.site.get('type')){
-      var contentBox = new contentSwitch[this.props.site.get('type')]({data: this.state.data});
-      var buttons = new buttonsCreator[this.props.site.get('type')]({data: this.state.data, model: this.props.site, refresh: this.refresh});
+      var type = this.props.site.get('type');
+      var contentBox = new contentSwitch[type]({data: this.state.data});
+      var buttons = new buttonsCreator[type]({data: this.state.data, model: this.props.site, refresh: this.refresh});
+      var statusBar = new statusBarCreator[type]({data: this.state.data});
     }
 
     var style = {
@@ -30,7 +32,7 @@ var Box = React.createClass({
       <div className="box">
         <h3 style={style}>{this.props.site.get('name')}</h3>
         <BoxContent contentBox={contentBox} description={this.props.site.get('description')} />
-        <BoxFooter buttons={buttons} link={this.props.site.config.url} />
+        <BoxFooter buttons={buttons} statusBar={statusBar} link={this.props.site.config.url} />
       </div>
       );
   }
@@ -52,6 +54,7 @@ var BoxFooter = React.createClass({
     <div className="boxFooter">
       <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
       {this.props.buttons}
+      {this.props.statusBar}
     </div>
     )
   }
@@ -67,4 +70,9 @@ var contentSwitch = {
 var buttonsCreator = {
   'sabnzbd': SABButtons,
   'sickbeard': SickbeardButtons
+}
+
+var statusBarCreator = {
+  'sabnzbd': SABStatusBar,
+  'sickbeard': SickbeardStatusBar
 }
