@@ -6,14 +6,16 @@ var Site = Backbone.Model.extend({
   },
   query: function(action, callback, params){
     if(this.get('type')){
-      var config = this.config;
-      config.action = action;
-      config.params = params;
+      var sentData = {
+        config: this.config,
+        params: params,
+        action: action
+      };
 
       var data = {
         url: this.queryUrl,
         datatype: 'json',
-        data: config
+        data: sentData
       };
 
       AJAX.request(data, callback, function(error){console.log(error);});

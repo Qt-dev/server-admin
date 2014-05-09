@@ -16,8 +16,13 @@
       "id":"1",
       "category": "1",
       "name": "Transmission",
+      "type": "transmission",
       "config": {
-        "url": "torrent/web"
+        "host": "IPADDRESS",
+        "port": "PORT",
+        "username": "USERNAME",
+        "password": "PASSWORD",
+        "url": "/torrent/rpc"
         },
       "description": "Téléchargeur de Torrents"
       },
