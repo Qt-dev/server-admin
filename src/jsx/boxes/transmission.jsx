@@ -5,7 +5,6 @@
 var TransmissionContentBox = React.createClass({
   render: function() {
     if(this.props.data){
-      console.log(this.props);
       var statusText = { 
           0: 'STOPPED',
           1: 'CHECK_WAIT',
