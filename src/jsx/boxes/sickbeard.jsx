@@ -49,7 +49,8 @@ var SickbeardButtons = (function(){
     }
   })
   return React.createClass({
-    handleRelaunch: function(){
+    handleRelaunch: function(){     
+      e.preventDefault();
       this.props.model.query('relaunch',this.props.model.render);
     },
     render: function() {

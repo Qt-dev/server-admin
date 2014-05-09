@@ -58,9 +58,11 @@ var SABButtons = (function(){
 
   return React.createClass({
     handlePauseToggle: function(e){
+      e.preventDefault();
       this.props.model.query('pauseToggle',this.props.refresh,{paused: this.props.data.status.paused});
     },
     handleClean: function(e){
+      e.preventDefault();
       this.props.model.query('clean',this.props.refresh);
     },
     render: function() {
