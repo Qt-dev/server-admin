@@ -61,9 +61,15 @@ var TransmissionButtons = (function(){
     }
   })
 
-  var _cleanButton = React.createClass({
+  var _cleanAllButton = React.createClass({
     render: function(){
       return <a className="bottomButton" href="#" onClick={this.props.callback} >Clear All</a>
+    }
+  })
+
+  var _cleanFinishedButton = React.createClass({
+    render: function(){
+      return <a className="bottomButton" href="#" onClick={this.props.callback} >Clear Finished</a>
     }
   })
 
@@ -76,6 +82,10 @@ var TransmissionButtons = (function(){
       e.preventDefault();
       this.props.model.query('clean',this.props.refresh);
     },
+    handleCleanFinished: function(e){
+      e.preventDefault();
+      this.props.model.query('cleanFinished',this.props.refresh);
+    },
     render: function() {
       if(this.props.data){
         var paused = this.props.data.status.paused;
@@ -83,7 +93,8 @@ var TransmissionButtons = (function(){
       return (
         <div className="customButtons">
           <_pauseToggleButton paused={paused} callback={this.handlePauseToggle} />
-          <_cleanButton callback={this.handleCleanAll} />
+          <_cleanAllButton callback={this.handleCleanAll} />
+          <_cleanFinishedButton callback={this.handleCleanFinished} />
         </div>
       );
     }
