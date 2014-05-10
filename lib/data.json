@@ -42,7 +42,8 @@
       "category": "2",
       "name": "Couchpotato",
       "config": {
-        "url": "couchpotato"
+        "url": "couchpotato",
+        "apiKey": "YOURAPIKEY"
         },
       "description": "Gestionnaire de téléchargements de Films et sous-titres"
       },
