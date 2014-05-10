@@ -77,8 +77,19 @@ var CouchpotatoStatusBar = React.createClass({
  
   },
   render: function(){
+    if(this.props.data){
+      var apidata = {
+        "Active Researches": this.props.data.status.actives,
+        "Total Movies": this.props.data.status.total
+      }
+      var status = []
+      for(var key in apidata){
+        status.push(this.buildLine(key,apidata[key]));
+      }
+    }
     return(
       <ul className="statusBox">
+        {status}
       </ul>
       )
   }
