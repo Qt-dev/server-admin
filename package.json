@@ -36,6 +36,7 @@
     "grunt-react": "^0.8.2",
     "sabnzbd": "^0.2.1",
     "sickbeard": "0.0.2",
-    "transmission": "^0.4.0"
+    "transmission": "^0.4.0",
+    "node-couchpotato": "0.0.4"
   }
 }
