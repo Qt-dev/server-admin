@@ -4,7 +4,7 @@
 
 var TransmissionContentBox = React.createClass({
   render: function() {
-    if(this.props.data){
+    if(this.props.data && this.props.data.ok){
       var statusText = { 
           0: 'STOPPED',
           1: 'CHECK_WAIT',
@@ -86,7 +86,7 @@ var TransmissionButtons = (function(){
       this.props.model.query('cleanFinished',this.props.refresh);
     },
     render: function() {
-      if(this.props.data){
+      if(this.props.data && this.props.data.ok){
         var paused = this.props.data.status.paused;
       } 
       return (
