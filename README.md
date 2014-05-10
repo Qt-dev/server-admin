@@ -5,6 +5,14 @@
 It is a server interface. This interface gives you useful tools and commands in one central location for servers using apps like [Sickbeard](http://sickbeard.com/) or [Sabnzbd](http://sabnzbd.org/).
 
 ### What app does it connects to?
+#### Use it
+Download it with ```git clone https://github.com/cookie-monster-inc/server-admin.git```.
+Then install dependencies with ```npm install```,.
+Clear the file ```lib/data.json``` and fill it with your own data.
+Launch the app with ```npm start```.
+
+The site is now available on ```http://localhost:3000```.
+
 #### Downloaders
 * [Sabnzbd](http://sabnzbd.org/): An app that downloads data from newsgroups.  
 The interface gives you a list of ongoing and completed downloads, status, speed and time left, and a "pause" toggle and a "clear history" button.
@@ -16,14 +24,6 @@ The interface gives you a list of ongoing and stopped downloads, as well as a pa
 The interface gives you a list of show episodes that are coming out today, or soon, as well as a button to put the snatched episodes as Wanted if you see that the launched download failed.
 * [Couchpotato](https://couchpota.to): An app that manages the Movies you want to download and downloads them by sending orders to downloaders.  
 The interface gives you a list of active downloads (Downloads that are waiting for sources), and inactive one (except the one that are downloaded yet), as well as info about how many active researches you have and the total number of movies in your database.
-
-#### Use it
-Download it with ```git clone https://github.com/cookie-monster-inc/server-admin.git```.
-Then install dependencies with ```npm install```,.
-Clear the file ```lib/data.json``` and fill it with your own data.
-Launch the app with ```npm start```.
-
-The site is now available on ```http://localhost:3000```.
 
 ## About the code
 ### What technologies does it use?
