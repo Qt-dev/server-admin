@@ -65,17 +65,20 @@ var BoxFooter = React.createClass({
 var contentSwitch = {
   'sabnzbd': SABContentBox,
   'sickbeard': SicbkeardContentBox,
-  'transmission': TransmissionContentBox
+  'transmission': TransmissionContentBox,
+  'couchpotato': CouchpotatoContentBox
 };
 
 var buttonsCreator = {
   'sabnzbd': SABButtons,
   'sickbeard': SickbeardButtons,
-  'transmission': TransmissionButtons
+  'transmission': TransmissionButtons,
+  'couchpotato': CouchpotatoButtons
 }
 
 var statusBarCreator = {
   'sabnzbd': SABStatusBar,
   'sickbeard': SickbeardStatusBar,
-  'transmission': TransmissionStatusBar
+  'transmission': TransmissionStatusBar,
+  'couchpotato': CouchpotatoStatusBar
 }
