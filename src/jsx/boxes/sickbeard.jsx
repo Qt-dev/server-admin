@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */
 
-var SicbkeardContentBox = React.createClass({
+var SickbeardContentBox = React.createClass({
   render: function() {
     if(this.props.data){
         var today = this.props.data.data.today.map(function(item){
