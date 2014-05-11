@@ -2,39 +2,34 @@
 * @jsx React.DOM
 */
 
-var SicbkeardContentBox = React.createClass({
+var SickbeardContentBox = React.createClass({
+  buildItem: function(item, type){
+    return  <li className="item" key={item.show_name + item.season + item.episode }>
+              <span className="title">{item.show_name}</span>
+              <span className="status">
+                <span className="season">S{item.season}E{item.episode}</span>
+                {item.airs}
+              </span>
+            </li>
+  },
+  buildList: function(type){
+      var list = this.props.data.data[type].map(function(item){
+        return  this.buildItem(item);
+      })
+      return  <div className="item-list">
+                <h4>{return type.charAt(0).toUpperCase() + string.slice(1)}</h4>
+                <ul>{list}</ul>
+              </div>)
+  },
   render: function() {
     if(this.props.data){
-        var today = this.props.data.data.today.map(function(item){
-          return  <li className="today item" key={item.show_name + item.season + item.episode }>
-                    <span className="title">{item.show_name}</span>
-                    <span className="status">
-                      <span className="season">S{item.season}E{item.episode}</span>
-                      {item.airs}
-                    </span>
-                  </li>
-        })
-        var soon = this.props.data.data.soon.map(function(item){
-          return  <li className="soon item" key={item.show_name + item.season + item.episode }>
-                    <span className="title">{item.show_name} </span>
-                    <span className="status">
-                      <span className="season">S{item.season}E{item.episode} </span>
-                      {item.airs}
-                    </span>
-                  </li>
-        })
+        var todayList = this.buildList('today');
+        var soonList = this.buildList('soon');
       }
     return (
       <div className="boxContent">
-        <div className="item-list">
-          <h4>Today</h4>
-          <ul>{today}</ul>
-        </div>
-
-        <div className="item-list">
-          <h4>Soon</h4>
-          <ul>{soon}</ul>
-        </div>
+        {todayList}
+        {soonList}
       </div>
     );
   }

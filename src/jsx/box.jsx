@@ -64,7 +64,7 @@ var BoxFooter = React.createClass({
 
 var contentSwitch = {
   'sabnzbd': SABContentBox,
-  'sickbeard': SicbkeardContentBox,
+  'sickbeard': SickbeardContentBox,
   'transmission': TransmissionContentBox,
   'couchpotato': CouchpotatoContentBox
 };
