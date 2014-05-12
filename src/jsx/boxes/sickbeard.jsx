@@ -4,20 +4,21 @@
 
 var SickbeardContentBox = React.createClass({
   buildItem: function(item, type){
-    return  <li className="item" key={item.show_name + item.season + item.episode }>
+    return  (<li className="item" key={item.show_name + item.season + item.episode }>
               <span className="title">{item.show_name}</span>
               <span className="status">
                 <span className="season">S{item.season}E{item.episode}</span>
                 {item.airs}
               </span>
-            </li>
+            </li>);
   },
   buildList: function(type){
+      var buildItem = this.buildItem;
       var list = this.props.data.data[type].map(function(item){
-        return  this.buildItem(item);
+        return buildItem(item);
       })
-      return  <div className="item-list">
-                <h4>{return type.charAt(0).toUpperCase() + string.slice(1)}</h4>
+      return  (<div className="item-list">
+                <h4>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
                 <ul>{list}</ul>
               </div>)
   },
