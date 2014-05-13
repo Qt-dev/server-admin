@@ -61,10 +61,21 @@ var CouchpotatoContentBox = React.createClass({
 
 var CouchpotatoButtons = (function(){
 
+  var _refreshButton = React.createClass({
+    render: function(){
+      return <a className="bottomButton" href="#" onClick={this.props.callback} >Refresh</a>
+    }
+  })
+
   return React.createClass({
+    handleRefresh: function(e){
+      e.preventDefault();
+      this.props.refresh();
+    },
     render: function() {
       return  (
         <div className="customButtons">
+          <_refreshButton callback={this.handleRefresh} />
         </div>
         );
     }

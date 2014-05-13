@@ -36,6 +36,7 @@ var SickbeardContentBox = React.createClass({
   }
 })
 
+  
 var SickbeardButtons = (function(){
   var _relaunchButton = React.createClass({
     render: function() {
@@ -44,15 +45,27 @@ var SickbeardButtons = (function(){
       );
     }
   })
+
+  var _refreshButton = React.createClass({
+    render: function(){
+      return <a className="bottomButton" href="#" onClick={this.props.callback} >Refresh</a>
+    }
+  })
+  
   return React.createClass({
     handleRelaunch: function(){     
       e.preventDefault();
       this.props.model.query('relaunch',this.props.model.render);
     },
+    handleRefresh: function(e){
+      e.preventDefault();
+      this.props.refresh();
+    },
     render: function() {
       return (
         <div className="customButtons">
           <_relaunchButton callback={this.handleRelaunch} />
+          <_refreshButton callback={this.handleRefresh} />
         </div>
       );
     }
