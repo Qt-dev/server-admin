@@ -68,7 +68,8 @@ body {
 .statusBox li {
   display:inline;
   float:left;
-  padding:0 1%;
+  padding:  0 1%;
+  margin:   0 2%;
 }
 
 .statusTitle {
