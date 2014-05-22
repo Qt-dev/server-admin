@@ -1,3 +1,7 @@
+/****************/
+/* A - Generics */
+/****************/
+
 body {
   background-color: whitesmoke;
   font-family: 'Open Sans', sans-serif;
@@ -14,9 +18,9 @@ body {
   display:inline-block;
 }
 
-/*************/
-/* BOX STYLE */
-/*************/
+/*****************/
+/* B - BOX STYLE */
+/*****************/
 .box {
   width:400px;
   overflow:hidden;
@@ -55,74 +59,16 @@ body {
   border-bottom-right-radius: 2px;
 }
 
-.statusBox {
-  width:100%;
-  float:left;
-  background-color: #ecf0f1;
-  list-style: none;
-  line-height: 3em;
-  padding:0;
-  margin:0;
-}
 
-.statusBox li {
-  display:inline;
-  float:left;
-  padding:  0 1%;
-  margin:   0 2%;
-}
 
-.statusTitle {
-  float:left;
-  font-weight: bolder;
-  margin-right:5px;
-}
+/***************************/
+/* C - Box Internal styles */
+/***************************/
 
-.statusValue {
-}
 
-.bottomButton {
-  color:white;
-  float:right;
-  text-decoration: none;
-  background-color: #7f8c8d;
-
-  height:100%;
-  margin-right:1px;
-  padding: 0 2%;
-}
-
-.boxFooter > .bottomButton:first-child {
-  margin:0;
-}
-
-/* Box content */
-.boxContent {
-  margin-top:10px;
-  border-radius:2px;
-  min-height:100px;
-  width: 98%;
-  margin: 1%;
-  font-size: 0.8em;
-}
-
-.boxContent p {
-  margin-top:0;
-  text-align: center;
-}
-
-.boxDescription {
-  float:left;
-  width:100%;
-  background-color: #ecf0f1;
-  list-style: none;
-  line-height: 3em;
-}
-
-.boxContent h4 {
-  margin:0;
-  text-align: center;
-}
+/**********************/
+/**** C.1 - Item list */
+/**********************/
 
 .item-list {
   float:  left;
@@ -152,3 +98,76 @@ body {
   float:          right;
   max-width:      30%;
 }
+
+/***********************/
+/**** C.2 - Status Box */
+/***********************/
+.statusBox {
+  width:100%;
+  float:left;
+  background-color: #ecf0f1;
+  list-style: none;
+  line-height: 3em;
+  padding:0;
+  margin:0;
+}
+
+.statusBox li {
+  display:inline;
+  float:left;
+  padding:  0 1%;
+  margin:   0 2%;
+}
+
+.statusTitle {
+  float:left;
+  font-weight: bolder;
+  margin-right:5px;
+}
+
+.statusValue {
+}
+
+/*******************/
+/**** C.3 - Others */
+/*******************/
+
+.boxContent {
+  margin-top:10px;
+  border-radius:2px;
+  min-height:100px;
+  width: 98%;
+  margin: 1%;
+  font-size: 0.8em;
+}
+
+.boxDescription {
+  float:left;
+  width:100%;
+  background-color: #ecf0f1;
+  list-style: none;
+  line-height: 3em;
+}
+
+.boxContent h4 {
+  margin:0;
+  text-align: center;
+}
+
+.boxFooter > .bottomButton:first-child {
+  margin:0;
+}
+
+.bottomButton {
+  color:white;
+  float:right;
+  text-decoration: none;
+  background-color: #7f8c8d;
+
+  height:100%;
+  margin-right:1px;
+  padding: 0 2%;
+}
+
+
+
