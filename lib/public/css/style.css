@@ -18,7 +18,8 @@ body {
 /* BOX STYLE */
 /*************/
 .box {
-  width:100%;
+  width:400px;
+  overflow:hidden;
   margin:0.5%;
   float:left;
 
@@ -97,7 +98,8 @@ body {
   margin-top:10px;
   border-radius:2px;
   min-height:100px;
-  width: 100%;
+  width: 98%;
+  margin: 1%;
   font-size: 0.8em;
 }
 
