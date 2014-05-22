@@ -134,11 +134,12 @@ body {
   float:          left;
   word-wrap:      break-word;
   font-weight:    bold;
-  max-width:      80%;
+  max-width:      70%;
 }
 
 .item-list li .status {
-  float:right;
+  float:          right;
+  max-width:      30%;
 }
 
 @media all and (max-width: 899px) {
