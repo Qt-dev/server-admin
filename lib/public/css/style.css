@@ -89,6 +89,7 @@ body {
 
 .item-list li .title {
   float:          left;
+  text-align:     left;
   word-wrap:      break-word;
   font-weight:    bold;
   max-width:      70%;
@@ -137,6 +138,7 @@ body {
   width:100%;
   background-color: #ecf0f1;
   line-height: 3em;
+  text-align: center;
   margin:1% 0;
 }
 
@@ -155,7 +157,6 @@ body {
 }
 
 .boxDescription {
-  float:left;
   width:100%;
   background-color: #ecf0f1;
   list-style: none;
