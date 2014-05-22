@@ -111,6 +111,14 @@ body {
   text-align: center;
 }
 
+.boxDescription {
+  float:left;
+  width:100%;
+  background-color: #ecf0f1;
+  list-style: none;
+  line-height: 3em;
+}
+
 .boxContent h4 {
   margin:0;
   text-align: center;

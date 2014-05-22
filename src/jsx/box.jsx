@@ -42,7 +42,7 @@ var BoxContent = React.createClass({
   render: function(){
     return (
       <div className="boxContent">
-        <p>{this.props.description}</p>
+        <p className="boxDescription">{this.props.description}</p>
         {this.props.statusBar}
         {this.props.contentBox}
       </div>)
