@@ -140,6 +140,11 @@ body {
   margin:1% 0;
 }
 
+.row h4 {
+  margin: 0;
+  text-align: center;
+}
+
 .boxContent {
   margin-top:10px;
   border-radius:2px;
