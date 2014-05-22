@@ -46,7 +46,7 @@ body {
 /* Box Footer */
 .boxFooter {
   float:right;
-  background-color: darkgray;
+  background-color: #bdc3c7;
   display:inline-block;
   line-height:2em;
   width:100%;
@@ -82,7 +82,7 @@ body {
   color:white;
   float:right;
   text-decoration: none;
-  background-color: dimgrey;
+  background-color: #7f8c8d;
 
   height:100%;
   margin-right:1px;
