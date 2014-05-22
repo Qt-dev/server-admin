@@ -31,8 +31,8 @@ var Box = React.createClass({
     return (
       <div className="box">
         <h3 style={style}>{this.props.site.get('name')}</h3>
-        <BoxContent contentBox={contentBox} description={this.props.site.get('description')} />
-        <BoxFooter buttons={buttons} statusBar={statusBar} link={this.props.site.config.url} />
+        <BoxContent contentBox={contentBox} statusBar={statusBar} description={this.props.site.get('description')} />
+        <BoxFooter buttons={buttons} link={this.props.site.config.url} />
       </div>
       );
   }
@@ -43,6 +43,7 @@ var BoxContent = React.createClass({
     return (
       <div className="boxContent">
         <p>{this.props.description}</p>
+        {this.props.statusBar}
         {this.props.contentBox}
       </div>)
   }
@@ -54,7 +55,6 @@ var BoxFooter = React.createClass({
     <div className="boxFooter">
       <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
       {this.props.buttons}
-      {this.props.statusBar}
     </div>
     )
   }
