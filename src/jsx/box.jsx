@@ -43,7 +43,6 @@ var BoxContent = React.createClass({
     var lines = [];
     lines.push(this.props.description);
     lines.push(this.props.statusBar);
-    lines.push(this.props.contentBox);
 
     var content = lines.map(function(line){
       return (
@@ -56,6 +55,7 @@ var BoxContent = React.createClass({
     return (
       <div className="boxContent">
         {content}
+        {this.props.contentBox}
       </div>)
   }
 })
