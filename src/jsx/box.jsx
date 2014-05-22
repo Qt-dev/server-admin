@@ -40,11 +40,22 @@ var Box = React.createClass({
 
 var BoxContent = React.createClass({
   render: function(){
+    var lines = [];
+    lines.push(this.props.description);
+    lines.push(this.props.statusBar);
+    lines.push(this.props.contentBox);
+
+    var content = lines.map(function(line){
+      return (
+        <div className="row">
+          {line}
+        </div>
+        )
+    })
+
     return (
       <div className="boxContent">
-        <p className="boxDescription">{this.props.description}</p>
-        {this.props.statusBar}
-        {this.props.contentBox}
+        {content}
       </div>)
   }
 })

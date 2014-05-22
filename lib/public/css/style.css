@@ -132,6 +132,14 @@ body {
 /**** C.3 - Others */
 /*******************/
 
+.row {
+  float:left;
+  width:100%;
+  background-color: #ecf0f1;
+  line-height: 3em;
+  margin:1% 0;
+}
+
 .boxContent {
   margin-top:10px;
   border-radius:2px;
@@ -147,11 +155,6 @@ body {
   background-color: #ecf0f1;
   list-style: none;
   line-height: 3em;
-}
-
-.boxContent h4 {
-  margin:0;
-  text-align: center;
 }
 
 .boxFooter > .bottomButton:first-child {
