@@ -7,7 +7,7 @@ var SickbeardContentBox = React.createClass({
     return  (<li className="item" key={item.show_name + item.season + item.episode }>
               <span className="title">{item.show_name}</span>
               <span className="status">
-                <span className="season">S{item.season}E{item.episode}</span>
+                <span className="season">S{item.season}E{item.episode} - </span>
                 {item.airs}
               </span>
             </li>);
