@@ -23,12 +23,12 @@ var SABContentBox = React.createClass({
   render: function(){
     if(this.props.data){
       var queue = <div className="item-list row">
-                    <h4>Queue</h4>
-                    <ul>{this.buildQueue()}</ul>
+                    <h4>Queue ({this.props.data.queue.length})</h4>
+                    <ul style={{display: 'none'}}>{this.buildQueue()}</ul>
                   </div>;
       var history = <div className="item-list row">
-                      <h4>History</h4>
-                      <ul>{this.buildHistory()}</ul>
+                      <h4>History ({this.props.data.history.length})</h4>
+                      <ul style={{display: 'none'}}>{this.buildHistory()}</ul>
                     </div>;
     }
     return (
