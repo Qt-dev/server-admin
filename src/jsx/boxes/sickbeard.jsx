@@ -17,7 +17,7 @@ var SickbeardContentBox = React.createClass({
       var list = this.props.data.data[type].map(function(item){
         return buildItem(item);
       })
-      return  (<div className="item-list">
+      return  (<div className="item-list row">
                 <h4>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
                 <ul>{list}</ul>
               </div>)
@@ -28,7 +28,7 @@ var SickbeardContentBox = React.createClass({
         var soonList = this.buildList('soon');
       }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
         {todayList}
         {soonList}
       </div>

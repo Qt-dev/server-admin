@@ -35,12 +35,12 @@ var TransmissionContentBox = React.createClass({
       })
     }
     return (
-      <div className="boxContent">
-        <div className="item-list">
+      <div className="contentLists">
+        <div className="item-list row">
           <h4>Ongoing</h4>
           <ul>{ongoing}</ul>
         </div>
-        <div className="item-list">
+        <div className="item-list row">
           <h4>Others</h4>
           <ul>{others}</ul>
         </div>

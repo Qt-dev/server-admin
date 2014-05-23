@@ -7,17 +7,17 @@ var SABContentBox = React.createClass({
   
   render: function(){
     if(this.props.data){
-      var queue = <div className="item-list">
+      var queue = <div className="item-list row">
                     <h4>Queue</h4>
                     <ul>{this.buildQueue()}</ul>
                   </div>;
-      var history = <div className="item-list">
+      var history = <div className="item-list row">
                       <h4>History</h4>
                       <ul>{this.buildHistory()}</ul>
                     </div>;
     }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
         {queue}
         {history}
       </div>)
