@@ -42,7 +42,10 @@ var BoxContent = React.createClass({
   render: function(){
     var lines = [];
     lines.push(this.props.description);
-    lines.push(this.props.statusBar);
+    if(this.props.statusBar && !(this.props.statusBar.empty)){
+      console.log(lines[0],this.props.statusBar);
+      lines.push(this.props.statusBar);
+    }
 
     var content = lines.map(function(line){
       return (
