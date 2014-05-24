@@ -21,7 +21,7 @@ var Box = React.createClass({
       var type = this.props.site.get('type');
       var contentBox = new contentSwitch[type]({data: this.state.data});
       var buttons = new buttonsCreator[type]({data: this.state.data, model: this.props.site, refresh: this.refresh});
-      var statusBar = new statusBarCreator[type]({data: this.state.data});
+      var statusBar = new statusCreator[type]({data: this.state.data});
     }
 
     var style = {
@@ -89,7 +89,7 @@ var buttonsCreator = {
   'couchpotato': CouchpotatoButtons
 }
 
-var statusBarCreator = {
+var statusCreator = {
   'sabnzbd': SABStatusBar,
   'sickbeard': SickbeardStatusBar,
   'transmission': TransmissionStatusBar,
