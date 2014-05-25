@@ -33,6 +33,9 @@ var TransmissionContentBox = React.createClass({
                   </span>
                 </li>
       })
+    } else {
+      var ongoing = [];
+      var others = [];
     }
     return (
       <div className="contentLists">
