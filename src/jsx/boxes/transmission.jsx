@@ -4,6 +4,8 @@
 
 var TransmissionContentBox = React.createClass({
   render: function() {
+    var ongoing = [];
+    var others = [];
     if(this.props.data && this.props.data.ok){
       var statusText = { 
           0: 'STOPPED',
@@ -15,7 +17,7 @@ var TransmissionContentBox = React.createClass({
           6: 'SEED',
           7: 'ISOLATED' 
         };
-      var others = this.props.data.others.map(function(item){
+      others = this.props.data.others.map(function(item){
         var status = statusText[item.status];
         return  <li className="item" key={item.id}>
                   <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
@@ -24,7 +26,7 @@ var TransmissionContentBox = React.createClass({
                   </span>
                 </li>
       })
-      var ongoing = this.props.data.ongoing.map(function(item){
+      ongoing = this.props.data.ongoing.map(function(item){
         var status = statusText[item.status];
         return  <li className="item" key={item.id}>
                   <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
@@ -33,9 +35,6 @@ var TransmissionContentBox = React.createClass({
                   </span>
                 </li>
       })
-    } else {
-      var ongoing = [];
-      var others = [];
     }
     return (
       <div className="contentLists">
