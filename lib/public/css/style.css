@@ -106,7 +106,6 @@ body {
 .statusBox {
   width:100%;
   float:left;
-  background-color: #ecf0f1;
   list-style: none;
   line-height: 3em;
   padding:0;
@@ -136,7 +135,6 @@ body {
 .row {
   float:left;
   width:100%;
-  background-color: #ecf0f1;
   line-height: 3em;
   text-align: center;
   margin-top:1%;
