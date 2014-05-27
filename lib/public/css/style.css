@@ -179,5 +179,18 @@ body {
   padding: 0 2%;
 }
 
+/* iPhone 4 ----------- */
+@media
+only screen and (max-device-width: 480px) {
+/* Styles */
+  body {
+    font-size: 3em;
+  }
+  
+  .box {
+    width:100%;
+  }
+
+}
 
 

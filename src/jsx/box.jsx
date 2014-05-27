@@ -111,7 +111,7 @@ var ItemList = React.createClass({
   render: function(){
     return (
       <div className="item-list row">
-        <h4 onClick={this.toggleList} >{this.props.title}({this.props.items.length})</h4>
+        <h4 onTouchStart={this.toggleList} onClick={this.toggleList} >{this.props.title}({this.props.items.length})</h4>
         <ul style={this.state.style}>{this.buildList()}</ul>
       </div>
     )
