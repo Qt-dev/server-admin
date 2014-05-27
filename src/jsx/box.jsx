@@ -74,6 +74,28 @@ var BoxFooter = React.createClass({
 })
 
 var ItemList = React.createClass({
+  getInitialState: function(){
+    return {
+      style: {
+        display: "none"
+      }
+    }
+  },
+  toggleList: function(){
+    if(this.state.style.display === "none"){
+      this.setState({
+        style: {
+          display: "inline"
+        }
+    })
+    } else {
+      this.setState({
+        style: {
+          display: "none"
+        }
+      })
+    }
+  },
   buildList: function(){
     var list = this.props.items.map(function(item){
       return (
@@ -89,8 +111,8 @@ var ItemList = React.createClass({
   render: function(){
     return (
       <div className="item-list row">
-        <h4>{this.props.title}</h4>
-        <ul>{this.buildList()}</ul>
+        <h4 onClick={this.toggleList} >{this.props.title}</h4>
+        <ul style={this.state.style}>{this.buildList()}</ul>
       </div>
     )
   }
