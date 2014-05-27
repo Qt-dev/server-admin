@@ -87,7 +87,6 @@ var ItemList = React.createClass({
     return list;
   },
   render: function(){
-    console.log(this.props.items)
     return (
       <div className="item-list row">
         <h4>{this.props.title}</h4>
