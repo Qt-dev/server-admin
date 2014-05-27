@@ -4,35 +4,29 @@
 var SABContentBox = React.createClass({
   buildQueue: function() {
     return this.props.data.queue.map(function(item){
-        return (<li key={item.id}>
-                  <span className="title">{item.name} </span> 
-                  <span className="percentage">{item.percentage}% </span>
-                  <span className="eta">ETA:{item.eta}</span>
-                </li>);
+        return {
+          id: item.id,
+          title: item.name,
+          status: item.percentage + "% - ETA:" + item.eta
+        };
       });
   },
   buildHistory: function() {
     return this.props.data.history.map(function(item){
-        return (<li key={item.id}>
-                  <span className="title">{item.name} </span>
-                  <span className="status">{item.status} </span>
-                  <span className="failMessage">{item.fail_message}</span>
-                </li>);
+        return {
+          id: item.id,
+          title: item.name,
+          status: item.status
+        };
       });
   },
   render: function(){
     if(this.props.data){
-      var queue = <div className="item-list">
-                    <h4>Queue</h4>
-                    <ul>{this.buildQueue()}</ul>
-                  </div>;
-      var history = <div className="item-list">
-                      <h4>History</h4>
-                      <ul>{this.buildHistory()}</ul>
-                    </div>;
+      var queue = <ItemList items={this.buildQueue()} title="Queue" />;
+      var history = <ItemList items={this.buildHistory()} title="History" />;
     }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
         {queue}
         {history}
       </div>)

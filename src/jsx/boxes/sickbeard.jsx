@@ -4,31 +4,26 @@
 
 var SickbeardContentBox = React.createClass({
   buildItem: function(item, type){
-    return  (<li className="item" key={item.show_name + item.season + item.episode }>
-              <span className="title">{item.show_name}</span>
-              <span className="status">
-                <span className="season">S{item.season}E{item.episode}</span>
-                {item.airs}
-              </span>
-            </li>);
+    return {
+      id: item.show_name + "-" + item.season + item.episode,
+      title: item.show_name,
+      status: "S" + item.season + "E" + item.episode + "(" + item.airs + ")"
+    }
   },
   buildList: function(type){
       var buildItem = this.buildItem;
       var list = this.props.data.data[type].map(function(item){
         return buildItem(item);
       })
-      return  (<div className="item-list">
-                <h4>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
-                <ul>{list}</ul>
-              </div>)
+      return list;
   },
   render: function() {
     if(this.props.data){
-        var todayList = this.buildList('today');
-        var soonList = this.buildList('soon');
+        var todayList = <ItemList items={this.buildList('today')} title="today" />;
+        var soonList = <ItemList items={this.buildList('soon')} title="soon" />;
       }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
         {todayList}
         {soonList}
       </div>
@@ -73,6 +68,7 @@ var SickbeardButtons = (function(){
 }());
 
 var SickbeardStatusBar = React.createClass({ // Not used yet
+  empty: true,
   render: function() {
     return (
       <div />

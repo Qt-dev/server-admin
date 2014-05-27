@@ -4,6 +4,8 @@
 
 var TransmissionContentBox = React.createClass({
   render: function() {
+    var ongoing = [];
+    var others = [];
     if(this.props.data && this.props.data.ok){
       console.log(this.props.data)
       var statusText = { 
@@ -16,35 +18,27 @@ var TransmissionContentBox = React.createClass({
           6: 'SEED',
           7: 'ISOLATED' 
         };
-      var others = this.props.data.others.map(function(item){
+      others = this.props.data.others.map(function(item){
         var status = statusText[item.status];
-        return  <li className="item" key={item.id}>
-                  <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
-                  <span className="status">
-                    {status} ({(item.percentDone * 100).toFixed(2)}%)
-                  </span>
-                </li>
+        return  {
+          id: item.id,
+          title: item.name, 
+          status: status + "(" + (item.percentDone * 100).toFixed(2) + "%)"
+        }
       })
-      var ongoing = this.props.data.ongoing.map(function(item){
+      ongoing = this.props.data.ongoing.map(function(item){
         var status = statusText[item.status];
-        return  <li className="item" key={item.id}>
-                  <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
-                  <span className="status">
-                    {status} ({(item.percentDone * 100).toFixed(2)}%)
-                  </span>
-                </li>
+        return  {
+          id: item.id,
+          title: item.name,
+          status: status + "(" + (item.percentDone * 100).toFixed(2) + "%)"
+        }
       })
     }
     return (
-      <div className="boxContent">
-        <div className="item-list">
-          <h4>Ongoing</h4>
-          <ul>{ongoing}</ul>
-        </div>
-        <div className="item-list">
-          <h4>Others</h4>
-          <ul>{others}</ul>
-        </div>
+      <div className="contentLists">
+        <ItemList items={ongoing} title="Ongoing" />
+        <ItemList items={others} title="Others" />
       </div>
     );
   }
@@ -113,6 +107,7 @@ var TransmissionButtons = (function(){
 }());
 
 var TransmissionStatusBar = React.createClass({ // Not used yet
+  empty: true,
   render: function() {
     return (
       <div />

@@ -1,3 +1,7 @@
+/****************/
+/* A - Generics */
+/****************/
+
 body {
   background-color: whitesmoke;
   font-family: 'Open Sans', sans-serif;
@@ -14,11 +18,12 @@ body {
   display:inline-block;
 }
 
-/*************/
-/* BOX STYLE */
-/*************/
+/*****************/
+/* B - BOX STYLE */
+/*****************/
 .box {
-  width:100%;
+  width:400px;
+  overflow:hidden;
   margin:0.5%;
   float:left;
 
@@ -29,10 +34,10 @@ body {
 }
 
 /* Box Content */
-.box h3 {
+.boxHeader {
   text-align: center;
   width: 100%;
-  line-height:2em;
+  line-height:3em;
   margin:0;
   padding:0;
   background-color: cornflowerblue;
@@ -45,18 +50,64 @@ body {
 /* Box Footer */
 .boxFooter {
   float:right;
-  background-color: darkgray;
+  background-color: #bdc3c7;
   display:inline-block;
-  line-height:2em;
+  line-height:3em;
   width:100%;
 
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 
+
+
+/***************************/
+/* C - Box Internal styles */
+/***************************/
+
+
+/**********************/
+/**** C.1 - Item list */
+/**********************/
+
+.item-list {
+  float:  left;
+  width:  100%;
+}
+
+.item-list ul {
+  list-style:     none;
+  padding:        0;
+  margin:         10px O;
+}
+
+.item-list li {
+  line-height:  1em;
+  max-height:   1em;
+  overflow:     hidden;
+}
+
+.item-list li .title {
+  float:          left;
+  text-align:     left;
+  word-wrap:      break-word;
+  font-weight:    bold;
+  max-width:      60%;
+}
+
+.item-list li .status {
+  float:          right;
+  max-width:      40%;
+}
+
+/***********************/
+/**** C.2 - Status Box */
+/***********************/
 .statusBox {
+  width:100%;
+  float:left;
   list-style: none;
-  line-height: 2em;
+  line-height: 3em;
   padding:0;
   margin:0;
 }
@@ -64,8 +115,8 @@ body {
 .statusBox li {
   display:inline;
   float:left;
-  padding:0 1%;
-  border-right:1px solid dimgrey;
+  padding:  0 1%;
+  margin:   0 2%;
 }
 
 .statusTitle {
@@ -77,84 +128,72 @@ body {
 .statusValue {
 }
 
-.bottomButton {
-  color:white;
-  float:right;
-  text-decoration: none;
-  background-color: dimgrey;
+/*******************/
+/**** C.3 - Others */
+/*******************/
 
-  height:100%;
-  margin-right:1px;
-  padding: 0 2%;
+.row {
+  float:left;
+  width:98%;
+  line-height: 3em;
+  text-align: center;
+  margin-top:1% auto;
+}
+
+.row:last-child {
+  margin-bottom:1%;
+}
+
+.row h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.boxContent {
+  margin-top:10px;
+  border-radius:2px;
+  width: 98%;
+  margin: 0 1%;
+  font-size: 0.8em;
+}
+
+.boxDescription {
+  width:100%;
+  background-color: #ecf0f1;
+  list-style: none;
+  line-height: 3em;
 }
 
 .boxFooter > .bottomButton:first-child {
   margin:0;
 }
 
-/* Box content */
-.boxContent {
-  margin-top:10px;
-  border-radius:2px;
-  min-height:100px;
-  width: 100%;
-  font-size: 0.8em;
-}
-
-.boxContent p {
-  margin-top:0;
-  text-align: center;
-}
-
-.boxContent h4 {
-  margin:0;
-  text-align: center;
-}
-
-.item-list {
-  float:left;
-}
-
-.item-list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-.item-list li .title {
-  font-weight: bold;
-}
-
-.item-list li .status {
+.bottomButton {
+  color:white;
   float:right;
+  text-decoration: none;
+  background-color: #7f8c8d;
+
+  height:100%;
+  margin-right:1px;
+  padding: 0 2%;
 }
 
-@media all and (max-width: 899px) {
-  .item-list {
-    width:98%;
-    margin:1%;
+/* iPhone 4 ----------- */
+@media
+only screen and (max-device-width: 480px) {
+/* Styles */
+  body {
+    font-size: 3em;
+  }
+
+  .box {
+    width:100%;
+  }
+
+  .boxFooter {
+    margin-top:5%;
   }
 }
 
-@media all and (min-width: 900px) {
-  .item-list {
-    width: 48%;
-    margin:1%;
-  }
-}
 
-@media all and (max-width: 600px) {
-  .statusBox li:last-child {
-    display:none;
-  }
-}
-
-@media all and (max-width: 420px) {
-  .statusBox li {
-    display:none;
-  }
-  .statusBox li:first-child {
-    display:block;
-  }
-}

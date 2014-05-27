@@ -2,53 +2,29 @@
 * @jsx React.DOM
 */
 
-
-var SABContentBox = React.createClass({
-  
-  render: function(){
-    if(this.props.data){
-      var queue = <div className="item-list">
-                    <h4>Queue</h4>
-                    <ul>{this.buildQueue()}</ul>
-                  </div>;
-      var history = <div className="item-list">
-                      <h4>History</h4>
-                      <ul>{this.buildHistory()}</ul>
-                    </div>;
-    }
-    return (
-      <div className="boxContent">
-        {queue}
-        {history}
-      </div>)
-  }
-})
-
 var CouchpotatoContentBox = React.createClass({
   buildActive: function() {
     return this.props.data.actives.map(function(item){
-        return (<li key={item.id}>
-                  <span className="title">{item.library.titles[0].title}({item.library.year}) </span>
-                </li>);
+        return {
+          id: item.id,
+          title: item.library.titles[0].title + "(" + item.library.year + ")",
+          status: ""
+        };
       });
   },
   buildOthers: function() {
     return this.props.data.others.map(function(item){
-        return (<li key={item.id}>
-                  <span className="title">{item.library.titles[0].title}({item.library.year}) </span>
-                </li>);
+        return {
+          id: item.id,
+          title: item.library.titles[0].title + "(" + item.library.year + ")",
+          status: ""
+        };
       });
   },
   render: function(){
     if(this.props.data){
-      var actives = <div className="item-list">
-                      <h4>Actives</h4>
-                      <ul>{this.buildActive()}</ul>
-                    </div>;
-      var others = <div className="item-list">
-                      <h4>Others</h4>
-                      <ul>{this.buildOthers()}</ul>
-                    </div>;
+      var actives = <ItemList items={this.buildActive()} title="Actives" />;
+      var others = <ItemList items={this.buildOthers()} title="Others" />;
     }
     return (
       <div className="boxContent">

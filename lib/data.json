@@ -81,19 +81,19 @@
       "id":"0",
       "idName": "other",
       "title": "Other",
-      "color": "lightcoral"
+      "color": "#e67e22"
     },
     {
       "id":"1",
       "idName": "downloaders",
       "title": "Téléchargeurs",
-      "color": "lightgreen"
+      "color": "#2ecc71"
     },
     {
       "id":"2",
       "idName": "download-managers",
       "title": "Gestionnaires de Téléchargements",
-      "color": "lightblue"
+      "color": "#3498db"
     }
   ]
 }
