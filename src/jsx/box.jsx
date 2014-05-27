@@ -73,6 +73,29 @@ var BoxFooter = React.createClass({
   }
 })
 
+var ItemList = React.createClass({
+  buildList: function(){
+    var list = this.props.items.map(function(item){
+      return (
+              <li className="item" key={item.id}>
+                <span className="title">{item.title}</span>
+                <span className="status">{item.status}</span>
+              </li>
+              )
+    })
+                
+    return list;
+  },
+  render: function(){
+    console.log(this.props.items)
+    return (
+      <div className="item-list row">
+        <h4>{this.props.title}</h4>
+        <ul>{this.buildList()}</ul>
+      </div>
+    )
+  }
+})
 
 
 var contentSwitch = {
