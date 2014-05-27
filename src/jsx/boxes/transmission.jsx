@@ -19,33 +19,25 @@ var TransmissionContentBox = React.createClass({
         };
       others = this.props.data.others.map(function(item){
         var status = statusText[item.status];
-        return  <li className="item" key={item.id}>
-                  <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
-                  <span className="status">
-                    {status} ({(item.percentDone * 100).toFixed(2)}%)
-                  </span>
-                </li>
+        return  {
+          id: item.id,
+          title: item.name, 
+          status: status + "(" + (item.percentDone * 100).toFixed(2) + "%)"
+        }
       })
       ongoing = this.props.data.ongoing.map(function(item){
         var status = statusText[item.status];
-        return  <li className="item" key={item.id}>
-                  <span className="title"><a href={item.magnetLink}>{item.name}</a></span>
-                  <span className="status">
-                    {status} ({(item.percentDone * 100).toFixed(2)}%)
-                  </span>
-                </li>
+        return  {
+          id: item.id,
+          title: item.name,
+          status: status + "(" + (item.percentDone * 100).toFixed(2) + "%)"
+        }
       })
     }
     return (
       <div className="contentLists">
-        <div className="item-list row">
-          <h4>Ongoing ({ongoing.length})</h4>
-          <ul>{ongoing}</ul>
-        </div>
-        <div className="item-list row">
-          <h4>Others ({others.length})</h4>
-          <ul>{others}</ul>
-        </div>
+        <ItemList items={ongoing} title="Ongoing" />
+        <ItemList items={others} title="Others" />
       </div>
     );
   }
