@@ -1,7 +1,10 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var CSS = ['css/style.css'];
+var CSS = [
+            'css/style.css',
+            "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+          ];
 var JS = [
     // 'http://fb.me/react-0.10.0.js',
     // 'http://code.jquery.com/jquery-1.10.0.min.js',
