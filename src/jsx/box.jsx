@@ -110,7 +110,7 @@ var ItemList = React.createClass({
   },
   render: function(){
     return (
-      <div className="item-list row">
+      <div className="itemList row">
         <h4 onTouchEnd={this.toggleList} onClick={this.toggleList} >{this.props.title}({this.props.items.length}) <i className="fa fa-plus-square"></i></h4>
         <ul style={this.state.style}>{this.buildList()}</ul>
       </div>

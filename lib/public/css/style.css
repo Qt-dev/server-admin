@@ -70,24 +70,24 @@ body {
 /**** C.1 - Item list */
 /**********************/
 
-.item-list {
+.itemList {
   float:  left;
   width:  100%;
 }
 
-.item-list ul {
+.itemList ul {
   list-style:     none;
   padding:        0;
   margin:         10px O;
 }
 
-.item-list li {
+.itemList li {
   line-height:  1em;
   max-height:   1em;
   overflow:     hidden;
 }
 
-.item-list li .title {
+.itemList li .title {
   float:          left;
   text-align:     left;
   word-wrap:      break-word;
@@ -95,7 +95,7 @@ body {
   max-width:      60%;
 }
 
-.item-list li .status {
+.itemList li .status {
   float:          right;
   max-width:      40%;
 }
