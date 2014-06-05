@@ -114,6 +114,7 @@ a {
   list-style: none;
   text-align: center;
   width:100%;
+  margin:0;
   padding:0;
 }
 
@@ -142,7 +143,10 @@ a {
   width:98%;
   line-height: 3em;
   text-align: center;
-  margin-top:1% auto;
+  color: white;
+  background-color: rgba(236, 240, 241, 0.2);
+  margin:1%;
+  margin-bottom:0;
 }
 
 .row:last-child {

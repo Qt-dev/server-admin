@@ -29,7 +29,7 @@ var Box = React.createClass({
     }
 
     return (
-      <div className="box">
+      <div className="box" style={style}>
         <BoxHeader name={this.props.site.get('name')} link={this.props.site.config.url} style={style} />
         <BoxContent contentBox={contentBox} statusBar={statusBar} description={this.props.site.get('description')} />
         <BoxFooter buttons={buttons} link={this.props.site.config.url} />
