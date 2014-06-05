@@ -163,19 +163,23 @@ body {
   line-height: 3em;
 }
 
-.boxFooter > .bottomButton:first-child {
-  margin:0;
+.customButtons {
+  display: inline;
 }
 
 .bottomButton {
-  color:white;
-  float:right;
-  text-decoration: none;
-  background-color: #7f8c8d;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
 
-  height:100%;
-  margin-right:1px;
-  padding: 0 2%;
+  height:     50px;
+  min-width:  50px;
+  margin:     1px;
+  padding:    0 2%;
+  
+  text-decoration: none;
+  color:white;
+  background-color: #7f8c8d;
 }
 
 /* iPhone 4 ----------- */
