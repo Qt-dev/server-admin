@@ -84,7 +84,7 @@ a {
 .itemList ul {
   list-style:     none;
   padding:        0;
-  margin:         10px O;
+  margin:         2% O;
 }
 
 .itemList li {
@@ -93,17 +93,23 @@ a {
   overflow:     hidden;
 }
 
+.itemList li:last-child {
+  margin-bottom: 2%;
+}
+
 .itemList li .title {
   float:          left;
   text-align:     left;
   word-wrap:      break-word;
   font-weight:    bold;
-  max-width:      60%;
+  max-width:      56%;
+  margin-left:   2%;
 }
 
 .itemList li .status {
   float:          right;
   max-width:      40%;
+  margin-right:   2%;
 }
 
 /***********************/
