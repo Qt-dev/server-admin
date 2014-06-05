@@ -52,6 +52,7 @@ body {
   float:right;
   background-color: #bdc3c7;
   display:inline-block;
+  text-align: center;
   line-height:3em;
   width:100%;
 
@@ -175,7 +176,7 @@ body {
   height:     50px;
   min-width:  50px;
   margin:     1px;
-  padding:    0 2%;
+  padding:    0 5%;
   
   text-decoration: none;
   color:white;
