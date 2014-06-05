@@ -190,6 +190,16 @@ a {
 
 .boxHeader h3 {
   margin: 0;
+  display:inline-block;
+}
+
+.fa.siteLink {
+  float:          right;
+  font-size:      1.5em;
+
+  line-height:    2em;
+  vertical-align: middle;
+  margin-right:   1%;
 }
 
 /* iPhone 4 ----------- */
