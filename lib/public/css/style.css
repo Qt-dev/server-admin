@@ -198,7 +198,8 @@ a {
 }
 
 .fa.siteLink {
-  float:          right;
+  position: absolute;
+  right:1%;
   font-size:      1.5em;
 
   line-height:    2em;
