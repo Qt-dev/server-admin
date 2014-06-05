@@ -27,7 +27,7 @@ var CouchpotatoContentBox = React.createClass({
       var others = <ItemList items={this.buildOthers()} title="Others" />;
     }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
       {actives}
       {others}
       </div>
