@@ -66,7 +66,6 @@ var BoxFooter = React.createClass({
   render: function(){
     return (
     <div className="boxFooter">
-      <a className="bottomButton boxGotoLink" href={this.props.link}>Go</a>
       {this.props.buttons}
     </div>
     )
