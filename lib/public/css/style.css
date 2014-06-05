@@ -55,10 +55,10 @@ a {
 /* Box Footer */
 .boxFooter {
   float:right;
-  background-color: #bdc3c7;
   display:inline-block;
   text-align: center;
   line-height:3em;
+  margin-bottom: 1%;
   width:100%;
 
   border-bottom-left-radius: 2px;
@@ -184,8 +184,8 @@ a {
   padding:    0 5%;
   
   text-decoration: none;
-  color:white;
-  background-color: #7f8c8d;
+  color:            #7f8c8d;
+  background-color: #ecf0f1;
 }
 
 .boxHeader h3 {
