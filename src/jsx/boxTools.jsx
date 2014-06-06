@@ -4,9 +4,6 @@
 var ItemList = React.createClass({
   getInitialState: function(){
     return {
-      style: {
-        // display: "none"
-      },
       closed: true,
       iconClass: "fa fa-angle-down"
     }
