@@ -6,8 +6,8 @@ var SickbeardContentBox = React.createClass({
   buildItem: function(item, type){
     return {
       id: item.show_name + "-" + item.season + item.episode,
-      title: item.show_name,
-      status: "S" + item.season + "E" + item.episode + "(" + item.airs + ")"
+      title: item.show_name + " (" + "S" + item.season + "E" + item.episode + ")",
+      status: item.airs
     }
   },
   buildList: function(type){

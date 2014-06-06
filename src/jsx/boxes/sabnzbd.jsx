@@ -102,9 +102,11 @@ var SABStatusBar = React.createClass({
       }
     }
     return(
-      <ul className="statusBox">
-      {status}
-      </ul>
+      <div className="statusBox">
+        <ul>
+        {status}
+        </ul>
+      </div>
       )
   }
 })

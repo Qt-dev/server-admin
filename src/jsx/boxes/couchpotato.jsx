@@ -27,7 +27,7 @@ var CouchpotatoContentBox = React.createClass({
       var others = <ItemList items={this.buildOthers()} title="Others" />;
     }
     return (
-      <div className="boxContent">
+      <div className="contentLists">
       {actives}
       {others}
       </div>
@@ -75,9 +75,11 @@ var CouchpotatoStatusBar = React.createClass({
       }
     }
     return(
-      <ul className="statusBox">
-        {status}
-      </ul>
+      <div className="statusBox">
+        <ul>
+          {status}
+        </ul>
+      </div>
       )
   }
 })
