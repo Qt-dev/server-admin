@@ -15,7 +15,7 @@ a {
 
 .content {
   width:95%;
-  max-width: 900px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -196,7 +196,6 @@ a {
   text-decoration: none;
   color:            white;
   border: 1px solid rgba(236, 240, 241, 0.3);
-  /*background-color: rgba(236, 240, 241, 0.1);*/
 }
 
 .boxHeader h3 {
