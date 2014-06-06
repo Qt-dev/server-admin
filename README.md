@@ -1,4 +1,9 @@
 # Server Admin
+## Screenshot
+![Imgur](http://i.imgur.com/PxsucNJ)
+
+## Mobile screenshot
+![Imgur](http://i.imgur.com/5HE6UxB)
 
 ## About The app
 ### What is it?
