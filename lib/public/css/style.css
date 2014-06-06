@@ -84,7 +84,22 @@ a {
 .itemList ul {
   list-style:     none;
   padding:        0;
-  margin:         2% O;
+  margin: 0 0 2%; /* We specify that to limit the margin of the rest */
+  -webkit-transition: height 0.3s ease-in;
+  -moz-transition: height 0.3s ease-in;
+  -o-transition: height 0.3s ease-in;
+  -ms-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+  overflow: hidden;
+}
+
+.itemList.closed > ul{
+  height:0;
+  margin: 0;
+}
+
+.itemList.open > ul {
+  
 }
 
 .itemList li {

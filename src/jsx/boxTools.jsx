@@ -5,7 +5,7 @@ var ItemList = React.createClass({
   getInitialState: function(){
     return {
       style: {
-        display: "none"
+        // display: "none"
       },
       closed: true,
       iconClass: "fa fa-angle-down"
@@ -21,7 +21,7 @@ var ItemList = React.createClass({
   openList: function(){
     this.setState({
       style: {
-        display: "inline"
+        height: this.props.items.length + "em"
       },
       closed: false,
       iconClass: "fa fa-angle-up"
@@ -29,9 +29,6 @@ var ItemList = React.createClass({
   },
   closeList: function(){
     this.setState({
-      style: {
-        display: "none"
-      },
       closed: true,
       iconClass: "fa fa-angle-down"
     })
@@ -49,8 +46,14 @@ var ItemList = React.createClass({
     return list;
   },
   render: function(){
+    if(this.state.closed){
+      var closeToggleClass = "closed"
+    } else {
+      var closeToggleClass = "open"
+    }
+    var classes = "itemList row " + closeToggleClass;
     return (
-      <div className="itemList row">
+      <div className={classes} >
         <h4 onTouchEnd={this.toggleList} onClick={this.toggleList} >{this.props.title}({this.props.items.length}) <i className={this.state.iconClass}></i></h4>
         <ul style={this.state.style}>{this.buildList()}</ul>
       </div>
