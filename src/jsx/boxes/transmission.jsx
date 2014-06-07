@@ -67,12 +67,6 @@ var TransmissionButtons = (function(){
     }
   })
 
-  var _refreshButton = React.createClass({
-    render: function(){
-      return <a className="bottomButton" href="#" onClick={this.props.callback} >Refresh</a>
-    }
-  })
-
   return React.createClass({
     handlePauseToggle: function(e){
       e.preventDefault();
@@ -86,10 +80,6 @@ var TransmissionButtons = (function(){
       e.preventDefault();
       this.props.model.query('cleanFinished',this.props.refresh);
     },
-    handleRefresh: function(e){
-      e.preventDefault();
-      this.props.refresh();
-    },
     render: function() {
       if(this.props.data && this.props.data.ok){
         var paused = this.props.data.status.paused;
@@ -99,7 +89,6 @@ var TransmissionButtons = (function(){
           <_pauseToggleButton paused={paused} callback={this.handlePauseToggle} />
           <_cleanAllButton callback={this.handleCleanAll} />
           <_cleanFinishedButton callback={this.handleCleanFinished} />
-          <_refreshButton callback={this.handleRefresh} />
         </div>
       );
     }

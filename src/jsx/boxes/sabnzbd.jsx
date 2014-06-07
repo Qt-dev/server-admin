@@ -49,12 +49,6 @@ var SABButtons = (function(){
       return <a className="bottomButton" href="#" onClick={this.props.callback} >Clean History</a>
     }
   })
-  
-  var _refreshButton = React.createClass({
-    render: function(){
-      return <a className="bottomButton" href="#" onClick={this.props.callback} >Refresh</a>
-    }
-  })
 
   return React.createClass({
     handlePauseToggle: function(e){
@@ -65,10 +59,6 @@ var SABButtons = (function(){
       e.preventDefault();
       this.props.model.query('clean',this.props.refresh);
     },
-    handleRefresh: function(e){
-      e.preventDefault();
-      this.props.refresh();
-    },
     render: function() {
       if(this.props.data){
         var paused = this.props.data.status.paused;
@@ -77,7 +67,6 @@ var SABButtons = (function(){
         <div className="customButtons">
           <_pauseToggleButton paused={paused} callback={this.handlePauseToggle} />
           <_cleanButton callback={this.handleClean} />
-          <_refreshButton callback={this.handleRefresh} />
         </div>
         );
     }
