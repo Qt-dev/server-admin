@@ -26,6 +26,9 @@ var ItemList = React.createClass({
   },
   closeList: function(){
     this.setState({
+      style: {
+        height: "0"
+      },
       closed: true,
       iconClass: "fa fa-angle-down"
     })
