@@ -7,6 +7,7 @@ describe('The routes', function(){
     sendResponse = function(req,res){
       res.send(200,{ok:true, params: req.params})
     }
+    routesFile = '../config/routes'
   })
 
   describe('pages', function(){
@@ -15,7 +16,7 @@ describe('The routes', function(){
         index: sendResponse
       }
       sinon.spy(pagesMock, 'index');
-      var router = proxyquire('../lib/routes', {
+      var router = proxyquire(routesFile, {
         '../app/controllers/pages': pagesMock
       });
 
@@ -39,7 +40,7 @@ describe('The routes', function(){
         index: sendResponse
       }
       sinon.spy(sitesMock, 'index');
-      var router = proxyquire('../lib/routes', {
+      var router = proxyquire(routesFile, {
         '../app/controllers/sites': sitesMock
       });
 
@@ -65,7 +66,7 @@ describe('The routes', function(){
       }
       sinon.spy(categoriesMock, 'index');
       sinon.spy(categoriesMock, 'show');
-      var router = proxyquire('../lib/routes', {
+      var router = proxyquire(routesFile, {
         '../app/controllers/categories': categoriesMock
       });
 
