@@ -7,7 +7,7 @@ describe('The API controller', function(){
         }
       }
       sinon.spy(testAPIMock, 'query');
-      apiController = proxyquire('../app/controllers/api',{ '../../lib/apis/sickbeard': testAPIMock });
+      apiController = proxyquire('../app/controllers/apis',{ '../../lib/apis/sickbeard': testAPIMock });
     })
 
     it('should exist', function(){
