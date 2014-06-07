@@ -37,6 +37,7 @@
     "sabnzbd": "^0.2.1",
     "sickbeard": "0.0.2",
     "transmission": "^0.4.0",
-    "node-couchpotato": "0.0.4"
+    "node-couchpotato": "0.0.4",
+    "sinon": "^1.10.2"
   }
 }
