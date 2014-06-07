@@ -1,10 +1,10 @@
 # Server Admin
 [![Build Status](https://travis-ci.org/cookie-monster-inc/server-admin.svg?branch=master)](https://travis-ci.org/cookie-monster-inc/server-admin)
 ## Screenshot
-![Imgur](http://i.imgur.com/PxsucNJ.jpg)
+![Imgur](http://imgur.com/Zv0b6Sw.jpg)
 
 ## Mobile screenshot
-![Imgur](http://i.imgur.com/5HE6UxB.jpg)
+![Imgur](http://i.imgur.com/o09AI1S.jpg)
 
 ## About The app
 ### What is it?
