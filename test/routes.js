@@ -51,7 +51,7 @@ describe('The routes', function(){
     })
   })
   describe('the sites', function(){
-    it('should route "/categories" to sites.index', function(done){
+    it('should route "/categories" to categories.index', function(done){
       request(app).get('/categories')
               .expect(200)
               .end(function(err,res){
@@ -59,7 +59,7 @@ describe('The routes', function(){
                 done();
               })
     })
-    it('should route "/category/id" to sites.index', function(done){
+    it('should route "/category/id" to categories.show', function(done){
       request(app).get('/categories/0')
               .expect(200)
               .end(function(err,res){
