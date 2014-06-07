@@ -1,13 +1,14 @@
 var Site = Backbone.Model.extend({
   url: '/sites',
   initialize: function(){
-    this.queryUrl = '/'+this.get('type')+'/query';
+    this.queryUrl = '/apis/query';
     this.config = this.get('config');
   },
   query: function(action, callback, params){
     if(this.get('type')){
       var sentData = {
         config: this.config,
+        app: this.get('type'),
         params: params,
         action: action
       };

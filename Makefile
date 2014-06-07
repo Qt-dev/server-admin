@@ -2,6 +2,7 @@ REPORTER ?= spec
 
 test:
 	@./node_modules/.bin/mocha \
-						--reporter $(REPORTER)
- 
+		--recursive \
+		--reporter $(REPORTER)
+
 .PHONY: test

@@ -1,55 +1,123 @@
-var request = require('supertest')
-  , express = require('express')
-  , expect = require('chai').expect;
+var request = require('supertest');
+var express = require('express');
 
-var app = require('../lib/app');
 
-describe('routes', function(){
-  describe('the index router', function(){
-    describe('the main route', function(){
-      it('should have an index route', function(done){
-        request(app)
-          .get('/')
-          .expect(200, done);
-      })
-    })
-    describe('data.json route', function(){
-      it('should exist', function(done){
-        request(app)
-          .get('/data.json')
-          .expect('Content-Type', /json/)
-          .expect(200,done)
-      })
-      describe('rendered object', function(){
-        beforeEach(function(){
-          getData = function(done,test){
-            request(app)
-              .get('/data.json')
-              .end(function(err,res){
-                test(res);
-                done();
-              });
-          }
-        })
-        it('should have a title', function(done){
-          var test = function(res){
-            expect(res.body.title).to.exist;
-          }
-          getData(done,test);
-        })
-        it('should have sites', function(done){
-          var test = function(res){
-            expect(res.body.sites).to.exist;
-          }
-          getData(done,test);
-        })
-        it('should have categories', function(done){
-          var test = function(res){
-            expect(res.body.categories).to.exist;
-          }
-          getData(done,test);
-        })
-      })
-    }) 
+describe('The routes', function(){
+  before(function(){
+    sendResponse = function(req,res){
+      res.send(200,{ok:true, params: req.params})
+    }
+    routesFile = '../config/routes'
   })
+
+  describe('pages', function(){
+    before(function(){
+      pagesMock = {
+        index: sendResponse
+      }
+      sinon.spy(pagesMock, 'index');
+      var router = proxyquire(routesFile, {
+        '../app/controllers/pages': pagesMock
+      });
+
+      app = express();
+      app.use('/', router);
+    })
+    it('should route "/" to pages.index', function(done){
+      request(app).get('/')
+              .expect(200)
+              .end(function(err,res){
+                expect(pagesMock.index.called).to.be.true
+                pagesMock.index.restore();
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+  })
+  describe('the sites', function(){
+    before(function(){
+      sitesMock = {
+        index: sendResponse
+      }
+      sinon.spy(sitesMock, 'index');
+      var router = proxyquire(routesFile, {
+        '../app/controllers/sites': sitesMock
+      });
+
+      app = express();
+      app.use('/', router);
+    })
+    it('should route "/sites" to sites.index', function(done){
+      request(app).get('/sites')
+              .expect(200)
+              .end(function(err,res){
+                expect(sitesMock.index.called).to.be.true
+                sitesMock.index.restore();
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+  })
+  describe('the sites', function(){
+    before(function(){
+      categoriesMock = {
+        index: sendResponse,
+        show: sendResponse
+      }
+      sinon.spy(categoriesMock, 'index');
+      sinon.spy(categoriesMock, 'show');
+      var router = proxyquire(routesFile, {
+        '../app/controllers/categories': categoriesMock
+      });
+
+      app = express();
+      app.use('/', router);
+    })
+    it('should route "/categories" to categories.index', function(done){
+      request(app).get('/categories')
+              .expect(200)
+              .end(function(err,res){
+                expect(categoriesMock.index.called).to.be.true
+                categoriesMock.index.restore();
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+    it('should route "/category/id" to categories.show', function(done){
+      request(app).get('/categories/0')
+              .expect(200)
+              .end(function(err,res){
+                expect(categoriesMock.show.called).to.be.true
+                categoriesMock.show.restore();
+                expect(res.body.params.id).to.equal('0');
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+  })
+  describe('the apis', function(){
+    before(function(){
+      apiMock = {
+        query: sendResponse
+      }
+      sinon.spy(apiMock, 'query');
+      var router = proxyquire(routesFile, {
+        '../app/controllers/apis': apiMock
+      });
+
+      app = express();
+      app.use('/', router);
+    })
+    it('should route "/apis" to apis.query', function(done){
+      request(app).get('/apis/query')
+              .expect(200)
+              .end(function(err,res){
+                expect(apiMock.query.called).to.be.true
+                apiMock.query.restore();
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+  })
+
 })
