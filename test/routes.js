@@ -95,5 +95,29 @@ describe('The routes', function(){
               })
     })
   })
+  describe('the apis', function(){
+    before(function(){
+      apiMock = {
+        query: sendResponse
+      }
+      sinon.spy(apiMock, 'query');
+      var router = proxyquire(routesFile, {
+        '../app/controllers/apis': apiMock
+      });
+
+      app = express();
+      app.use('/', router);
+    })
+    it('should route "/apis" to apis.query', function(done){
+      request(app).get('/apis/query')
+              .expect(200)
+              .end(function(err,res){
+                expect(apiMock.query.called).to.be.true
+                apiMock.query.restore();
+                expect(res.body.ok).to.be.true;
+                done();
+              })
+    })
+  })
 
 })
