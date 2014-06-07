@@ -1,12 +1,6 @@
-var expect = require('chai').expect;
-var sinon = require('sinon');
 var categoriesController = require('../../app/controllers/categories');
 
 describe('The Categories controller', function(){
-  before(function(){
-    request = {};
-    response = {};
-  })
   describe('the index route', function(){
     it('should exist', function(){
       expect(categoriesController.index).to.exist;
