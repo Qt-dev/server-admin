@@ -11,10 +11,11 @@ describe('The sites controller', function(){
     it('should have an index route', function(){
       expect(sitesController.index).to.exist;
     })
-    it('should render json', function(){
+    it('should render a json array', function(){
       response.json = sinon.spy();
       sitesController.index(request, response);
       expect(response.json.called).to.be.true;
+      expect(response.json.args[0][0] instanceof Array).to.be.true
     })
   })
 })
