@@ -228,6 +228,16 @@ a {
   margin-right:   1%;
 }
 
+.fa.refresh {
+  position: absolute;
+  right:5%;
+  font-size:      1.5em;
+
+  line-height:    2em;
+  vertical-align: middle;
+  margin-right:   5%;
+}
+
 /* iPhone 4 ----------- */
 @media
 only screen and (max-device-width: 480px) {
