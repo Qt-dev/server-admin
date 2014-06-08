@@ -7,7 +7,6 @@ var TransmissionContentBox = React.createClass({
     var ongoing = [];
     var others = [];
     if(this.props.data && this.props.data.ok){
-      console.log(this.props.data)
       var statusText = { 
           0: 'STOPPED',
           1: 'CHECK_WAIT',
