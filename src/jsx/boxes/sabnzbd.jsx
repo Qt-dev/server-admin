@@ -7,7 +7,7 @@ var SABContentBox = React.createClass({
         return {
           id: item.id,
           title: item.name,
-          status: item.percentage + "% - ETA:" + item.eta
+          status: item.percentage + "% - " + item.status
         };
       });
   },
