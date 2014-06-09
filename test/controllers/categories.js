@@ -1,6 +1,14 @@
-var categoriesController = require('../../app/controllers/categories');
-
 describe('The Categories controller', function(){
+  before(function(){
+    dataMock = {
+          categories: [
+          {name: 'test'},
+          {name: 'test2'}]
+        };
+    categoriesController = proxyquire('../app/controllers/categories', {
+      '../../data.json': dataMock 
+    });
+  })
   describe('the index route', function(){
     before(function(){
       sinon.spy(response, 'json');
@@ -16,6 +24,11 @@ describe('The Categories controller', function(){
 
       expect(response.json.called).to.be.true;
       expect(response.json.args[0][0] instanceof Array).to.be.true
+    })
+    it('should render the first category', function(){
+      categoriesController.index(request, response);
+      var categories = dataMock.categories
+      expect(response.json.calledWith(categories)).to.be.true;
     })
   })
   describe('the show route', function(){
@@ -34,6 +47,11 @@ describe('The Categories controller', function(){
 
       expect(response.json.called).to.be.true;
       expect(response.json.args[0][0] instanceof Array).to.be.false
+    })
+    it('should render the first category', function(){
+      categoriesController.show(request, response);
+      var category = dataMock.categories[0]
+      expect(response.json.calledWith(category)).to.be.true;
     })
   })
 })
