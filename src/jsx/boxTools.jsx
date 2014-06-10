@@ -54,7 +54,7 @@ var ItemList = React.createClass({
     var classes = "itemList row " + closeToggleClass;
     return (
       <div className={classes} >
-        <h4 onTouchEnd={this.toggleList} onClick={this.toggleList} >{this.props.title}({this.props.items.length}) <i className={this.state.iconClass}></i></h4>
+        <h4 onTouchEnd={this.touchToggleList} onClick={this.toggleList} >{this.props.title}({this.props.items.length}) <i className={this.state.iconClass}></i></h4>
         <ul style={this.state.style}>{this.buildList()}</ul>
       </div>
     )
