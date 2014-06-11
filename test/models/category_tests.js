@@ -1,22 +1,6 @@
 describe('The Category model', function(){
-  before(function(done){
-    // Color model initialization
-    Color = require('../../app/models/color');
 
-    // Category model initialization
-    Category = require('../../app/models/category');
-    
-    // Color instantiation
-    color = ""  
-    mongoose.model('Color').create({title: 'black', hex: '#000'}, function(err, created){
-      if(!err){
-        color = created;
-      }
-      done();
-    });
-  })
-
-  afterEach(function(){
+  beforeEach(function(){
     mongoose.model('Category').remove();
   })
 

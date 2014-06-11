@@ -7,12 +7,14 @@ global.Schema = mongoose.Schema;
 var fs = require('fs');
 var dbFolder = __dirname + '/db'
 
-before(function(){
+before(function(done){
   request = {};
   response = {};
 
   prepareDb(dbFolder);
   mongoose.connect('tingodb://'+dbFolder)
+
+  seedSample(done);
 })
 
 after(function(){
@@ -35,4 +37,29 @@ function cleanDb(folder){
       });
     fs.rmdir(folder)
   }
+}
+
+function seedSample(done){
+  Color = require('../app/models/color');
+  Category = require('../app/models/category');
+  seedColor(function(){
+    seedCategories(done);
+  })
+};
+
+function seedColor(done){
+  mongoose.model('Color').create({title: 'black', hex: '#000'}, function(err, created){
+    if(!err){
+      color = created;
+    }
+    done();
+  });
+}
+
+function seedCategories(done){
+  var params1 = {idName:'testcat1', title:'testcat1', color: color}
+  var params2 = {idName:'testcat2', title:'testcat2', color: color}
+  mongoose.model('Category').create([params1,params2], function(error, categories){
+    done();
+  })
 }

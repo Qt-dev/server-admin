@@ -58,7 +58,7 @@ describe('The routes', function(){
               })
     })
   })
-  describe('the sites', function(){
+  describe('the categories', function(){
     before(function(){
       categoriesMock = {
         index: sendResponse,

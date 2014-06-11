@@ -1,7 +1,4 @@
 describe('The colors model', function(){
-  before(function(){
-    Color = require('../../app/models/color');
-  })
   afterEach(function(){
     Color.model.remove();
   })
