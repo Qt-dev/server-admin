@@ -3,7 +3,7 @@ describe('The colors model', function(){
     Color = require('../../app/models/color');
   })
   afterEach(function(){
-    Color.model.find().remove();
+    Color.model.remove();
   })
   it('should exist', function(){
     expect(Color).to.exist;
