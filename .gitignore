@@ -6,4 +6,4 @@ compiled-react.js
 lib/public/js/output.min.js
 
 # db folder
-db
+db/sites
