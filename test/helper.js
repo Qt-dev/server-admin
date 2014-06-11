@@ -10,11 +10,14 @@ before(function(){
   request = {};
   response = {};
 
-  prepareDb(dbFolder);
   mongoose.connect('tingodb://'+dbFolder)
 })
 
-after(function(){
+beforeEach(function(){
+  prepareDb(dbFolder);
+})
+
+afterEach(function(){
   cleanDb(dbFolder);
 })
 
@@ -27,9 +30,11 @@ function prepareDb(folder){
 }
 
 function cleanDb(folder){
-  fs.readdirSync(folder).forEach(function(file,index){
-      var curPath = folder + "/" + file;
-      fs.unlinkSync(curPath);
-    });
-  fs.rmdir(folder)
+  if(fs.existsSync(folder)){
+    fs.readdirSync(folder).forEach(function(file,index){
+        var curPath = folder + "/" + file;
+        fs.unlinkSync(curPath);
+      });
+    fs.rmdir(folder)
+  }
 }
