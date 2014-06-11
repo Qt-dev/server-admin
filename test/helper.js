@@ -3,6 +3,7 @@ global.sinon = require('sinon');
 global.proxyquire = require('proxyquire');
 global.tungus = require('tungus')
 global.mongoose = require('mongoose');
+global.Schema = mongoose.Schema;
 var fs = require('fs');
 var dbFolder = __dirname + '/db'
 
