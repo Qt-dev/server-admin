@@ -20,6 +20,21 @@ describe('The Category model', function(){
     expect(Category.schema).to.exist;
   })
 
+  it('should have a findAll that returns an array of the categories', function(done){
+    mongoose.model('Category').find({}, function(error, realCategories){
+      Category.findAll(function(error, categories){
+        expect(error).to.equal(null);
+        expect(categories instanceof Array).to.be.true;
+        categories.forEach(function(category, index){
+          expect(category.title).to.equal(realCategories[index].title);
+          expect(category.idName).to.equal(realCategories[index].idName);
+          expect(category.color).to.equal(realCategories[index].color.hex);
+        })
+        done()
+      })
+    })
+  })
+
   it('should allow us to create a Category with all the needed data', function(done){
     var params = {idName:'test', title:'test', color: color}
     mongoose.model('Category').create(params, function(error, category){

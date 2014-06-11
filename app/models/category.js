@@ -11,9 +11,24 @@ var Category = function(Color){
   
 
   var _model = mongoose.model('Category', categorySchema);
+  var _findAll = function(callback){
+    _model.find({}, function(err,categories){
+      categories = categories.map(function(category){
+        return {
+          title: category.title,
+          idName: category.idName,
+          color: category.color.hex
+        }
+      });
+      callback(err,categories)
+    });
+
+  }
+
   return {
     schema: categorySchema,
-    model: _model
+    model: _model,
+    findAll: _findAll
   }
 }(Color)
 
