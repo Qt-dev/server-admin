@@ -16,9 +16,13 @@ describe('The Category model', function(){
     });
   })
 
+  afterEach(function(){
+    mongoose.model('Category').remove();
+  })
+
   after(function(done){
-    mongoose.model('Color').find().remove();
-    mongoose.model('Category').find().remove();
+    mongoose.model('Color').remove();
+    mongoose.model('Category').remove();
     done();
   })
 
@@ -35,7 +39,6 @@ describe('The Category model', function(){
   it('should allow us to create a Category with all the needed data', function(done){
     var params = {idName:'test', title:'test', color: color}
     mongoose.model('Category').create(params, function(error, category){
-      console.log(error);
       expect(error).to.equal(null);
       expect(category.idName).to.equal('test');
       done();
@@ -44,6 +47,9 @@ describe('The Category model', function(){
 
 
   describe('validations', function(){
+    beforeEach(function(done){
+      mongoose.model('Category').remove(done);
+    })
 
     it('should not allow us to create a Category without an idname', function(done){
       var params = {title: 'tester', color: color};
@@ -66,6 +72,30 @@ describe('The Category model', function(){
       mongoose.model('Category').create(params, function(error, category){
         expect(error).not.to.equal(null);
         done();
+      })
+    })
+
+    it('should not allow us to create a Category with the same title twice', function(done){
+      var params = {idName: 'test', title: 'test', color: color};
+      mongoose.model('Category').create(params, function(error, category){
+        expect(error).to.equal(null);
+        params.idName = 'test2' // We change the idName just in case of uniqueness validation here too
+        mongoose.model('Category').create(params, function(suberror, subcategory){
+          expect(suberror).not.to.equal(null);
+          done();
+        })
+      })
+    })
+
+    it('should not allow us to create a Category with the same idName twice', function(done){
+      var params = {idName: 'test', title: 'test', color: color};
+      mongoose.model('Category').create(params, function(error, category){
+        expect(error).to.equal(null);
+        params.title = 'test2' // We change the idName just in case of uniqueness validation here too
+        mongoose.model('Category').create(params, function(suberror, subcategory){
+          expect(suberror).not.to.equal(null);
+          done();
+        })
       })
     })
   })
