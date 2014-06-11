@@ -61,6 +61,7 @@ function seedCategories(done){
   var params1 = {idName:'testcat1', title:'testcat1', color: color}
   var params2 = {idName:'testcat2', title:'testcat2', color: color}
   mongoose.model('Category').create([params1,params2], function(error, categories){
+    category = categories[0];
     done();
   })
 }
