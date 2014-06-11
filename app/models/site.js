@@ -30,9 +30,19 @@ var Site = function(){
   
   var _model = mongoose.model('Site', siteSchema);
 
+  var _findAll = function(callback){
+    _model.find({}, function(err,sites){
+      sites = sites.map(function(site){
+        return site
+      });
+      callback(err,sites)
+    });
+  }
+
   return {
     schema: siteSchema,
-    model: _model
+    model: _model,
+    findAll: _findAll
   }
 }();
 

@@ -39,7 +39,22 @@ describe('The Site model', function(){
     })
   })
 
-  it('should have a findAll that returns an array of the sites')
+  it('should have a findAll that returns an array of the sites', function(done){
+    mongoose.model('Site').find({}, function(error, realSites){
+      Site.findAll(function(error, sites){
+        expect(error).to.equal(null);
+        expect(sites instanceof Array).to.be.true;
+        sites.forEach(function(site, index){
+          expect(site.title).to.equal(realSites[index].title);
+          expect(site.type).to.equal(realSites[index].type);
+          expect(site.description).to.equal(realSites[index].description);
+          expect(site.config.url).to.equal(realSites[index].config.url);
+          expect(site.category).to.equal(realSites[index].category);
+        })
+        done()
+      })
+    })
+  })
 
   describe('validations', function(){
     beforeEach(function(done){
