@@ -10,14 +10,11 @@ before(function(){
   request = {};
   response = {};
 
+  prepareDb(dbFolder);
   mongoose.connect('tingodb://'+dbFolder)
 })
 
-beforeEach(function(){
-  prepareDb(dbFolder);
-})
-
-afterEach(function(){
+after(function(){
   cleanDb(dbFolder);
 })
 
