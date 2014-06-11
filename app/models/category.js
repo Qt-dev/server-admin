@@ -1,6 +1,5 @@
 var Color = require('./color');
 var Category = function(Color){
-  var Schema = mongoose.Schema;
   var categorySchema = new Schema({
     idName: {type: String, unique: true},
     title: {type: String, unique: true},

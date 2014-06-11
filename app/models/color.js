@@ -1,7 +1,4 @@
 var Color = function(){
-  var mongoose = require('mongoose');
-  var Schema = mongoose.Schema;
-
   var colorSchema = new Schema({
     title: {type: String, unique: true},
     hex: {type: String}
