@@ -25,8 +25,8 @@ var Category = function(Color){
 
   }
 
-  var _find = function(id, callback){
-    _model.findById(id, function(err, category){
+  var _find = function(title, callback){
+    _model.findOne({title: title}, function(err, category){
       category = {
         title: category.title,
         idName: category.idName,

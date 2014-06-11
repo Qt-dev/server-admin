@@ -11,7 +11,7 @@ exports.index = function(req, res){
 }
 
 exports.show = function(req, res){
-  Category.find(req.params.id, function(error,category){
+  Category.find(req.params.title, function(error,category){
     if(error){
       res.json({error: error});
     } else {

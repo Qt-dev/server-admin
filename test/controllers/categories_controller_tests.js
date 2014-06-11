@@ -9,8 +9,8 @@ describe('The Categories controller', function(){
       findAll: function(callback){
         callback(null, dataMock.categories);
       },
-      find: function(id,callback){
-        callback(null, dataMock.categories[id]);
+      find: function(title,callback){
+        callback(null, dataMock.categories[0]);
       }
     }
     categoriesController = proxyquire('../app/controllers/categories', {
@@ -42,7 +42,7 @@ describe('The Categories controller', function(){
   describe('the show route', function(){
     before(function(){
       sinon.spy(response, 'json');
-      request.params = { id: 0 }
+      request.params = { title: 'test' }
     })
     after(function(){
       response.json.restore();
