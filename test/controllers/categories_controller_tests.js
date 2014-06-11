@@ -14,7 +14,6 @@ describe('The Categories controller', function(){
       }
     }
     categoriesController = proxyquire('../app/controllers/categories', {
-      '../../data.json': dataMock,
       '../models/category': categoryMock
     });
   })

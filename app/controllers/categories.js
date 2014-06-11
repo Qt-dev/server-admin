@@ -1,4 +1,3 @@
-var data = require('../../data.json');
 var Category = require('../models/category');
 
 exports.index = function(req, res){
