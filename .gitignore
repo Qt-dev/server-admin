@@ -1,3 +1,9 @@
+# Node Modules files
 node_modules
+
+# Compiled Javascript
 compiled-react.js
 lib/public/js/output.min.js
+
+# db folder
+db
