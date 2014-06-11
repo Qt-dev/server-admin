@@ -6,9 +6,14 @@ var config = {
 };
 
 var app = express();
-var router = require('./config/routes');
 
+// Prepare the router
+var router = require('./config/routes');
 app.use('/',router);
+
+// Prepare the db
+var db = require('./config/db');
+db.start();
 
 // Set view engine to jsx
 app.set('view engine', 'jsx');
