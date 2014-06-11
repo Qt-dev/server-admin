@@ -1,5 +1,10 @@
 var express = require('express');
-var fs = require('fs');
+
+// Global requirements
+global.fs = require('fs');
+global.tungus = require('tungus');
+global.mongoose = require('mongoose');
+global.Schema = mongoose.Schema;
 
 // Config
 var config = {
