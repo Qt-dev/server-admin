@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require('fs');
 
 // Config
 var config = {
@@ -6,9 +7,22 @@ var config = {
 };
 
 var app = express();
-var router = require('./config/routes');
 
+// Prepare the router
+var router = require(__dirname + '/config/routes');
 app.use('/',router);
+
+// Prepare the db
+var db = require(__dirname + '/config/db');
+db.start();
+
+// Load models
+var models_path = __dirname + '/app/models'
+fs.readdirSync(models_path).forEach(function (file) {
+  if (~file.indexOf('.js')) {
+    require(models_path + '/' + file)
+  }
+})
 
 // Set view engine to jsx
 app.set('view engine', 'jsx');
