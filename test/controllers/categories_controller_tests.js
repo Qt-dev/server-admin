@@ -8,6 +8,9 @@ describe('The Categories controller', function(){
     categoryMock = {
       findAll: function(callback){
         callback(null, dataMock.categories);
+      },
+      find: function(id,callback){
+        callback(null, dataMock.categories[id]);
       }
     }
     categoriesController = proxyquire('../app/controllers/categories', {

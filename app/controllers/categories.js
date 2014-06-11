@@ -6,11 +6,17 @@ exports.index = function(req, res){
     if(error){
       res.json({error: error});
     } else {
-      res.json(categories)
+      res.json(categories);
     }
   })
 }
 
 exports.show = function(req, res){
-  res.json(data.categories[req.params.id]);
+  Category.find(req.params.id, function(error,category){
+    if(error){
+      res.json({error: error});
+    } else {
+      res.json(category);
+    }
+  })
 }
