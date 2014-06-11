@@ -44,7 +44,7 @@ describe('The Category model', function(){
 
 
   describe('validations', function(){
-    
+
     it('should not allow us to create a Category without an idname', function(done){
       var params = {title: 'tester', color: color};
       mongoose.model('Category').create(params, function(error, category){
@@ -55,6 +55,14 @@ describe('The Category model', function(){
 
     it('should not allow us to create a Category without a color', function(done){
       var params = {idName: 'test', title: 'tester'};
+      mongoose.model('Category').create(params, function(error, category){
+        expect(error).not.to.equal(null);
+        done();
+      })
+    })
+
+    it('should not allow us to create a Category without a title', function(done){
+      var params = {idName: 'test', color: color};
       mongoose.model('Category').create(params, function(error, category){
         expect(error).not.to.equal(null);
         done();
