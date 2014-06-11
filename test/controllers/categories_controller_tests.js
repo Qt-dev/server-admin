@@ -5,8 +5,14 @@ describe('The Categories controller', function(){
           {name: 'test'},
           {name: 'test2'}]
         };
+    categoryMock = {
+      findAll: function(callback){
+        callback(null, dataMock.categories);
+      }
+    }
     categoriesController = proxyquire('../app/controllers/categories', {
-      '../../data.json': dataMock 
+      '../../data.json': dataMock,
+      '../models/category': categoryMock
     });
   })
   describe('the index route', function(){
@@ -23,7 +29,7 @@ describe('The Categories controller', function(){
       categoriesController.index(request, response);
 
       expect(response.json.called).to.be.true;
-      expect(response.json.args[0][0] instanceof Array).to.be.true
+      expect(response.json.args[0][0] instanceof Array).to.be.true;
     })
     it('should render the first category', function(){
       categoriesController.index(request, response);
