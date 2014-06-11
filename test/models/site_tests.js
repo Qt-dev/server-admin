@@ -45,5 +45,17 @@ describe('The Site model', function(){
     beforeEach(function(done){
       mongoose.model('Site').remove(done);
     })
+    it('should not allow us to create a site without a title', function(done){
+      var params = {
+        type: 'test-site',
+        description: 'testing app',
+        config: {url: 'http://test.com', apiKey: '111222'},
+        category: category
+      }
+      mongoose.model('Site').create(params, function(error, site){
+        expect(error).not.to.equal(null);
+        done();
+      })
+    })
   })
 })

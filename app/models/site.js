@@ -26,7 +26,8 @@ var Site = function(){
     category: {type: Category},
     config: {type: Config}
   })
-
+  siteSchema.path('title').required(true, 'A site cannot have an empty title');
+  
   var _model = mongoose.model('Site', siteSchema);
 
   return {
