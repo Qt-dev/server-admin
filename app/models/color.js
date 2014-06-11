@@ -3,7 +3,7 @@ var Color = function(){
   var Schema = mongoose.Schema;
 
   var colorSchema = new Schema({
-    title: {type: String},
+    title: {type: String, unique: true},
     hex: {type: String}
   })
 
