@@ -11,7 +11,7 @@ describe('The colors model', function(){
   })
   it('should allow us to create a Color with hex and title', function(){
     var params = {title: 'white', hex: '#FFF'}
-    Color.model.create(params, function(error, color){
+    mongoose.model('Color').create(params, function(error, color){
       expect(error).to.equal(null);
       expect(color.title).to.equal('white');
       expect(color.hex).to.equal('#FFF');
@@ -20,13 +20,13 @@ describe('The colors model', function(){
   describe('validations', function(){
     it('should not allow us to create a Color with no title', function(){
       var params = {hex: '#000'}
-      Color.model.create(params, function(error, color){
+      mongoose.model('Color').create(params, function(error, color){
         expect(error).not.to.equal(null);
       });
     })
     it('should not allow us to create a Color with no hex', function(){
       var params = {title: 'black'}
-      Color.model.create(params, function(error, color){
+      mongoose.model('Color').create(params, function(error, color){
         expect(error).not.to.equal(null);
       });
     })
