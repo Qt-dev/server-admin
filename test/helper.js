@@ -42,6 +42,7 @@ function cleanDb(folder){
 function seedSample(done){
   Color = require('../app/models/color');
   Category = require('../app/models/category');
+  Site = require('../app/models/site');
   seedColor(function(){
     seedCategories(done);
   })
