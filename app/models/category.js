@@ -2,8 +2,8 @@ var Color = require('./color');
 var Category = function(Color){
   var Schema = mongoose.Schema;
   var categorySchema = new Schema({
-    idName: {type: String},
-    title: {type: String},
+    idName: {type: String, unique: true},
+    title: {type: String, unique: true},
     color: {type: Color}
   })
   categorySchema.path('title').required(true, "The category's name must not be empty");
