@@ -25,10 +25,22 @@ var Category = function(Color){
 
   }
 
+  var _find = function(id, callback){
+    _model.findById(id, function(err, category){
+      category = {
+        title: category.title,
+        idName: category.idName,
+        color: category.color.hex
+      }
+      callback(err, category);
+    })
+  }
+
   return {
     schema: categorySchema,
     model: _model,
-    findAll: _findAll
+    findAll: _findAll,
+    find: _find
   }
 }(Color)
 
