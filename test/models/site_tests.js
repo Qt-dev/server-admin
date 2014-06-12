@@ -47,8 +47,7 @@ describe('The Site model', function(){
           expect(site.type).to.equal(realSites[index].type);
           expect(site.description).to.equal(realSites[index].description);
           expect(site.config.url).to.equal(realSites[index].config.url);
-          var category = Category.filterData(realSites[index].category);
-          expect(site.category.title).to.equal(category.title);
+          expect(site.category).to.equal(category.idName);
         })
         done()
       })
@@ -65,7 +64,7 @@ describe('The Site model', function(){
       expect(result.config).to.equal(site.config);
       expect(result.description).to.equal(site.description);
       var category = Category.filterData(site.category);
-      expect(result.category.title).to.equal(category.title);
+      expect(result.category).to.equal(category.idName);
       done(); 
     })
   })

@@ -30,13 +30,14 @@ var Site = function(){
   
   var _model = mongoose.model('Site', siteSchema);
   var _filterData = function(site){
+    var category = site.category.idName;
     return  {
           id: site._id,
           title: site.title,
           type: site.type,
           config: site.config,
           description: site.description,
-          category: Category.filterData(site.category)
+          category: category
         }
   }
 
