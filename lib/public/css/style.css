@@ -243,6 +243,16 @@ a {
   margin-right:   5%;
 }
 
+.newSiteButton {
+  display: block;
+  margin:0.5%;
+  width:400px;
+  background-color:rgba(200, 200, 200, 0.2);
+  border: 1px solid lightgray;
+  line-height:2em;
+  text-align: center;
+}
+
 /* iPhone 4 ----------- */
 @media
 only screen and (max-device-width: 480px) {
