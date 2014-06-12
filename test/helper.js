@@ -4,6 +4,7 @@ global.proxyquire = require('proxyquire');
 global.tungus = require('tungus')
 global.mongoose = require('mongoose');
 global.Schema = mongoose.Schema;
+
 var fs = require('fs');
 var dbFolder = __dirname + '/db'
 
@@ -13,6 +14,8 @@ before(function(done){
 
   prepareDb(dbFolder);
   mongoose.connect('tingodb://'+dbFolder)
+
+  loadControllers();
 
   seedSample(done);
 })
@@ -64,4 +67,9 @@ function seedCategories(done){
     category = categories[0];
     done();
   })
+}
+
+function loadControllers(done){
+  sitesController = require('../app/controllers/sites');
+  pagesController = require('../app/controllers/pages');
 }

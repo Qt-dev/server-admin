@@ -1,5 +1,3 @@
-var sitesController = require('../../app/controllers/sites');
-
 describe('The sites controller', function(){
   describe('The index route', function(){
     before(function(){

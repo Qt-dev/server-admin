@@ -1,4 +1,7 @@
 describe('The colors model', function(){
+  before(function(){
+    Schema = mongoose.Schema
+  })
   afterEach(function(){
     Color.model.remove();
   })
