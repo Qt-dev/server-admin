@@ -1,10 +1,5 @@
 describe('The Categories controller', function(){
   before(function(){
-    dataMock = {
-          categories: [
-          {name: 'test'},
-          {name: 'test2'}]
-        };
     categoryMock = {
       findAll: function(callback){
         callback(null, dataMock.categories);

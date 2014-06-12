@@ -2,6 +2,17 @@ describe('The sites controller', function(){
   describe('The index route', function(){
     before(function(){
       response.json = sinon.spy();
+      siteMock = {
+        findAll: function(callback){
+          callback(null, dataMock.sites);
+        },
+        find: function(title,callback){
+          callback(null, dataMock.sites[0]);
+        }
+      }
+      sitesController = proxyquire('../app/controllers/sites', {
+        '../models/site': siteMock
+      });
     })
     it('should have an index route', function(){
       expect(sitesController.index).to.exist;

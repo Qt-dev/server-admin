@@ -16,6 +16,7 @@ before(function(done){
   mongoose.connect('tingodb://'+dbFolder)
 
   loadControllers();
+  setMockUp();
 
   seedSample(done);
 })
@@ -69,7 +70,19 @@ function seedCategories(done){
   })
 }
 
+function setMockUp(){
+  dataMock = {
+    sites: [
+      {name: 'test'},
+      {name: 'test2'}
+      ],
+    categories: [
+      {name: 'test3'},
+      {name: 'test4'}
+    ]
+  };
+}
+
 function loadControllers(done){
-  sitesController = require('../app/controllers/sites');
   pagesController = require('../app/controllers/pages');
 }
