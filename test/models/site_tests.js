@@ -1,7 +1,5 @@
 describe('The Site model', function(){
 
-  beforeEach(function(){
-  })
 
   after(function(done){
     mongoose.model('Color').remove();
@@ -49,7 +47,8 @@ describe('The Site model', function(){
           expect(site.type).to.equal(realSites[index].type);
           expect(site.description).to.equal(realSites[index].description);
           expect(site.config.url).to.equal(realSites[index].config.url);
-          expect(site.category).to.equal(realSites[index].category);
+          var category = Category.filterData(realSites[index].category);
+          expect(site.category.title).to.equal(category.title);
         })
         done()
       })
