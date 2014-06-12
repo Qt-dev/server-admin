@@ -3,8 +3,6 @@ var Site = Backbone.Model.extend({
   initialize: function(){
     this.queryUrl = '/apis/query';
     this.config = this.get('config');
-    var categories = this.collection.controller.categories;
-    this.category = categories.where({id: this.get('category').id})[0];
   },
   query: function(action, callback, params){
     if(this.get('type')){

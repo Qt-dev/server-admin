@@ -16,7 +16,7 @@ Controller.prototype = {
     this.categories.on('change', this.sites.render.bind(this.sites));
     this.categories.on('add', this.sites.render.bind(this.sites));
   },
-  getCategory: function(id){
-    return this.categories.get(id);
+  getCategory: function(idName){
+    return this.categories.where({idName: idName})[0];
   }
 };
