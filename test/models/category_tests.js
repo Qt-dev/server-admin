@@ -50,6 +50,19 @@ describe('The Category model', function(){
     })
   })
 
+  it('should have a filterData that filters the data so that it can be read on the frontend', function(done){
+    expect(Category.filterData).to.exist;
+    mongoose.model('Category').findOne({},function(error, category){
+      var result = Category.filterData(category);
+      expect(result.title).to.equal(category.title);
+      expect(result.idName).to.equal(category.idName);
+      expect(result.id).to.equal(category._id);
+      expect(result.color).to.equal(category.color.hex);
+
+      done(); 
+    })
+  })
+
   it('should allow us to create a Category with all the needed data', function(done){
     var params = {idName:'test', title:'test', color: color}
     mongoose.model('Category').create(params, function(error, category){

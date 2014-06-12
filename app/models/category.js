@@ -11,14 +11,18 @@ var Category = function(Color){
   
 
   var _model = mongoose.model('Category', categorySchema);
-  var _findAll = function(callback){
-    _model.find({}, function(err,categories){
-      categories = categories.map(function(category){
-        return {
+  var _filterData = function(category){
+    return {
+          id: category._id,
           title: category.title,
           idName: category.idName,
           color: category.color.hex
         }
+  }
+  var _findAll = function(callback){
+    _model.find({}, function(err,categories){
+      categories = categories.map(function(category){
+        return _filterData(category)
       });
       callback(err,categories)
     });
@@ -27,12 +31,7 @@ var Category = function(Color){
 
   var _find = function(title, callback){
     _model.findOne({title: title}, function(err, category){
-      category = {
-        title: category.title,
-        idName: category.idName,
-        color: category.color.hex
-      }
-      callback(err, category);
+      callback(err, _filterData(category));
     })
   }
 
@@ -40,7 +39,8 @@ var Category = function(Color){
     schema: categorySchema,
     model: _model,
     findAll: _findAll,
-    find: _find
+    find: _find,
+    filterData: _filterData
   }
 }(Color)
 

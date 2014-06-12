@@ -55,6 +55,21 @@ describe('The Site model', function(){
     })
   })
 
+  it('should have a filterData that filters the data so that it can be read on the frontend', function(done){
+    expect(Site.filterData).to.exist;
+    mongoose.model('Site').findOne({},function(error, site){
+      var result = Site.filterData(site);
+      expect(result.title).to.equal(site.title);
+      expect(result.id).to.equal(site._id);
+      expect(result.type).to.equal(site.type);
+      expect(result.config).to.equal(site.config);
+      expect(result.description).to.equal(site.description);
+      var category = Category.filterData(site.category);
+      expect(result.category.title).to.equal(category.title);
+      done(); 
+    })
+  })
+
   describe('validations', function(){
     beforeEach(function(done){
       mongoose.model('Site').remove(done);

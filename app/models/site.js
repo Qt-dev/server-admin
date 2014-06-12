@@ -29,11 +29,21 @@ var Site = function(){
   siteSchema.path('title').required(true, 'A site cannot have an empty title');
   
   var _model = mongoose.model('Site', siteSchema);
+  var _filterData = function(site){
+    return  {
+          id: site._id,
+          title: site.title,
+          type: site.type,
+          config: site.config,
+          description: site.description,
+          category: Category.filterData(site.category)
+        }
+  }
 
   var _findAll = function(callback){
     _model.find({}, function(err,sites){
       sites = sites.map(function(site){
-        return site
+        return _filterData(site);
       });
       callback(err,sites)
     });
@@ -42,7 +52,8 @@ var Site = function(){
   return {
     schema: siteSchema,
     model: _model,
-    findAll: _findAll
+    findAll: _findAll,
+    filterData: _filterData
   }
 }();
 
