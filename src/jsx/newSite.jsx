@@ -17,11 +17,27 @@ var AddSiteButton = React.createClass({
     }
   },
   render: function() {
+    if(this.state.open){
+      var form = <NewSiteForm />
+    }
     return (
       <div className="newSite">
         <span onClick={this.toggleForm} className="newSiteButton">{this.state.text}</span>
+        {form}
       </div>
     );
   }
 })
 
+var NewSiteForm = React.createClass({
+  handleSubmit: function(e){
+    console.log('submitted',e);
+  },
+  render: function() {
+    return (
+      <form onSubmit={this.handleSubmit} className="newSiteForm" >
+        <input type="text" placeholder="title" />
+      </form>
+    );
+  }
+})
