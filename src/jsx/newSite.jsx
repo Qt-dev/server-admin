@@ -41,10 +41,33 @@ var NewSiteForm = React.createClass({
   handleSubmit: function(e){
     console.log('submitted',e);
   },
+  generateTypeOptions: function(types){
+    return types.map(function(type){
+                      return <option value={type}>{type}</option>;
+                    });
+  },
+  generateCategoryOptions: function(categories){
+    return categories.map(function(category){
+                      return <option value={category}>{category}</option>;
+                    });
+  },
   render: function() {
+    var types = ['Sabnzbd','Transmission','Sickbeard','Couchpotato']
+    var categories = ['Downloader', 'Download Manager', 'Other']
+    var typeOptions = this.generateTypeOptions(types);
+    var categoryOptions = this.generateCategoryOptions(categories);
     return (
       <form onSubmit={this.handleSubmit} className="newSiteForm" >
-        <input type="text" placeholder="title" />
+        <input type="text" placeholder="title" required />
+        <select type="type" defaultValue="default">
+          <option disabled value="default">Select a type</option>
+          {typeOptions}
+        </select>
+        <select type="category" defaultValue="default">
+          <option disabled value="default">Select a category</option>
+          {categoryOptions}
+        </select>
+        <input type="text" placeholder="description" />
       </form>
     );
   }
