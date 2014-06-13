@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */
 
-var AddSiteButton = React.createClass({
+var AddSiteBox = React.createClass({
   getInitialState: function(){
     return {
       text: 'Add a site',
@@ -22,9 +22,17 @@ var AddSiteButton = React.createClass({
     }
     return (
       <div className="newSite">
-        <span onClick={this.toggleForm} className="newSiteButton">{this.state.text}</span>
+        <AddSiteButton toggleForm={this.toggleForm} text={this.state.text} />
         {form}
       </div>
+    );
+  }
+})
+
+var AddSiteButton = React.createClass({
+  render: function() {
+    return (
+      <span onClick={this.props.toggleForm} className="newSiteButton">{this.props.text}</span>
     );
   }
 })

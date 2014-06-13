@@ -28,7 +28,7 @@ var Content = React.createClass({
 
     return (
       <div className="content">
-        <AddSiteButton />
+        <AddSiteBox />
         {boxes}
       </div>
       );
