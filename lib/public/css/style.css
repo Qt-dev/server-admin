@@ -243,13 +243,23 @@ a {
   margin-right:   5%;
 }
 
-.newSiteButton {
-  display: block;
-  margin:0.5%;
-  width:400px;
+.newSite {
+  margin: 0.5%;
+  width:initial;
+  max-width: 100%;
+  float:left;
   background-color:rgba(200, 200, 200, 0.2);
   border: 1px solid lightgray;
+}
+
+.newSite > * {
+  display: block;
   line-height:2em;
+  margin:0;
+}
+
+.newSiteButton {
+  width:400px;
   text-align: center;
   cursor: pointer
 }
