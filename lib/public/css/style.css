@@ -251,6 +251,7 @@ a {
   border: 1px solid lightgray;
   line-height:2em;
   text-align: center;
+  cursor: pointer
 }
 
 /* iPhone 4 ----------- */
