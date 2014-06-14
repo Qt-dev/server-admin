@@ -38,36 +38,75 @@ var AddSiteButton = React.createClass({
 })
 
 var NewSiteForm = React.createClass({
+  getInitialState: function(e){
+    return {type: 'others'};
+  },
   handleSubmit: function(e){
-    console.log('submitted',e);
+    e.preventDefault();
+    var formValue = $(e.target).serialize();
+    // Make ajax request that triggers a refresh of the page
   },
   generateTypeOptions: function(types){
-    return types.map(function(type){
-                      return <option value={type}>{type}</option>;
-                    });
+    var options = [];
+    for(var type in types){
+      options.push(<option value={types[type].title}>{types[type].title}</option>);
+    }
+    return options
   },
-  generateCategoryOptions: function(categories){
-    return categories.map(function(category){
-                      return <option value={category}>{category}</option>;
-                    });
+  generateConfig: function(types){
+    var type = types[this.state.type];
+    var fields = type.config.map(function(configField){
+      return <input type="text" required name={configField} placeholder={configField} />
+    })
+    return(
+      <div>
+        {fields}
+      </div>
+      );
+  },
+  handleChangeType: function(e){
+    this.setState({type: e.target.value});
   },
   render: function() {
-    var types = ['Sabnzbd','Transmission','Sickbeard','Couchpotato']
-    var categories = ['Downloader', 'Download Manager', 'Other']
+    var types = {
+      sabnzbd: {
+        title: 'sabnzbd',
+        category: 'downloader',
+        config: ['url', 'apiKey']
+      },
+      transmission: {
+        title: 'transmission',
+        category: 'downloader',
+        config: ['host', 'url', 'username','password']
+      },
+      sickbeard: {
+        title: 'sickbeard',
+        category: 'download-manager',
+        config: ['url', 'apiKey']
+      },
+      couchpotato: {
+        title: 'couchpotato',
+        category: 'download-manager',
+        config: ['url', 'apiKey']
+      },
+      others: {
+        title: 'others',
+        category: 'other',
+        config: []
+      }
+    }
     var typeOptions = this.generateTypeOptions(types);
-    var categoryOptions = this.generateCategoryOptions(categories);
+    var config = this.generateConfig(types);
     return (
       <form onSubmit={this.handleSubmit} className="newSiteForm" >
-        <input type="text" placeholder="title" required />
-        <select type="type" defaultValue="default">
+        <input type="text" name="title" placeholder="title" required />
+        <select name="type" defaultValue="default" onChange={this.handleChangeType}>
           <option disabled value="default">Select a type</option>
           {typeOptions}
         </select>
-        <select type="category" defaultValue="default">
-          <option disabled value="default">Select a category</option>
-          {categoryOptions}
-        </select>
-        <input type="text" placeholder="description" />
+        <input type="text" name="description" placeholder="description" />
+        {config}
+        <input type="submit" value="Create" />
       </form>
     );
   }
