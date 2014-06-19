@@ -50,9 +50,11 @@ var Site = function(){
 
   var _findAll = function(callback){
     _model.find({}, function(err,sites){
-      sites = sites.map(function(site){
-        return _filterData(site);
-      });
+      if(!err){
+        sites = sites.map(function(site){
+          return _filterData(site);
+        });
+      }
       callback(err,sites)
     });
   }
