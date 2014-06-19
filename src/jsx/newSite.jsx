@@ -44,9 +44,29 @@ var AddSiteBox = React.createClass({
       this.setState({open: true, text: 'Close form'})
     }
   },
+  readForm: function(formArray){
+    var formData = {
+      config: {}
+    }
+    formArray.forEach(function(field){
+      if(field.name.lastIndexOf('[config]', 0) === 0){
+        formData.config[field.name.replace('[config]','')] = field.value;
+      } else {
+        formData[field.name] = field.value;
+      }
+    })
+    return formData;
+  },
+  handleAddSite: function(e){
+    e.preventDefault();
+    var formArray = $(e.target).serializeArray();
+    var site = this.readForm(formArray);
+    site.category = TYPES[site.type].category;
+    var newSite = this.props.sites.create(site);
+  },
   render: function() {
     if(this.state.open){
-      var form = <NewSiteForm />
+      var form = <NewSiteForm handleSubmit={this.handleAddSite} />
     }
     return (
       <div className="newSite">
