@@ -2,6 +2,34 @@
 * @jsx React.DOM
 */
 
+var TYPES = {
+      sabnzbd: {
+        title: 'sabnzbd',
+        category: 'downloader',
+        config: ['url', 'apiKey']
+      },
+      transmission: {
+        title: 'transmission',
+        category: 'downloader',
+        config: ['host', 'url', 'username','password']
+      },
+      sickbeard: {
+        title: 'sickbeard',
+        category: 'download-manager',
+        config: ['url', 'apiKey']
+      },
+      couchpotato: {
+        title: 'couchpotato',
+        category: 'download-manager',
+        config: ['url', 'apiKey']
+      },
+      others: {
+        title: 'others',
+        category: 'other',
+        config: ['url']
+      }
+    }
+
 var AddSiteBox = React.createClass({
   getInitialState: function(){
     return {
@@ -41,22 +69,18 @@ var NewSiteForm = React.createClass({
   getInitialState: function(e){
     return {type: 'others'};
   },
-  handleSubmit: function(e){
-    e.preventDefault();
-    var formValue = $(e.target).serialize();
-    // Make ajax request that triggers a refresh of the page
-  },
-  generateTypeOptions: function(types){
+  generateTypeOptions: function(){
     var options = [];
-    for(var type in types){
-      options.push(<option value={types[type].title}>{types[type].title}</option>);
+    for(var type in TYPES){
+      options.push(<option value={TYPES[type].title}>{TYPES[type].title}</option>);
     }
     return options
   },
-  generateConfig: function(types){
-    var type = types[this.state.type];
+  generateConfig: function(){
+    var type = TYPES[this.state.type];
     var fields = type.config.map(function(configField){
-      return <input type="text" required name={configField} placeholder={configField} />
+      var name = '[config]'+configField;
+      return <input type="text" required name={name} placeholder={configField} />
     })
     return(
       <div>
@@ -68,40 +92,13 @@ var NewSiteForm = React.createClass({
     this.setState({type: e.target.value});
   },
   render: function() {
-    var types = {
-      sabnzbd: {
-        title: 'sabnzbd',
-        category: 'downloader',
-        config: ['url', 'apiKey']
-      },
-      transmission: {
-        title: 'transmission',
-        category: 'downloader',
-        config: ['host', 'url', 'username','password']
-      },
-      sickbeard: {
-        title: 'sickbeard',
-        category: 'download-manager',
-        config: ['url', 'apiKey']
-      },
-      couchpotato: {
-        title: 'couchpotato',
-        category: 'download-manager',
-        config: ['url', 'apiKey']
-      },
-      others: {
-        title: 'others',
-        category: 'other',
-        config: []
-      }
-    }
-    var typeOptions = this.generateTypeOptions(types);
-    var config = this.generateConfig(types);
+    var typeOptions = this.generateTypeOptions();
+    var config = this.generateConfig();
     return (
-      <form onSubmit={this.handleSubmit} className="newSiteForm" >
+      <form onSubmit={this.props.handleSubmit} className="newSiteForm" >
         <input type="text" name="title" placeholder="title" required />
-        <select name="type" defaultValue="default" onChange={this.handleChangeType}>
-          <option disabled value="default">Select a type</option>
+        <select name="type" required onChange={this.handleChangeType}>
+          <option disabled value="">Select a type</option>
           {typeOptions}
         </select>
         <input type="text" name="description" placeholder="description" />
