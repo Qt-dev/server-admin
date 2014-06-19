@@ -62,7 +62,7 @@ var AddSiteBox = React.createClass({
     var formArray = $(e.target).serializeArray();
     var site = this.readForm(formArray);
     site.category = TYPES[site.type].category;
-    var newSite = this.props.sites.create(site);
+    this.props.sites.create(site);
   },
   render: function() {
     if(this.state.open){
@@ -86,7 +86,7 @@ var AddSiteButton = React.createClass({
 })
 
 var NewSiteForm = React.createClass({
-  getInitialState: function(e){
+  getInitialState: function(){
     return {type: 'others'};
   },
   generateTypeOptions: function(){
