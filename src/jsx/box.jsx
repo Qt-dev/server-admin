@@ -17,7 +17,8 @@ var Box = React.createClass({
     return category.get('color');
   },
   render: function() {
-    if(this.props.site.get('type')){
+    var type = this.props.site.get('type')
+    if(type && (type != "others")){
       var type = this.props.site.get('type');
       var contentBox = new contentSwitch[type]({data: this.state.data});
       var buttons = new buttonsCreator[type]({data: this.state.data, model: this.props.site, refresh: this.refresh});
