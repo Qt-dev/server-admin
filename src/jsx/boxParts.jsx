@@ -40,9 +40,14 @@ var BoxHeader = React.createClass({
     e.preventDefault();
     this.props.refreshCallback();
   },
+  delete: function(e){
+    e.preventDefault();
+    console.log(e);
+  },
   render: function() {
     return (
       <div className="boxHeader" style={this.props.style}>
+        <a href="#" onClick={this.delete}><i className="delete fa fa-times"></i></a>
         <a href="#" onClick={this.refresh}><i className="refresh fa fa-refresh"></i></a>
         <h3>{this.props.name}</h3>
         <a href={this.props.link} target="_blank"><i className="siteLink fa fa-external-link"></i></a>

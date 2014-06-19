@@ -223,24 +223,27 @@ a {
   display:inline-block;
 }
 
-.fa.siteLink {
+.boxHeader .fa {
   position: absolute;
-  right:1%;
   font-size:      1.5em;
-
   line-height:    2em;
   vertical-align: middle;
+}
+
+.fa.siteLink {
+  right:1%;
   margin-right:   1%;
 }
 
 .fa.refresh {
-  position: absolute;
   right:5%;
-  font-size:      1.5em;
-
-  line-height:    2em;
-  vertical-align: middle;
   margin-right:   5%;
+}
+
+.fa.delete {
+  color: #e74c3c;
+  left:1%;
+  margin-left: 1%;
 }
 
 .newSite {
