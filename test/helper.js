@@ -44,9 +44,18 @@ function cleanDb(folder){
 }
 
 function seedSample(done){
+  categoryMock = {
+      model: {
+        findOne: function(condition, callback){
+          callback({},category);
+        }
+      }
+    }
   Color = require('../app/models/color');
   Category = require('../app/models/category');
-  Site = require('../app/models/site');
+  Site = proxyquire('../app/models/site', {
+    './category': categoryMock
+  });
   seedColor(function(){
     seedCategories(done);
   })

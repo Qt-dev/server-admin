@@ -1,6 +1,5 @@
 describe('The Site model', function(){
 
-
   after(function(done){
     mongoose.model('Color').remove();
     mongoose.model('Category').remove();
@@ -23,7 +22,7 @@ describe('The Site model', function(){
       type: 'test-site',
       description: 'testing app',
       config: {url: 'http://test.com', apiKey: '111222'},
-      category: category
+      category: category.idName
     }
     mongoose.model('Site').create(params, function(error, site){
       expect(error).to.equal(null);
@@ -31,7 +30,7 @@ describe('The Site model', function(){
       expect(site.type).to.equal(params.type);
       expect(site.description).to.equal(params.description);
       expect(site.config).to.equal(params.config);
-      expect(site.category).to.equal(params.category);
+      expect(site.category).to.equal(category);
 
       done();
     })
