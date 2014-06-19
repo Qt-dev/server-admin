@@ -17,6 +17,6 @@ Controller.prototype = {
     this.categories.on('add', this.sites.render.bind(this.sites));
   },
   getCategory: function(idName){
-    return this.categories.where({idName: idName})[0];
+    return this.categories.findWhere({idName: idName});
   }
 };
