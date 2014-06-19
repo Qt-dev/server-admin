@@ -27,7 +27,14 @@ var Site = function(){
     config: {type: Config}
   })
   siteSchema.path('title').required(true, 'A site cannot have an empty title');
-  
+  siteSchema.pre('save', function(next){
+    var site = this;
+    Category.model.findOne({idName: this.category}, function(err, category){
+      site.category = category;
+      next();
+    })
+  })
+
   var _model = mongoose.model('Site', siteSchema);
   var _filterData = function(site){
     var category = site.category.idName;
