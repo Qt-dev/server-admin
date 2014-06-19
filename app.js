@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 
 // Global requirements
 global.fs = require('fs');
@@ -13,6 +14,7 @@ var config = {
 
 var app = express();
 
+app.use(bodyParser.json());
 // Prepare the router
 var router = require(__dirname + '/config/routes');
 app.use('/',router);
