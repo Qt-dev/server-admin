@@ -95,7 +95,9 @@ var TransmissionButtons = (function(){
 }());
 
 var TransmissionStatusBar = React.createClass({ // Not used yet
-  empty: true,
+  statics: {
+    empty: true
+  },
   render: function() {
     return (
       <div />

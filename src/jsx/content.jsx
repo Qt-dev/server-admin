@@ -28,6 +28,7 @@ var Content = React.createClass({
 
     return (
       <div className="content">
+        <AddSiteBox sites={this.props.sites} controller={this.props.controller} />
         {boxes}
       </div>
       );

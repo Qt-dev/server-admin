@@ -15,7 +15,7 @@ a {
 
 .content {
   width: 95%;
-  max-width: 1300px;
+  max-width: 1250px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -80,6 +80,10 @@ a {
 .itemList {
   float:  left;
   width:  100%;
+}
+
+.itemList h4 {
+  cursor: pointer;
 }
 
 .itemList ul {
@@ -237,6 +241,27 @@ a {
   line-height:    2em;
   vertical-align: middle;
   margin-right:   5%;
+}
+
+.newSite {
+  margin: 0.5%;
+  width:initial;
+  max-width: 100%;
+  float:left;
+  background-color:rgba(200, 200, 200, 0.2);
+  border: 1px solid lightgray;
+}
+
+.newSite > * {
+  display: block;
+  line-height:2em;
+  margin:0;
+}
+
+.newSiteButton {
+  width:400px;
+  text-align: center;
+  cursor: pointer
 }
 
 /* iPhone 4 ----------- */

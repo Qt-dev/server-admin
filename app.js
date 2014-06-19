@@ -1,5 +1,11 @@
 var express = require('express');
-var fs = require('fs');
+var bodyParser = require('body-parser')
+
+// Global requirements
+global.fs = require('fs');
+global.tungus = require('tungus');
+global.mongoose = require('mongoose');
+global.Schema = mongoose.Schema;
 
 // Config
 var config = {
@@ -8,6 +14,7 @@ var config = {
 
 var app = express();
 
+app.use(bodyParser.json());
 // Prepare the router
 var router = require(__dirname + '/config/routes');
 app.use('/',router);

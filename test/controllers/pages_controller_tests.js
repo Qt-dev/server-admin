@@ -1,5 +1,3 @@
-var pagesController = require('../../app/controllers/pages');
-
 describe('The pages controller', function(){
   describe('The index route', function(){
     it('should have an index route', function(){

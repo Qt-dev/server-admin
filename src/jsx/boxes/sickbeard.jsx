@@ -3,7 +3,7 @@
 */
 
 var SickbeardContentBox = React.createClass({
-  buildItem: function(item, type){
+  buildItem: function(item){
     return {
       id: item.show_name + "-" + item.season + item.episode,
       title: item.show_name + " (" + "S" + item.season + "E" + item.episode + ")",
@@ -57,7 +57,9 @@ var SickbeardButtons = (function(){
 }());
 
 var SickbeardStatusBar = React.createClass({ // Not used yet
-  empty: true,
+  statics: {
+    empty: true
+  },
   render: function() {
     return (
       <div />

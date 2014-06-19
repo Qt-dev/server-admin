@@ -8,10 +8,10 @@ var BoxContent = React.createClass({
     if(this.props.statusBar && !(this.props.statusBar.empty)){
       lines.push(this.props.statusBar);
     }
-
-    var content = lines.map(function(line){
+    var boxKey = this.props.boxKey;
+    var content = lines.map(function(line, index){
       return (
-        <div className="row">
+        <div key={"box-" + boxKey + "-line-" + index} className="row">
           {line}
         </div>
         )
