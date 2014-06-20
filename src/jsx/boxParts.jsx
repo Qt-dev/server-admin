@@ -5,8 +5,9 @@ var BoxContent = React.createClass({
   render: function(){
     var lines = [];
     lines.push(this.props.description);
-    if(this.props.statusBar && !(this.props.statusBar.empty)){
-      lines.push(this.props.statusBar);
+    var bar = this.props.statusBar;
+    if(bar && bar.props.empty ){
+      lines.push(bar);
     }
     var boxKey = this.props.boxKey;
     var content = lines.map(function(line, index){

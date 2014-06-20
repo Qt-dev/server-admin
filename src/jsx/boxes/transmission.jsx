@@ -94,13 +94,10 @@ var TransmissionButtons = (function(){
   })
 }());
 
-var TransmissionStatusBar = React.createClass({ // Not used yet
-  statics: {
-    empty: true
-  },
-  render: function() {
-    return (
-      <div />
-    );
+
+var TransmissionStatusBar = React.createClass({
+  render: function(){
+    this.props.empty = true;
+    return <div />;
   }
-});
+})
