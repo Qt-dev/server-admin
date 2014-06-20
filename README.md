@@ -1,5 +1,6 @@
 # Server Admin
-[![Build Status](https://travis-ci.org/cookie-monster-inc/server-admin.svg?branch=master)](https://travis-ci.org/cookie-monster-inc/server-admin)
+[![Build Status](https://travis-ci.org/Qt-dev/server-admin.svg?branch=master)](https://travis-ci.org/Qt-dev/server-admin)
+
 ## Screenshot
 ![Imgur](http://imgur.com/Zv0b6Sw.jpg)
 
