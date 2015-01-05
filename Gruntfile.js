@@ -11,6 +11,16 @@ module.exports = function(grunt) {
       beforeconcat: ['src/**/*.js', 'src/*.js'],
       afterconcat: ['lib/public/js/output.min.js']
     },
+
+    concurrent: {
+      dev: {
+        tasks: ['nodemon', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+
     uglify: {
       options: {
         mangle: true,
@@ -36,6 +46,29 @@ module.exports = function(grunt) {
           ]
         }
       }
+    },
+
+    watch: {
+      jsx: {
+        files: ['src/jsx/**/*.jsx', 'src/jsx/*.jsx'],
+        tasks: ['react', 'uglify'],
+      },
+      frontendJS: {
+        files: ['src/js/*.js','src/js/**/*.js'],
+        tasks: ['jshint:beforeconcat', 'uglify']
+      },
+      configFiles: {
+        files: [ 'Gruntfile.js'],
+        options: {
+          reload: true
+        }
+      }
+    },
+
+    nodemon: {
+      dev: {
+        script: 'app.js'
+      }
     }
   });
 
@@ -45,10 +78,19 @@ module.exports = function(grunt) {
   // JS Uglify task
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  // Watch task
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  // Concurrent
+  grunt.loadNpmTasks('grunt-concurrent');
+
   // React task
   grunt.loadNpmTasks('grunt-react');
 
+  // Nodemon task
+  grunt.loadNpmTasks('grunt-nodemon');
+
   // Default task(s).
-  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'react', 'uglify']);
+  grunt.registerTask('default', ['jshint:node', 'jshint:beforeconcat', 'react', 'uglify', 'concurrent']);
 
 };
