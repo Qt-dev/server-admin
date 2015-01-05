@@ -76,7 +76,6 @@ var SABButtons = (function(){
 var SABStatusBar = React.createClass({
   buildLine: function(key, value){
     return <li key={key}><span className="statusTitle">{key}:</span><span className="statusValue">{value.toString()}</span></li>
- 
   },
   render: function(){
     if(this.props.data){

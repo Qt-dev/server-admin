@@ -56,13 +56,10 @@ var SickbeardButtons = (function(){
   })
 }());
 
-var SickbeardStatusBar = React.createClass({ // Not used yet
-  statics: {
-    empty: true
-  },
-  render: function() {
-    return (
-      <div />
-    );
+
+var SickbeardStatusBar = React.createClass({
+  render: function(){
+    this.props.empty = true;
+    return <div />;
   }
-});
+})

@@ -16,6 +16,21 @@ var Box = React.createClass({
     var category = this.props.controller.getCategory(categoryId);
     return category.get('color');
   },
+  delete: function() {
+    var site = this.props.site;
+    var sites = this.props.controller.sites;
+    var refreshCallback = this.props.refreshCallback;
+    site.destroy({
+      success: function(model, response){
+        sites.remove(site);
+        refreshCallback();
+      },
+      error: function(model, response){
+        console.log("ERROR");
+        console.log("response: ", response);
+      }
+    })
+  },
   render: function() {
     var type = this.props.site.get('type')
     if(type && (type != "others")){
@@ -29,9 +44,11 @@ var Box = React.createClass({
       backgroundColor: this.getColor()
     }
 
+    this.klass = "box "+ this.props.site.get('id');
+
     return (
-      <div className="box" style={style}>
-        <BoxHeader name={this.props.site.get('title')} refreshCallback={this.refresh} link={this.props.site.config.url} style={style} />
+      <div className={this.klass} style={style}>
+        <BoxHeader name={this.props.site.get('title')} refreshCallback={this.refresh} deleteCallback={this.delete} link={this.props.site.config.url} style={style} />
         <BoxContent boxKey={this.props.key} contentBox={contentBox} statusBar={statusBar} description={this.props.site.get('description')} />
         <BoxFooter buttons={buttons} link={this.props.site.config.url} />
       </div>
