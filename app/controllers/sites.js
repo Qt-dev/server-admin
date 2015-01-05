@@ -22,3 +22,10 @@ exports.create = function(req,res){
     }
   });
 }
+
+exports.delete = function(req, res){
+  Site.model.findById(req.params.id).remove(function(err, response, test){
+    if(err) console.log(err);
+    res.send({response: response});
+  })
+} 

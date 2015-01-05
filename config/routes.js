@@ -11,6 +11,7 @@ var router = require('express').Router();
 router.get('/', pages.index);
 router.get('/sites', sites.index);
 router.post('/sites', sites.create);
+router.delete('/sites/:id', sites.delete);
 router.get('/categories', categories.index);
 router.get('/categories/:id', categories.show)
 router.get('/apis/query', apis.query)

@@ -43,7 +43,7 @@ var BoxHeader = React.createClass({
   },
   delete: function(e){
     e.preventDefault();
-    console.log(e);
+    this.props.deleteCallback(); 
   },
   render: function() {
     return (

@@ -1,5 +1,5 @@
 var Site = Backbone.Model.extend({
-  url: '/sites',
+  urlRoot: '/sites',
   initialize: function(){
     this.queryUrl = '/apis/query';
     this.config = this.get('config');
