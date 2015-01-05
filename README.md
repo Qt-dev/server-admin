@@ -15,7 +15,7 @@ It is a server interface. This interface gives you useful tools and commands in 
 #### Use it
 Download it with ```git clone https://github.com/cookie-monster-inc/server-admin.git```.
 Then install dependencies with ```npm install```,.
-Launch the app with ```npm start```.
+Launch the app with ```grunt```.
 
 The site is now available on ```http://localhost:3000```.
 
