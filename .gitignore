@@ -7,3 +7,9 @@ lib/public/js/output.min.js
 
 # db folder
 db/sites
+
+# Logfiles
+*.log
+
+# Seeds files
+seeds.js
